@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/tappi/pyrl/.git'
+let g:netrw_dirhist_2='/home/tappi/pyrl/editor'
+let g:netrw_dirhist_3='/home/tappi/pyrl/window'
