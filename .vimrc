@@ -39,7 +39,7 @@ let mapleader = ","
 imap <C-s> <Esc><C-s>
 imap <C-@> <C-x><C-o>
 imap <S-Tab> <C-d>
-imap <expr>  BackspaceIgnoreIndent()
+imap <expr> <Esc>h BackspaceIgnoreIndent()
 
 imap <F1> <Esc><F1>
 imap <F2> <Esc><F2>
