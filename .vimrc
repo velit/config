@@ -8,7 +8,6 @@ let mapleader = ","
 
 set tabstop=4 softtabstop=4 shiftwidth=4
 
-set autoindent
 set backspace=indent,eol,start
 set cmdheight=2
 set completeopt=longest,menu
@@ -28,8 +27,7 @@ set scrolloff=3
 set splitbelow splitright
 set tabpagemax=99
 set textwidth=120
-set timeoutlen=1000
-set undodir=~/vim_tmp/undo//,.
+set undodir=~/.vim/temp/undo//,.
 set undofile
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
