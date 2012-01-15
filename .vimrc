@@ -3,8 +3,10 @@
 set nocompatible
 filetype plugin indent on
 syntax on
-colorscheme tappi
 let mapleader = ","
+
+set background=dark
+colorscheme tappi
 
 set tabstop=4 softtabstop=4 shiftwidth=4
 
@@ -93,6 +95,7 @@ nmap <Leader>s *:%s###<Left>
 nmap <Leader>h :tab help 
 nmap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nmap <Leader>e :echo exists("&")<Left><Left>
+nmap <Leader>t :tabe <bar> 
 
 nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
 nmap <silent> <Leader>V :source $MYVIMRC<CR>:echo 'vimrc reloaded'<CR>
@@ -117,8 +120,8 @@ map <Esc>k <C-W>l
 
 map <C-H> ^
 map <C-L> $
-map <C-J> {
-map <C-K> }
+map <C-K> {
+map <C-J> }
 
 map <F1> :cp<CR>
 map <F2> :cn<CR>
