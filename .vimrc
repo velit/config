@@ -138,7 +138,7 @@ map <Esc>0 10g
 " Filetypes
 
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal makeprg=python3\ %
+autocmd FileType python setlocal makeprg=python\ %
 autocmd FileType python setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 "autocmd FileType gitcommit startinsert
 

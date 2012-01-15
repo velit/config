@@ -18,7 +18,7 @@ hi ErrorMsg		ctermfg=196		ctermbg=236		cterm=bold
 hi Folded		ctermfg=103		ctermbg=237		cterm=none
 hi LineNr		ctermfg=248		ctermbg=0		cterm=none
 hi MatchParen	ctermfg=228		ctermbg=101		cterm=bold
-hi Normal		ctermfg=252		ctermbg=233		cterm=none
+hi Normal		ctermfg=252		ctermbg=235		cterm=none
 hi NonText		ctermfg=241		ctermbg=0		cterm=none
 hi Search		ctermfg=248		ctermbg=12		term=reverse
 hi SpecialKey	ctermfg=241		ctermbg=233		cterm=none
