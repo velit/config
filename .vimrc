@@ -14,7 +14,6 @@ set backspace=indent,eol,start
 set cmdheight=2
 set completeopt=longest,menu
 set confirm
-set fillchars=""
 set gdefault
 set history=100
 set hlsearch
@@ -34,7 +33,7 @@ set wildmenu
 set wildmode=longest:list,full
 set wrapscan
 
-if version >= 730
+if version >= 703
 	set undodir=~/.vim/temp/undo//,.
 	set undofile
 endif
