@@ -76,9 +76,6 @@ nmap <Esc>a :tabnew<CR>
 nmap <Esc>s :tabe 
 nmap <Esc>d :tab sp<CR>
 
-nmap <C-w><C-m> <C-w>m
-nmap <C-w>m :vnew<CR>
-
 nmap Y y$
 nmap Q :nohl<CR><C-W>z
 nmap <CR> o<C-c>
@@ -121,6 +118,9 @@ map <C-H> ^
 map <C-L> $
 map <C-K> {
 map <C-J> }
+
+map <silent> <C-w><C-m> <C-w>m
+map <silent> <C-w>m :vnew<CR>
 
 map <F1> :cp<CR>
 map <F2> :cn<CR>
