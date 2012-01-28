@@ -19,7 +19,7 @@ set history=100
 set hlsearch
 set incsearch
 set laststatus=2
-set listchars+=tab:>\ 
+set listchars=tab:►\ ,eol:$
 set mouse=a
 set pastetoggle=<F12>
 set ruler
@@ -30,7 +30,7 @@ set tabpagemax=99
 set textwidth=120
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
-set wildmode=longest:list,full
+set wildmode=longest:list
 set wrapscan
 
 if version >= 703
@@ -38,14 +38,11 @@ if version >= 703
 	set undofile
 endif
 
-"nohlsearch
-
-
 " Insert mode mappings
 
 imap <C-s> <Esc><C-s>
 imap <C-@> <C-x><C-o>
-imap <S-Tab> <C-d>
+imap <S-Tab> <BS>
 imap <expr> <C-h> BackspaceIgnoreIndent()
 
 imap <F1> <Esc><F1>
@@ -71,7 +68,7 @@ nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 nnoremap <C-l> :nohl<CR><C-l>
 
-nmap <C-q> <C-w>q
+nmap <C-q> :close<CR>
 nmap <Esc>a :tabnew<CR>
 nmap <Esc>s :tabe 
 nmap <Esc>d :tab sp<CR>
