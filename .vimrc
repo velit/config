@@ -10,6 +10,7 @@ colorscheme tappi
 
 set tabstop=4 softtabstop=4 shiftwidth=4
 
+set autoindent
 set backspace=indent,eol,start
 set cmdheight=2
 set completeopt=longest,menu
