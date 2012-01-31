@@ -24,8 +24,9 @@ hi Search		ctermfg=248		ctermbg=12		term=reverse
 hi SpecialKey	ctermfg=232		ctermbg=none	cterm=none
 hi StatusLine	ctermfg=232		ctermbg=248		cterm=none
 hi StatusLineNC	ctermfg=248		ctermbg=238		cterm=none
-hi TabLine		ctermfg=248		ctermbg=238		cterm=none
-hi TabLineFill	ctermfg=none	ctermbg=238		cterm=none
+hi TabLine		ctermfg=248		ctermbg=238		cterm=underline
+hi TabLineSel	ctermfg=252		ctermbg=none	cterm=none
+hi TabLineFill	ctermfg=248		ctermbg=238		cterm=underline
 hi VertSplit	ctermfg=238		ctermbg=238		cterm=none
 hi Visual		ctermfg=none	ctermbg=242		cterm=reverse
 hi WarningMsg	ctermfg=203
