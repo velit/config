@@ -1,5 +1,6 @@
 " Vim color file
 " by tappi
+" vim:ts=8:sw=8
 
 set background=dark
 
@@ -12,44 +13,45 @@ let colors_name = "tappi"
 
 
 " General colors
-hi Cursor		ctermfg=234		ctermbg=228		cterm=none
-hi CursorLine	ctermfg=none	ctermbg=236		cterm=none
-hi ErrorMsg		ctermfg=196		ctermbg=236		cterm=bold
-hi Folded		ctermfg=103		ctermbg=237		cterm=none
-hi LineNr		ctermfg=248		ctermbg=0		cterm=none
-hi MatchParen	ctermfg=none	ctermbg=none	cterm=reverse
-hi Normal		ctermfg=252		ctermbg=235		cterm=none
-hi NonText		ctermfg=232		ctermbg=none	cterm=none
-hi Search		ctermfg=248		ctermbg=12		term=reverse
-hi SpecialKey	ctermfg=232		ctermbg=none	cterm=none
-hi StatusLine	ctermfg=232		ctermbg=248		cterm=none
-hi StatusLineNC	ctermfg=248		ctermbg=238		cterm=none
-hi TabLine		ctermfg=248		ctermbg=238		cterm=underline
-hi TabLineSel	ctermfg=252		ctermbg=none	cterm=none
-hi TabLineFill	ctermfg=248		ctermbg=238		cterm=underline
-hi VertSplit	ctermfg=238		ctermbg=238		cterm=none
-hi Visual		ctermfg=none	ctermbg=242		cterm=reverse
+hi Cursor	ctermfg=234	ctermbg=228	cterm=none	term=none
+hi CursorLine	ctermfg=none	ctermbg=238	cterm=none	term=none
+hi ErrorMsg	ctermfg=196	ctermbg=none	cterm=bold	term=none
+hi Folded	ctermfg=103	ctermbg=237	cterm=none	term=none
+hi LineNr	ctermfg=245	ctermbg=235	cterm=none	term=none
+hi MatchParen	ctermfg=none	ctermbg=242	cterm=none	term=none
+hi Normal	ctermfg=252	ctermbg=235	cterm=none	term=none
+hi NonText	ctermfg=16	ctermbg=none	cterm=none	term=none
+hi Search	ctermfg=248	ctermbg=63	cterm=none	term=none
+hi SpellBad	ctermfg=none	ctermbg=52	cterm=none	term=none
+hi StatusLine	ctermfg=16	ctermbg=248	cterm=none	term=none
+hi StatusLineNC	ctermfg=248	ctermbg=238	cterm=none	term=none
+hi TabLineSel	ctermfg=252	ctermbg=none	cterm=none	term=none
+hi TabLine	ctermfg=248	ctermbg=238	cterm=underline	term=none
+hi TabLineFill	ctermfg=248	ctermbg=238	cterm=underline	term=none
+hi VertSplit	ctermfg=238	ctermbg=238	cterm=none	term=none
+hi Visual	ctermfg=none	ctermbg=16	cterm=reverse	term=none
 hi WarningMsg	ctermfg=203
 
 " Diff highlighting
-hi DiffAdd						ctermbg=22		cterm=none
-hi DiffDelete	ctermfg=234		ctermbg=52		cterm=none
-hi DiffText						ctermbg=53		cterm=none
-hi DiffChange					ctermbg=24		cterm=none
+hi DiffAdd			ctermbg=22	cterm=none	term=none
+hi DiffDelete	ctermfg=234	ctermbg=52	cterm=none	term=none
+hi DiffText			ctermbg=53	cterm=none	term=none
+hi DiffChange	ctermbg=24	cterm=none	term=none
 
 
 " Syntax highlighting
-hi Comment		ctermfg=12		ctermbg=none	cterm=none
-hi Constant		ctermfg=173		ctermbg=none	cterm=none
-hi Error		ctermfg=9		ctermbg=1		cterm=none
-hi Identifier	ctermfg=14		ctermbg=none	cterm=none
-hi Special		ctermfg=3		ctermbg=none	cterm=none
-hi Statement	ctermfg=3		ctermbg=none	cterm=none
-hi String		ctermfg=13		ctermbg=none	cterm=none
-hi Todo			ctermfg=none	ctermbg=30		cterm=none
-hi Type			ctermfg=2		ctermbg=none	cterm=none
+hi Comment	ctermfg=63	ctermbg=none	cterm=none	term=none
+hi Constant	ctermfg=173	ctermbg=none	cterm=none	term=none
+hi Error	ctermfg=124	ctermbg=none	cterm=reverse	term=none
+hi Identifier	ctermfg=51	ctermbg=none	cterm=none	term=none
+hi Special	ctermfg=173	ctermbg=none	cterm=none  	term=none
+hi Statement	ctermfg=130	ctermbg=none	cterm=none  	term=none
+hi String	ctermfg=207	ctermbg=none	cterm=none  	term=none
+hi Todo		ctermfg=none	ctermbg=30	cterm=none  	term=none
+hi Type		ctermfg=34	ctermbg=none	cterm=none  	term=none
 
 
 " Links
 hi! link FoldColumn		Folded
 hi! link CursorColumn	CursorLine
+hi!	link SpecialKey		Constant

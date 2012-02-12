@@ -8,7 +8,7 @@ let mapleader = ","
 set background=dark
 colorscheme tappi
 
-set tabstop=4 softtabstop=4 shiftwidth=4
+set tabstop=4 shiftwidth=4
 
 set autoindent
 set backspace=indent,eol,start
@@ -22,11 +22,13 @@ set incsearch
 set laststatus=2
 set listchars=tab:►\ ,eol:$
 set mouse=a
+set numberwidth=3
 set pastetoggle=<F12>
 set ruler
 set scrolljump=5
 set scrolloff=3
 set splitbelow splitright
+set synmaxcol=1000
 set tabpagemax=99
 set textwidth=120
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
@@ -69,10 +71,7 @@ nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 nnoremap <C-l> :nohl<CR><C-l>
 
-nmap <C-q> :close<CR>
-nmap <Esc>a :tabnew<CR>
-nmap <Esc>s :tabe 
-nmap <Esc>d :tab sp<CR>
+nmap <Esc>x :close<CR>
 
 nmap Y y$
 nmap Q :nohl<CR><C-W>z
@@ -85,14 +84,19 @@ nmap <Leader>l :set list!<CR>
 nmap <Leader>n :set number!<CR>
 nmap <Leader>cd :cd %:h \| :pwd<CR>
 nmap <Leader>cl :lcd %:h \| :pwd<CR>
-nmap <Leader>s *:%s###<Left>
+nmap <Leader>s :vs 
 nmap <Leader>h :tab help 
 nmap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
-nmap <Leader>e :echo exists("&")<Left><Left>
-nmap <Leader>t :tabe <bar> 
+nmap <Leader>e :tabe 
+nmap <Leader>t :tabnew<CR> 
+nmap <Leader>d :tab sp<CR> 
+nmap <Leader>j <C-]>
+nmap <Leader>w :close<CR>
+nmap <Leader>q :qa<CR>
 
+nmap <silent> <Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
 nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
-nmap <silent> <Leader>V :source $MYVIMRC<CR>:echo 'vimrc reloaded'<CR>
+nmap <silent> <Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nmap <silent> <Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
 
 
@@ -124,7 +128,17 @@ map <F1> :cp<CR>
 map <F2> :cn<CR>
 map <F3> :cl<CR>
 map <F4> :clast<CR>
-map <F5> :exe "!./debug_vim" \| :cf \| :clast<CR>
+
+map <silent> <F5>
+\ :if executable("./debug_vim") <Bar>
+	\ execute("!./debug_vim") <Bar>
+	\ if filereadable("errors.err") <Bar>
+		\ cf <Bar>
+		\ clast <Bar>
+	\ endif <Bar>
+\ else <Bar>
+	\ make <Bar>
+\ endif<CR>
 
 map <Esc>1 1gt
 map <Esc>2 2gt
