@@ -12,19 +12,18 @@ set tabstop=4 shiftwidth=4
 
 set autoindent
 set backspace=indent,eol,start
-set cmdheight=2
 set completeopt=longest,menu
 set confirm
 set gdefault
 set history=100
 set hlsearch
 set incsearch
-set laststatus=2
 set listchars=tab:►\ ,eol:$
 set mouse=a
-set numberwidth=3
+set numberwidth=2
 set pastetoggle=<F12>
 set ruler
+set rulerformat=%!&filetype
 set scrolljump=5
 set scrolloff=3
 set splitbelow splitright
@@ -35,6 +34,12 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
 set wrapscan
+
+if &lines >= 40
+	set numberwidth=3
+	set cmdheight=2
+	set laststatus=2
+endif
 
 if version >= 703
 	set undodir=~/.vim/temp/undo//,.
@@ -72,6 +77,7 @@ nnoremap <C-y> 5<C-y>
 nnoremap <C-l> :nohl<CR><C-l>
 
 nmap <Esc>x :close<CR>
+nnoremap <Esc>w :close<CR>
 
 nmap Y y$
 nmap Q :nohl<CR><C-W>z
