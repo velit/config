@@ -46,6 +46,7 @@ endif
 
 if $TERM == 'screen-256color'
 	set ttymouse=xterm2
+endif
 
 " Insert mode mappings
 
