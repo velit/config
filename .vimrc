@@ -15,6 +15,7 @@ set backspace=indent,eol,start
 set cmdheight=2
 set completeopt=longest,menu
 set confirm
+set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 set gdefault
 set history=100
 set hlsearch
@@ -30,7 +31,7 @@ set scrolloff=3
 set splitbelow splitright
 set synmaxcol=1000
 set tabpagemax=99
-set textwidth=120
+set textwidth=100
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
@@ -41,12 +42,15 @@ if version >= 703
 	set undofile
 endif
 
+if $TERM == 'screen-256color'
+	set ttymouse=xterm2
+
 " Insert mode mappings
 
 imap <C-s> <Esc><C-s>
-imap <C-@> <C-x><C-o>
-imap <S-Tab> <BS>
-imap <expr> <C-h> BackspaceIgnoreIndent()
+inoremap <C-@> <C-x><C-o>
+inoremap <S-Tab> <BS>
+inoremap <expr> <C-h> BackspaceIgnoreIndent()
 
 imap <F1> <Esc><F1>
 imap <F2> <Esc><F2>
@@ -54,10 +58,10 @@ imap <F3> <Esc><F3>
 imap <F4> <Esc><F4>
 imap <F5> <Esc><F5>
 imap <F6> <Esc><F6>
-imap <Esc>h <Esc>gT
-imap <Esc>l <Esc>gt
-imap <Esc>j <C-o>^
-imap <Esc>k <C-o>$
+inoremap <Esc>h <Esc>gT
+inoremap <Esc>l <Esc>gt
+inoremap <Esc>j <C-o>^
+inoremap <Esc>k <C-o>$
 
 inoremap <C-c> <Esc>
 inoremap <Esc> <C-c>
@@ -65,73 +69,40 @@ inoremap <Esc> <C-c>
 
 " Normal mode mappings
 
+nnoremap <C-e> 5<C-e>
+nnoremap <C-l> :nohl<CR><C-l>
+nnoremap <C-s> :update<CR>
+nnoremap <C-y> 5<C-y>
+nnoremap <CR> o<C-c>
+nnoremap <Esc>x :close<CR>
+nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
+nnoremap <Leader>cd :cd %:h \| :pwd<CR>
+nnoremap <Leader>cl :lcd %:h \| :pwd<CR>
+nnoremap <Leader>d :tab sp<CR> 
+nnoremap <Leader>e :tabe 
+nnoremap <Leader>h :tab help 
+nnoremap <Leader>j <C-]>
+nnoremap <Leader>l :set list!<CR>
+nnoremap <Leader>n :set number!<CR>
+nnoremap <Leader>o <C-i>
+nnoremap <Leader>q :qa<CR>
+nnoremap <Leader>s :vs 
+nnoremap <Leader>t :tabnew<CR> 
+nnoremap <Leader>w :close<CR>
+nnoremap <S-Tab> <<
+nnoremap <Tab> >>
+nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
+nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
+nnoremap <silent><Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
+nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
+nnoremap Q :nohl<CR><C-W>z
+nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-nnoremap <C-l> :nohl<CR><C-l>
 
-nmap <Esc>x :close<CR>
-
-nmap Y y$
-nmap Q :nohl<CR><C-W>z
-nmap <CR> o<C-c>
-nmap <C-s> :update<CR>
-nmap <Tab> >>
-nmap <S-Tab> <<
-
-nmap <Leader>l :set list!<CR>
-nmap <Leader>n :set number!<CR>
-nmap <Leader>cd :cd %:h \| :pwd<CR>
-nmap <Leader>cl :lcd %:h \| :pwd<CR>
-nmap <Leader>s :vs 
-nmap <Leader>h :tab help 
-nmap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
-nmap <Leader>e :tabe 
-nmap <Leader>t :tabnew<CR> 
-nmap <Leader>d :tab sp<CR> 
-nmap <Leader>j <C-]>
-nmap <Leader>w :close<CR>
-nmap <Leader>q :qa<CR>
-
-nmap <silent> <Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
-nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
-nmap <silent> <Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
-nmap <silent> <Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-
-
-" Visual mode mappings
-
-vmap <C-s> <Esc><C-s>gv
-vmap <Tab> >gv
-vmap <S-Tab> <gv
-
-
-" Maps
-
-map <Leader>f <plug>NERDCommenterToggle
-
-map <Esc>h gT
-map <Esc>l gt
-map <Esc>j <C-W>h
-map <Esc>k <C-W>l
-
-map <C-H> ^
-map <C-L> $
-map <C-K> {
-map <C-J> }
-
-map <silent> <C-w><C-m> <C-w>m
-map <silent> <C-w>m :vnew<CR>
-
-map <F1> :cp<CR>
-map <F2> :cn<CR>
-map <F3> :cl<CR>
-map <F4> :clast<CR>
-
-map <silent> <F5>
+nnoremap <silent><F5>
 \ :if executable("./debug_vim") <Bar>
-	\ execute("!./debug_vim") <Bar>
+	\ execute("!./debug_vim pyrl.py 0") <Bar>
 	\ if filereadable("errors.err") <Bar>
 		\ cf <Bar>
 		\ clast <Bar>
@@ -140,23 +111,60 @@ map <silent> <F5>
 	\ make <Bar>
 \ endif<CR>
 
-map <Esc>1 1gt
-map <Esc>2 2gt
-map <Esc>3 3gt
-map <Esc>4 4gt
-map <Esc>5 5gt
-map <Esc>6 6gt
-map <Esc>7 7gt
-map <Esc>8 8gt
-map <Esc>9 9gt
-map <Esc>0 10g
+nnoremap <silent><F6>
+\ :if executable("./debug_vim") <Bar>
+	\ execute("!./debug_vim sdlpyrl.py 0") <Bar>
+	\ if filereadable("errors.err") <Bar>
+		\ cf <Bar>
+		\ clast <Bar>
+	\ endif <Bar>
+\ else <Bar>
+	\ make <Bar>
+\ endif<CR>
+
+
+" Visual mode mappings
+
+vmap <C-s> <Esc><C-s>gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+
+" Maps
+
+noremap <Leader>f <plug>NERDCommenterToggle
+noremap <Esc>h gT
+noremap <Esc>l gt
+noremap <Esc>j <C-W>h
+noremap <Esc>k <C-W>l
+noremap <C-H> ^
+noremap <C-L> $
+noremap <C-K> {
+noremap <C-J> }
+noremap <F1> :cp<CR>
+noremap <F2> :cn<CR>
+noremap <F3> :cl<CR>
+noremap <F4> :clast<CR>
+noremap <Esc>1 1gt
+noremap <Esc>2 2gt
+noremap <Esc>3 3gt
+noremap <Esc>4 4gt
+noremap <Esc>5 5gt
+noremap <Esc>6 6gt
+noremap <Esc>7 7gt
+noremap <Esc>8 8gt
+noremap <Esc>9 9gt
+noremap <Esc>0 10g
+
+noremap <silent><C-w>m :vnew<CR>
+map <silent><C-w><C-m> <C-w>m
 
 
 " Filetypes
 
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal makeprg=python\ %
-autocmd FileType python setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
+"autocmd FileType python setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 "autocmd FileType gitcommit startinsert
 
 
