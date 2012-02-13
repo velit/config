@@ -23,11 +23,13 @@ set incsearch
 set laststatus=2
 set listchars=tab:►\ ,eol:$
 set mouse=a
-set numberwidth=3
+set numberwidth=2
 set pastetoggle=<F12>
 set ruler
-set scrolljump=5
-set scrolloff=3
+set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
+set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
+set scrolljump=-10
+set scrolloff=5
 set splitbelow splitright
 set synmaxcol=1000
 set tabpagemax=99
@@ -66,14 +68,16 @@ inoremap <Esc>k <C-o>$
 inoremap <C-c> <Esc>
 inoremap <Esc> <C-c>
 
-
 " Normal mode mappings
 
-nnoremap <C-e> 5<C-e>
+nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
+nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
 nnoremap <C-l> :nohl<CR><C-l>
+nnoremap <C-q> :qa<CR>
 nnoremap <C-s> :update<CR>
-nnoremap <C-y> 5<C-y>
 nnoremap <CR> o<C-c>
+nnoremap <Esc>q :qa<CR>
+nnoremap <Esc>w :close<CR>
 nnoremap <Esc>x :close<CR>
 nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nnoremap <Leader>cd :cd %:h \| :pwd<CR>
@@ -155,10 +159,18 @@ noremap <Esc>7 7gt
 noremap <Esc>8 8gt
 noremap <Esc>9 9gt
 noremap <Esc>0 10g
+noremap <C-w>m :vnew<CR>
+map <C-w><C-m> <C-w>m
 
-noremap <silent><C-w>m :vnew<CR>
-map <silent><C-w><C-m> <C-w>m
+" Small screen optimisations
 
+if &lines < 45
+	set cmdheight=1
+	set laststatus=1
+	set scrolloff=3
+	nnoremap <C-e> <C-e><C-e><C-e>
+	nnoremap <C-y> <C-y><C-y><C-y>
+endif
 
 " Filetypes
 
