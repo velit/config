@@ -12,20 +12,23 @@ set tabstop=4 shiftwidth=4
 
 set autoindent
 set backspace=indent,eol,start
+set cmdheight=2
 set completeopt=longest,menu
 set confirm
 set gdefault
 set history=100
 set hlsearch
 set incsearch
+set laststatus=2
 set listchars=tab:►\ ,eol:$
 set mouse=a
 set numberwidth=2
 set pastetoggle=<F12>
 set ruler
-set rulerformat=%!&filetype
-set scrolljump=5
-set scrolloff=3
+set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
+set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
+set scrolljump=-10
+set scrolloff=5
 set splitbelow splitright
 set synmaxcol=1000
 set tabpagemax=99
@@ -34,12 +37,6 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
 set wrapscan
-
-if &lines >= 40
-	set numberwidth=3
-	set cmdheight=2
-	set laststatus=2
-endif
 
 if version >= 703
 	set undodir=~/.vim/temp/undo//,.
@@ -72,11 +69,13 @@ inoremap <Esc> <C-c>
 
 nnoremap j gj
 nnoremap k gk
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
+nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
+nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
 nnoremap <C-l> :nohl<CR><C-l>
 
-nmap <Esc>x :close<CR>
+nnoremap <C-q> :qa<CR>
+nnoremap <Esc>q :qa<CR>
+nnoremap <Esc>x :close<CR>
 nnoremap <Esc>w :close<CR>
 
 nmap Y y$
@@ -157,6 +156,15 @@ map <Esc>8 8gt
 map <Esc>9 9gt
 map <Esc>0 10g
 
+" Small screen optimisations
+
+if &lines < 45
+	set cmdheight=1
+	set laststatus=1
+	set scrolloff=3
+	nnoremap <C-e> <C-e><C-e><C-e>
+	nnoremap <C-y> <C-y><C-y><C-y>
+endif
 
 " Filetypes
 
