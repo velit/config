@@ -73,6 +73,9 @@ inoremap <Esc> <C-c>
 
 " Normal mode mappings
 
+noremap <C-c> <Esc>
+noremap <Esc> <C-c>
+
 nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
 nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
 nnoremap <C-l> :nohl<CR><C-l>
