@@ -1,4 +1,8 @@
 set nocompatible
+
+"Vundle
+"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
@@ -10,16 +14,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'dahu/LearnVim'
 Bundle 'python.vim--Vasiliev'
-
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
 
 " Settings
 
@@ -73,31 +67,53 @@ if $TERM == 'screen-256color'
 endif
 
 " Insert mode mappings
-
 imap <C-s> <Esc><C-s>
-inoremap <C-@> <C-x><C-o>
-inoremap <S-Tab> <BS>
-inoremap <expr> <C-h> BackspaceIgnoreIndent()
-
 imap <F1> <Esc><F1>
 imap <F2> <Esc><F2>
 imap <F3> <Esc><F3>
 imap <F4> <Esc><F4>
 imap <F5> <Esc><F5>
 imap <F6> <Esc><F6>
+inoremap <expr> <C-h> BackspaceIgnoreIndent()
 inoremap <Esc>h <Esc>gT
 inoremap <Esc>l <Esc>gt
 inoremap <Esc>j <C-o>^
 inoremap <Esc>k <C-o>$
-
+inoremap <C-@> <C-x><C-o>
+inoremap <S-Tab> <BS>
 inoremap <C-c> <Esc>
 inoremap <Esc> <C-c>
 
-" Normal mode mappings
-
+" Maps
 noremap <C-c> <Esc>
 noremap <Esc> <C-c>
+noremap <Leader>f <plug>NERDCommenterToggle
+noremap <Esc>h gT
+noremap <Esc>l gt
+noremap <Esc>j <C-W>h
+noremap <Esc>k <C-W>l
+noremap <C-H> ^
+noremap <C-L> $
+noremap <C-K> {
+noremap <C-J> }
+noremap <F1> :cp<CR>
+noremap <F2> :cn<CR>
+noremap <F3> :cl<CR>
+noremap <F4> :clast<CR>
+noremap <Esc>1 1gt
+noremap <Esc>2 2gt
+noremap <Esc>3 3gt
+noremap <Esc>4 4gt
+noremap <Esc>5 5gt
+noremap <Esc>6 6gt
+noremap <Esc>7 7gt
+noremap <Esc>8 8gt
+noremap <Esc>9 9gt
+noremap <Esc>0 10g
+noremap <C-w>m :vnew<CR>
+map <C-w><C-m> <C-w>m
 
+" Normal mode mappings
 nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
 nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
 nnoremap <C-l> :nohl<CR><C-l>
@@ -132,6 +148,34 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 
+
+" Visual mode mappings
+vmap <C-s> <Esc><C-s>gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+
+" Small screen optimizations
+if &lines < 45
+	set cmdheight=1
+	set laststatus=1
+	set scrolloff=3
+	nnoremap <C-e> <C-e><C-e><C-e>
+	nnoremap <C-y> <C-y><C-y><C-y>
+endif
+
+" Filetypes
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal makeprg=python\ %
+
+
+" Plugins
+let g:pyflakes_use_quickfix = 0
+let g:NERDCreateDefaultMappings = 0
+
+" Custom commands and functions
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+
 nnoremap <silent><F5>
 \ :if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim pyrl.py 0") <Bar>
@@ -153,69 +197,7 @@ nnoremap <silent><F6>
 \ else <Bar>
 	\ make <Bar>
 \ endif<CR>
-
-
-" Visual mode mappings
-
-vmap <C-s> <Esc><C-s>gv
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-
-
-" Maps
-
-noremap <Leader>f <plug>NERDCommenterToggle
-noremap <Esc>h gT
-noremap <Esc>l gt
-noremap <Esc>j <C-W>h
-noremap <Esc>k <C-W>l
-noremap <C-H> ^
-noremap <C-L> $
-noremap <C-K> {
-noremap <C-J> }
-noremap <F1> :cp<CR>
-noremap <F2> :cn<CR>
-noremap <F3> :cl<CR>
-noremap <F4> :clast<CR>
-noremap <Esc>1 1gt
-noremap <Esc>2 2gt
-noremap <Esc>3 3gt
-noremap <Esc>4 4gt
-noremap <Esc>5 5gt
-noremap <Esc>6 6gt
-noremap <Esc>7 7gt
-noremap <Esc>8 8gt
-noremap <Esc>9 9gt
-noremap <Esc>0 10g
-noremap <C-w>m :vnew<CR>
-map <C-w><C-m> <C-w>m
-
-" Small screen optimisations
-
-if &lines < 45
-	set cmdheight=1
-	set laststatus=1
-	set scrolloff=3
-	nnoremap <C-e> <C-e><C-e><C-e>
-	nnoremap <C-y> <C-y><C-y><C-y>
-endif
-
-" Filetypes
-
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal makeprg=python\ %
-"autocmd FileType python setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
-"autocmd FileType gitcommit startinsert
-
-
-" Plugins
-
-let g:pyflakes_use_quickfix = 0
-let g:NERDCreateDefaultMappings = 0
-
-" Custom commands and functions
-
-command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+finish
 
 function! BackspaceIgnoreIndent()
   if search('^\s\+\%#', 'bn') != 0
@@ -224,4 +206,3 @@ function! BackspaceIgnoreIndent()
     return "\<c-h>"
   endif
 endfunction
-finish
