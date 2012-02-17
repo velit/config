@@ -27,6 +27,7 @@ set numberwidth=2
 set pastetoggle=<F12>
 set ruler
 set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
+set showcmd
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set scrolljump=-10
 set scrolloff=5
@@ -34,6 +35,7 @@ set splitbelow splitright
 set synmaxcol=1000
 set tabpagemax=99
 set textwidth=100
+set title
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
