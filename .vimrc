@@ -43,6 +43,7 @@ set numberwidth=2
 set pastetoggle=<F12>
 set ruler
 set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
+set sessionoptions-=options
 set showcmd
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set scrolljump=-10
@@ -75,14 +76,28 @@ imap <F4> <Esc><F4>
 imap <F5> <Esc><F5>
 imap <F6> <Esc><F6>
 inoremap <expr> <C-h> BackspaceIgnoreIndent()
-inoremap <Esc>h <Esc>gT
-inoremap <Esc>l <Esc>gt
-inoremap <Esc>j <C-o>^
-inoremap <Esc>k <C-o>$
+inoremap <Esc><C-h> <Left>
+inoremap <Esc><C-l> <Right>
+inoremap <Esc><C-j> <Down>
+inoremap <Esc><C-k> <Up>
+inoremap <Esc>h <C-o>^
+inoremap <Esc>l <C-o>$
+inoremap <Esc>j <C-o>B
+inoremap <Esc>k <C-o>W
 inoremap <C-@> <C-x><C-o>
 inoremap <S-Tab> <BS>
 inoremap <C-c> <Esc>
 inoremap <Esc> <C-c>
+
+" Command-line mappings
+cnoremap <Esc>h <Left>
+cnoremap <Esc>l <Right>
+cnoremap <Esc>j <Down>
+cnoremap <Esc>k <Up>
+cnoremap <Esc><C-h> <Home>
+cnoremap <Esc><C-l> <End>
+cnoremap <Esc><C-j> <S-Left>
+cnoremap <Esc><C-k> <S-Right>
 
 " Maps
 noremap <C-c> <Esc>
@@ -92,10 +107,10 @@ noremap <Esc>h gT
 noremap <Esc>l gt
 noremap <Esc>j <C-W>h
 noremap <Esc>k <C-W>l
-noremap <C-H> ^
-noremap <C-L> $
-noremap <C-K> {
-noremap <C-J> }
+noremap <C-h> ^
+noremap <C-l> $
+noremap <C-k> {
+noremap <C-j> }
 noremap <F1> :cp<CR>
 noremap <F2> :cn<CR>
 noremap <F3> :cl<CR>
@@ -116,8 +131,7 @@ map <C-w><C-m> <C-w>m
 " Normal mode mappings
 nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
 nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
-nnoremap <C-l> :nohl<CR><C-l>
-nnoremap <C-q> :qa<CR>
+nnoremap <Esc><C-q> :qa<CR>
 nnoremap <C-s> :update<CR>
 nnoremap <CR> o<C-c>
 nnoremap <Esc>q :qa<CR>
@@ -137,13 +151,15 @@ nnoremap <Leader>q :qa<CR>
 nnoremap <Leader>s :vs 
 nnoremap <Leader>t :tabnew<CR> 
 nnoremap <Leader>w :close<CR>
+nnoremap <Leader><Leader>s :mksession ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
 nnoremap <S-Tab> <<
 nnoremap <Tab> >>
 nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
 nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent><Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
 nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
-nnoremap Q :nohl<CR><C-W>z
+nnoremap Q <C-W>z<C-l>:nohl<CR>
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
@@ -176,6 +192,14 @@ let g:NERDCreateDefaultMappings = 0
 " Custom commands and functions
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
+function! BackspaceIgnoreIndent()
+  if search('^\s\+\%#', 'bn') != 0
+    return "\<c-u>\<c-h>"
+  else
+    return "\<c-h>"
+  endif
+endfunction
+
 nnoremap <silent><F5>
 \ :if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim pyrl.py 0") <Bar>
@@ -198,11 +222,3 @@ nnoremap <silent><F6>
 	\ make <Bar>
 \ endif<CR>
 finish
-
-function! BackspaceIgnoreIndent()
-  if search('^\s\+\%#', 'bn') != 0
-    return "\<c-u>\<c-h>"
-  else
-    return "\<c-h>"
-  endif
-endfunction
