@@ -1,14 +1,11 @@
 set nocompatible
 
 "Vundle
-fun! SetupVundle()
-	let vundle_install_path = expand('$HOME') . '/.vim/bundle/vundle'
-	exec 'set rtp+='.vundle_install_path
-	if !filereadable(vundle_install_path.'/.git/config') && confirm("Clone Vundle?","&Y\n&N") == 1
-		exec '!git clone https://github.com/gmarik/vundle.git '.vundle_install_path
-	endif
-endf
-call SetupVundle()
+let g:vundle_install_path = expand('$HOME') . '/.vim/bundle/vundle'
+exec 'set rtp+='.g:vundle_install_path
+if !filereadable(g:vundle_install_path.'/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
+	exec '!git clone https://github.com/gmarik/vundle.git '.g:vundle_install_path
+endif
 
 filetype off
 call vundle#rc()
