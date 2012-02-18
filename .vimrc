@@ -1,22 +1,26 @@
 set nocompatible
 
 "Vundle
-"git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fun! SetupVundle()
+	let vundle_install_path = expand('$HOME') . '/.vim/bundle/vundle'
+	exec 'set rtp+='.vundle_install_path
+	if !filereadable(vundle_install_path.'/.git/config') && confirm("Install Vundle?","&Y\n&N") == 2
+		exec 'git clone https://github.com/gmarik/vundle.git '.vundle_install_path
+	endif
+endf
+call SetupVundle()
 
 filetype off
-
-set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'kevinw/pyflakes-vim'
 Bundle 'dahu/LearnVim'
+Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
 
 " Settings
-
 filetype plugin indent on
 syntax on
 let mapleader = ","
@@ -140,6 +144,7 @@ nnoremap <Esc>x :close<CR>
 nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nnoremap <Leader>cd :cd %:h \| :pwd<CR>
 nnoremap <Leader>cl :lcd %:h \| :pwd<CR>
+nnoremap <Leader>c *:%s#<C-r>/##<Left>
 nnoremap <Leader>d :tab sp<CR> 
 nnoremap <Leader>e :tabe 
 nnoremap <Leader>h :tab help 
