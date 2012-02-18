@@ -4,8 +4,8 @@ set nocompatible
 fun! SetupVundle()
 	let vundle_install_path = expand('$HOME') . '/.vim/bundle/vundle'
 	exec 'set rtp+='.vundle_install_path
-	if !filereadable(vundle_install_path.'/.git/config') && confirm("Install Vundle?","&Y\n&N") == 2
-		exec 'git clone https://github.com/gmarik/vundle.git '.vundle_install_path
+	if !filereadable(vundle_install_path.'/.git/config') && confirm("Clone Vundle?","&Y\n&N") == 1
+		exec '!git clone https://github.com/gmarik/vundle.git '.vundle_install_path
 	endif
 endf
 call SetupVundle()
