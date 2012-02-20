@@ -54,6 +54,7 @@ set synmaxcol=1000
 set tabpagemax=99
 set textwidth=100
 set title
+set timeoutlen=600
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
@@ -103,7 +104,7 @@ cnoremap <Esc><C-k> <S-Right>
 " Maps
 noremap <C-c> <Esc>
 noremap <Esc> <C-c>
-noremap <Leader>f <plug>NERDCommenterToggle
+noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 noremap <Esc>h gT
 noremap <Esc>l gt
 noremap <Esc>j <C-W>h
@@ -138,6 +139,7 @@ nnoremap <CR> o<C-c>
 nnoremap <Esc>q :qa<CR>
 nnoremap <Esc>w :close<CR>
 nnoremap <Esc>x :close<CR>
+nnoremap <C-q> :close<CR>
 nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nnoremap <Leader>cd :cd %:h \| :pwd<CR>
 nnoremap <Leader>cl :lcd %:h \| :pwd<CR>
@@ -153,7 +155,7 @@ nnoremap <Leader>q :qa<CR>
 nnoremap <Leader>s :vs 
 nnoremap <Leader>t :tabnew<CR> 
 nnoremap <Leader>w :close<CR>
-nnoremap <Leader><Leader>s :mksession ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
 nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
 nnoremap <S-Tab> <<
 nnoremap <Tab> >>
@@ -188,7 +190,9 @@ autocmd FileType python setlocal makeprg=python\ %
 
 
 " Plugins
-let g:pyflakes_use_quickfix = 0
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=0
+let g:python_highlight_all=1
 let g:NERDCreateDefaultMappings = 0
 
 " Custom commands and functions
