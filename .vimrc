@@ -165,8 +165,8 @@ nnoremap <silent><Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
 nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
 nnoremap Q <C-W>z<C-l>:nohl<CR>
 nnoremap Y y$
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent>j gj
+nnoremap <silent>k gk
 
 
 " Visual mode mappings
