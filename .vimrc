@@ -143,7 +143,7 @@ nnoremap <C-q> :close<CR>
 nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nnoremap <Leader>cd :cd %:h \| :pwd<CR>
 nnoremap <Leader>cl :lcd %:h \| :pwd<CR>
-nnoremap <Leader>c *:%s#<C-r>/##<Left>
+nnoremap <Leader>c :%s#<C-r>/##<Left>
 nnoremap <Leader>d :tab sp<CR> 
 nnoremap <Leader>e :tabe 
 nnoremap <Leader>h :tab help 
@@ -171,6 +171,7 @@ nnoremap <silent>k gk
 
 " Visual mode mappings
 vmap <C-s> <Esc><C-s>gv
+vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
