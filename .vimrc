@@ -102,7 +102,7 @@ nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+nnoremap <silent><Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
 
 vnoremap <Leader>s y/\V<C-r>"<CR>
 
@@ -183,7 +183,7 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Filetypes
-"autocmd FileType python setlocal makeprg=python\ %
+autocmd FileType python setlocal makeprg=python\ %
 
 " Plugins
 let g:syntastic_check_on_open=1
