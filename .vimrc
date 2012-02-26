@@ -87,6 +87,7 @@ nnoremap <Leader>c :%s#<C-r>/##<Left>
 nnoremap <Leader>e :tabe 
 nnoremap <Leader>h :tab help 
 nnoremap <Leader>s :vs 
+nnoremap <Leader>b :set scrollbind!<CR>
 nnoremap <Leader>j <C-]>
 nnoremap <Leader>o <C-i>
 
