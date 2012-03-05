@@ -16,6 +16,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'dahu/LearnVim'
 Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
+Bundle 'godlygeek/tabular'
 
 " Settings
 filetype plugin indent on
@@ -120,8 +121,6 @@ inoremap <Esc>j <C-o>B
 inoremap <Esc>k <C-o>W
 inoremap <C-@> <C-x><C-o>
 inoremap <S-Tab> <BS>
-inoremap <C-c> <Esc>
-inoremap <Esc> <C-c>
 
 " Command-line mappings
 cnoremap <Esc>h <Left>
@@ -182,6 +181,7 @@ nnoremap <silent>k gk
 vmap <C-s> <Esc><C-s>gv
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+vnoremap <Leader>c :s#<C-r>/##<Left>
 
 " Filetypes
 autocmd FileType python setlocal makeprg=python\ %
