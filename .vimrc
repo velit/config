@@ -52,7 +52,7 @@ set scrolloff=5
 set splitbelow splitright
 set synmaxcol=1000
 set tabpagemax=99
-set textwidth=100
+set textwidth=110
 set title
 set timeoutlen=600
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
