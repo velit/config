@@ -16,6 +16,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'dahu/LearnVim'
 Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
+Bundle 'godlygeek/tabular'
 
 " Settings
 filetype plugin indent on
@@ -59,6 +60,7 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp,*~
 set wildmenu
 set wildmode=longest:list
 set wrapscan
+nohlsearch
 
 if version >= 703
 	set undodir=~/.vim/temp/undo//,.
@@ -69,15 +71,46 @@ if $TERM == 'screen-256color'
 	set ttymouse=xterm2
 endif
 
+" Small screen optimization
+if &lines < 45
+	set cmdheight=1
+	set laststatus=1
+	set scrolloff=3
+	nnoremap <silent><C-e> <C-e><C-e><C-e>
+	nnoremap <silent><C-y> <C-y><C-y><C-y>
+endif
+
+" Leader maps
+noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
+
+nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
+nnoremap <Leader>c :%s#<C-r>/##<Left>
+nnoremap <Leader>e :tabe 
+nnoremap <Leader>h :tab help 
+nnoremap <Leader>s :vs 
+nnoremap <Leader>b :set scrollbind!<CR>
+nnoremap <Leader>j <C-]>
+nnoremap <Leader>o <C-i>
+
+nnoremap <silent><Leader><C-c> :tabe ~/.vim/colors/tappi.vim<CR>
+nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
+nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
+nnoremap <silent><Leader>d :tab sp<CR> 
+nnoremap <silent><Leader>l :set list!<CR>
+nnoremap <silent><Leader>n :set number!<CR>
+nnoremap <silent><Leader>t :tabnew<CR> 
+nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
+
+nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
+nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
+nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
+nnoremap <silent><Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+
+vnoremap <Leader>s y/\V<C-r>"<CR>
+
 " Insert mode mappings
 imap <C-s> <Esc><C-s>
-imap <F1> <Esc><F1>
-imap <F2> <Esc><F2>
-imap <F3> <Esc><F3>
-imap <F4> <Esc><F4>
-imap <F5> <Esc><F5>
-imap <F6> <Esc><F6>
-inoremap <expr> <C-h> BackspaceIgnoreIndent()
+inoremap <expr><C-h> BackspaceIgnoreIndent()
 inoremap <Esc><C-h> <Left>
 inoremap <Esc><C-l> <Right>
 inoremap <Esc><C-j> <Down>
@@ -88,8 +121,6 @@ inoremap <Esc>j <C-o>B
 inoremap <Esc>k <C-o>W
 inoremap <C-@> <C-x><C-o>
 inoremap <S-Tab> <BS>
-inoremap <C-c> <Esc>
-inoremap <Esc> <C-c>
 
 " Command-line mappings
 cnoremap <Esc>h <Left>
@@ -104,7 +135,6 @@ cnoremap <Esc><C-k> <S-Right>
 " Maps
 noremap <C-c> <Esc>
 noremap <Esc> <C-c>
-noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 noremap <Esc>h gT
 noremap <Esc>l gt
 noremap <Esc>j <C-W>h
@@ -131,64 +161,30 @@ noremap <C-w>m :vnew<CR>
 map <C-w><C-m> <C-w>m
 
 " Normal mode mappings
-nnoremap <C-e> <C-e><C-e><C-e><C-e><C-e>
-nnoremap <C-y> <C-y><C-y><C-y><C-y><C-y>
-nnoremap <Esc><C-q> :qa<CR>
 nnoremap <C-s> :update<CR>
-nnoremap <CR> o<C-c>
-nnoremap <Esc>q :qa<CR>
-nnoremap <Esc>w :close<CR>
-nnoremap <Esc>x :close<CR>
-nnoremap <C-q> :close<CR>
-nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
-nnoremap <Leader>cd :cd %:h \| :pwd<CR>
-nnoremap <Leader>cl :lcd %:h \| :pwd<CR>
-nnoremap <Leader>c :%s#<C-r>/##<Left>
-nnoremap <Leader>d :tab sp<CR> 
-nnoremap <Leader>e :tabe 
-nnoremap <Leader>h :tab help 
-nnoremap <Leader>j <C-]>
-nnoremap <Leader>l :set list!<CR>
-nnoremap <Leader>n :set number!<CR>
-nnoremap <Leader>o <C-i>
-nnoremap <Leader>q :qa<CR>
-nnoremap <Leader>s :vs 
-nnoremap <Leader>t :tabnew<CR> 
-nnoremap <Leader>w :close<CR>
-nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
-nnoremap <S-Tab> <<
-nnoremap <Tab> >>
-nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
-nnoremap <silent><Leader>co :tabe ~/.vim/colors/tappi.vim<CR>
-nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
-nnoremap Q <C-W>z<C-l>:nohl<CR>
-nnoremap Y y$
-nnoremap j gj
-nnoremap k gk
-
+nnoremap <silent><C-e> <C-e><C-e><C-e><C-e><C-e>
+nnoremap <silent><C-q> :close<CR>
+nnoremap <silent><C-y> <C-y><C-y><C-y><C-y><C-y>
+nnoremap <silent><CR> o<C-c>
+nnoremap <silent><Esc><C-q> :qa<CR>
+nnoremap <silent><Esc>q :qa<CR>
+nnoremap <silent><Esc>w :close<CR>
+nnoremap <silent><Esc>x :close<CR>
+nnoremap <silent><S-Tab> <<
+nnoremap <silent><Tab> >>
+nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>
+nnoremap <silent>Y y$
+nnoremap <silent>j gj
+nnoremap <silent>k gk
 
 " Visual mode mappings
 vmap <C-s> <Esc><C-s>gv
-vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
-
-" Small screen optimizations
-if &lines < 45
-	set cmdheight=1
-	set laststatus=1
-	set scrolloff=3
-	nnoremap <C-e> <C-e><C-e><C-e>
-	nnoremap <C-y> <C-y><C-y><C-y>
-endif
+vnoremap <Leader>c :s#<C-r>/##<Left>
 
 " Filetypes
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal makeprg=python\ %
-
 
 " Plugins
 let g:syntastic_check_on_open=1
