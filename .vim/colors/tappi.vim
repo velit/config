@@ -21,7 +21,7 @@ hi LineNr	ctermfg=245	ctermbg=235	cterm=none	term=none
 hi MatchParen	ctermfg=none	ctermbg=242	cterm=none	term=none
 hi Normal	ctermfg=252	ctermbg=235	cterm=none	term=none
 hi NonText	ctermfg=16	ctermbg=none	cterm=none	term=none
-hi Search	ctermfg=248	ctermbg=63	cterm=none	term=none
+hi Search	ctermfg=none	ctermbg=none	cterm=underline	term=none
 hi SpellBad	ctermfg=none	ctermbg=52	cterm=none	term=none
 hi StatusLine	ctermfg=16	ctermbg=248	cterm=none	term=none
 hi StatusLineNC	ctermfg=248	ctermbg=238	cterm=none	term=none
