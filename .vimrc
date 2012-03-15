@@ -143,8 +143,8 @@ noremap <C-c> <Esc>
 noremap <Esc> <C-c>
 noremap <Esc>h gT
 noremap <Esc>l gt
-noremap <Esc>j <C-W>h
-noremap <Esc>k <C-W>l
+noremap <Esc>j <C-W>w
+noremap <Esc>k <C-W>W
 noremap <C-h> ^
 noremap <C-l> $
 noremap <C-k> {
