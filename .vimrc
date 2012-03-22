@@ -89,6 +89,7 @@ let mapleader = ","
 " Leader maps
 noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 
+nmap <silent><Leader>C <Leader>V:only <Bar> close <Bar> tabe ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
 nnoremap <Leader>e :tabe 
@@ -100,7 +101,6 @@ nnoremap <Leader>o <C-i>
 nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
 nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-nnoremap <silent><Leader>C :tabe ~/.vim/colors/tappi.vim<CR>
 nnoremap <silent><Leader>d :tab sp<CR> 
 nnoremap <silent><Leader>l :set list!<CR>
 nnoremap <silent><Leader>n :set number!<CR>
@@ -168,9 +168,7 @@ map <C-w><C-m> <C-w>m
 
 " Normal mode mappings
 nnoremap <C-s> :update<CR>
-nnoremap <silent><C-q> :close<CR>
 nnoremap <silent><CR> o<C-c>
-nnoremap <silent><Esc><C-q> :qa<CR>
 nnoremap <silent><Esc>q :qa<CR>
 nnoremap <silent><Esc>w :close<CR>
 nnoremap <silent><Esc>x :close<CR>
