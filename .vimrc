@@ -42,7 +42,6 @@ set tabstop=4 shiftwidth=4
 set tabpagemax=99
 set textwidth=110
 set timeoutlen=600
-set title
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc
 set wildmenu
 set wildmode=longest:list
@@ -85,23 +84,28 @@ let g:NERDCreateDefaultMappings = 0
 
 " Mappings
 let mapleader = ","
+noremap <C-c> <Esc>
+noremap <Esc> <C-c>
+lnoremap <C-c> <Esc>
+lnoremap <Esc> <C-c>
 
 " Leader maps
 noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 
-nmap <silent><Leader>C <Leader>V:only <Bar> close <Bar> tabe ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
-nnoremap <Leader>H :if &ft == 'help' \| vs \| endif \| vertical help 
+nmap <silent><Leader>C <Leader>V:only <Bar> e ~/.vim/colors/tappi.vim 
+			\<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+nnoremap <Leader>H :if &ft == 'help' <Bar> vs <Bar> endif <Bar> vertical help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
-nnoremap <Leader>e :tabe 
+nnoremap <Leader>e :tab drop 
 nnoremap <Leader>h :tab help 
 nnoremap <Leader>s :vs 
 nnoremap <Leader>b :set scrollbind!<CR>
 nnoremap <Leader>j <C-]>
 nnoremap <Leader>o <C-i>
-nnoremap <silent><Leader>v :tabe $MYVIMRC<CR>
+nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
 nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-nnoremap <silent><Leader>d :tab sp<CR> 
+nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent><Leader>l :set list!<CR>
 nnoremap <silent><Leader>n :set number!<CR>
 nnoremap <silent><Leader>t :tabnew<CR> 
@@ -117,38 +121,26 @@ vnoremap <Leader>w y/\V\<<C-r>"\><CR>
 " Insert mode mappings
 imap <C-s> <Esc><C-s>
 inoremap <expr><C-h> BackspaceIgnoreIndent()
-inoremap <Esc><C-h> <Left>
-inoremap <Esc><C-l> <Right>
-inoremap <Esc><C-j> <Down>
-inoremap <Esc><C-k> <Up>
-inoremap <Esc>h <C-o>^
-inoremap <Esc>l <C-o>$
-inoremap <Esc>j <C-o>B
-inoremap <Esc>k <C-o>W
 inoremap <C-@> <C-x><C-o>
 inoremap <S-Tab> <BS>
 
-" Command-line mappings
-cnoremap <Esc>h <Left>
-cnoremap <Esc>l <Right>
-cnoremap <Esc>j <Down>
-cnoremap <Esc>k <Up>
-cnoremap <Esc><C-h> <Home>
-cnoremap <Esc><C-l> <End>
-cnoremap <Esc><C-j> <S-Left>
-cnoremap <Esc><C-k> <S-Right>
-
 " Maps
-noremap <C-c> <Esc>
-noremap <Esc> <C-c>
-noremap <Esc>h gT
-noremap <Esc>l gt
-noremap <Esc>j <C-W>w
-noremap <Esc>k <C-W>W
-noremap <C-h> ^
-noremap <C-l> $
-noremap <C-k> {
-noremap <C-j> }
+"noremap <Esc>h gT
+"noremap <Esc>l gt
+"noremap <Esc>j <C-W>w
+"noremap <Esc>k <C-W>W
+"noremap <C-h> ^
+"noremap <C-l> $
+"noremap <C-k> {
+"noremap <C-j> }
+noremap <C-h> gT
+noremap <C-l> gt
+noremap <C-k> <C-w>w
+noremap <C-j> <C-w>W
+noremap <Esc>h ^
+noremap <Esc>l $
+noremap <Esc>k {
+noremap <Esc>j }
 noremap <F1> :cp<CR>
 noremap <F2> :cn<CR>
 noremap <F3> :cl<CR>
@@ -184,6 +176,16 @@ vmap <C-s> <Esc><C-s>gv
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 vnoremap <Leader>c :s#<C-r>/##<Left>
+
+" Easier movement sometimes
+noremap! <Esc>h <Left>
+noremap! <Esc>l <Right>
+noremap! <Esc>j <Down>
+noremap! <Esc>k <Up>
+noremap! <Esc><C-h> <Home>
+noremap! <Esc><C-l> <End>
+noremap! <Esc><C-j> <S-Left>
+noremap! <Esc><C-k> <S-Right>
 
 " Autocmds
 aug vimrc
