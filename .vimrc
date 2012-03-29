@@ -99,7 +99,6 @@ nnoremap <Leader>c :%s#<C-r>/##<Left>
 nnoremap <Leader>e :tab drop 
 nnoremap <Leader>h :tab help 
 nnoremap <Leader>s :vs 
-nnoremap <Leader>b :set scrollbind!<CR>
 nnoremap <Leader>j <C-]>
 nnoremap <Leader>o <C-i>
 nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
@@ -108,6 +107,7 @@ nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags relo
 nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent><Leader>l :set list!<CR>
 nnoremap <silent><Leader>n :set number!<CR>
+nnoremap <silent><Leader>b :set scrollbind!<CR>
 nnoremap <silent><Leader>t :tabnew<CR> 
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
@@ -205,8 +205,8 @@ function! BackspaceIgnoreIndent()
   endif
 endfunction
 
-nnoremap <silent><F5>
-\ :if executable("./debug_vim") <Bar>
+nmap <silent><F5> <Leader>d:tabm10 <Bar>
+\ if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim pyrl.py 0") <Bar>
 	\ if filereadable("errors.err") <Bar>
 		\ cf <Bar>
@@ -216,8 +216,8 @@ nnoremap <silent><F5>
 	\ make <Bar>
 \ endif<CR>
 
-nnoremap <silent><F6>
-\ :if executable("./debug_vim") <Bar>
+nmap <silent><F6> <Leader>d:tabm10 <Bar>
+\ if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim sdlpyrl.py 0") <Bar>
 	\ if filereadable("errors.err") <Bar>
 		\ cf <Bar>
