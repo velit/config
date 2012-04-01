@@ -205,8 +205,8 @@ function! BackspaceIgnoreIndent()
   endif
 endfunction
 
-nmap <silent><F5> <Leader>d:tabm10 <Bar>
-\ if executable("./debug_vim") <Bar>
+nmap <silent><F5>
+\ :if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim pyrl.py 0") <Bar>
 	\ if filereadable("errors.err") <Bar>
 		\ cf <Bar>
@@ -216,8 +216,8 @@ nmap <silent><F5> <Leader>d:tabm10 <Bar>
 	\ make <Bar>
 \ endif<CR>
 
-nmap <silent><F6> <Leader>d:tabm10 <Bar>
-\ if executable("./debug_vim") <Bar>
+nmap <silent><F6>
+\ :if executable("./debug_vim") <Bar>
 	\ execute("!./debug_vim sdlpyrl.py 0") <Bar>
 	\ if filereadable("errors.err") <Bar>
 		\ cf <Bar>
