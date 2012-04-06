@@ -10,7 +10,7 @@ if [[ "$TERM" = "xterm" && "$COLORTERM" = "gnome-terminal" ]]; then
 fi
 
 if [[ "$TERM" = "xterm" && "$COLORTERM" = "Terminal" ]]; then
-	export TERM=xterm-256color
+	export TERM=gnome-256color
 fi
 
 # don't put duplicate lines in the history. See bash(1) for more options
