@@ -3,7 +3,7 @@ set nocompatible
 "Vundle
 set rtp+=~/.vim/bundle/vundle
 if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-	exec '!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/'
+    exec '!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/'
 endif
 filetype off
 call vundle#rc()
@@ -15,6 +15,7 @@ Bundle 'dahu/LearnVim'
 Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
 Bundle 'godlygeek/tabular'
+Bundle 'msanders/snipmate.vim'
 
 " Settings
 set autoindent
@@ -23,6 +24,7 @@ set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
 set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
+set expandtab shiftwidth=4 softtabstop=4
 set gdefault
 set history=100
 set incsearch
@@ -38,7 +40,6 @@ set showcmd
 set splitbelow splitright
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set synmaxcol=1000
-set tabstop=4 shiftwidth=4
 set tabpagemax=99
 set textwidth=110
 set timeoutlen=600
@@ -48,7 +49,7 @@ set wildmode=longest:list
 set wrapscan
 
 if &hlsearch == 0
-	set hlsearch
+    set hlsearch
 endif
 
 syntax on
@@ -60,19 +61,19 @@ silent! set undofile
 
 " Small screen optimization
 function! OptimizeSizeSettings()
-	if &lines < 45
-		set cmdheight=1
-		set laststatus=1
-		set scrolloff=3
-		nnoremap <silent><C-e> <C-e>2<C-e>
-		nnoremap <silent><C-y> <C-y>2<C-y>
-	else
-		set cmdheight=2
-		set laststatus=2
-		set scrolloff=5
-		nnoremap <silent><C-e> <C-e>4<C-e>
-		nnoremap <silent><C-y> <C-y>4<C-y>
-	endif
+    if &lines < 45
+        set cmdheight=1
+        set laststatus=1
+        set scrolloff=3
+        nnoremap <silent><C-e> <C-e>2<C-e>
+        nnoremap <silent><C-y> <C-y>2<C-y>
+    else
+        set cmdheight=2
+        set laststatus=2
+        set scrolloff=5
+        nnoremap <silent><C-e> <C-e>4<C-e>
+        nnoremap <silent><C-y> <C-y>4<C-y>
+    endif
 endfunction
 call OptimizeSizeSettings()
 
@@ -93,11 +94,12 @@ lnoremap <Esc> <C-c>
 noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 
 nmap <silent><Leader>C <Leader>V:only <Bar> e ~/.vim/colors/tappi.vim 
-			\<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+            \<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 nnoremap <Leader>H :if &ft == 'help' <Bar> vs <Bar> endif <Bar> vertical help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
 nnoremap <Leader>e :tab drop 
 nnoremap <Leader>h :tab help 
+nnoremap <Leader>m :Man 
 nnoremap <Leader>s :vs 
 nnoremap <Leader>j <C-]>
 nnoremap <Leader>o <C-i>
@@ -189,12 +191,13 @@ noremap! <Esc><C-k> <S-Right>
 
 " Autocmds
 aug vimrc
-	au!
-	au FileType python setlocal makeprg=python\ %
-	au VimResized * call OptimizeSizeSettings()
+    au!
+    "au FileType python setlocal makeprg=python\ %
+    au VimResized * call OptimizeSizeSettings()
 aug end
 
 " Custom commands and functions
+runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 
 function! BackspaceIgnoreIndent()
@@ -207,23 +210,23 @@ endfunction
 
 nmap <silent><F5>
 \ :if executable("./debug_vim") <Bar>
-	\ execute("!./debug_vim pyrl.py 0") <Bar>
-	\ if filereadable("errors.err") <Bar>
-		\ cf <Bar>
-		\ clast <Bar>
-	\ endif <Bar>
+    \ execute("!./debug_vim pyrl.py 0") <Bar>
+    \ if filereadable("errors.err") <Bar>
+        \ cf <Bar>
+        \ clast <Bar>
+    \ endif <Bar>
 \ else <Bar>
-	\ make <Bar>
+    \ make <Bar>
 \ endif<CR>
 
 nmap <silent><F6>
 \ :if executable("./debug_vim") <Bar>
-	\ execute("!./debug_vim sdlpyrl.py 0") <Bar>
-	\ if filereadable("errors.err") <Bar>
-		\ cf <Bar>
-		\ clast <Bar>
-	\ endif <Bar>
+    \ execute("!./debug_vim sdlpyrl.py 0") <Bar>
+    \ if filereadable("errors.err") <Bar>
+        \ cf <Bar>
+        \ clast <Bar>
+    \ endif <Bar>
 \ else <Bar>
-	\ make <Bar>
+    \ make <Bar>
 \ endif<CR>
 finish

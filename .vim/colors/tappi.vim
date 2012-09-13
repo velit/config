@@ -1,12 +1,12 @@
 " Vim color file
 " by tappi
-" vim:ts=8:sw=8
+" vim:ts=8
 
 set background=dark
 
 hi clear
 if exists("syntax_on")
-	syntax reset
+    syntax reset
 endif
 
 let colors_name = "tappi"

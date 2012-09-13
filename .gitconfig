@@ -1,11 +1,11 @@
 [user]
-	name = Tapani Kiiskinen
-	email = tapani.kiiskinen@gmail.com
+    name = Tapani Kiiskinen
+    email = tapani.kiiskinen@gmail.com
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [core]
-	editor = vim
+    editor = vim
 [color]
-	ui = auto
+    ui = auto
