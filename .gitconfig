@@ -9,3 +9,13 @@
     editor = vim
 [color]
     ui = auto
+[alias]
+    ci = commit
+    br = branch
+    co = checkout
+    st = status
+    df = diff
+    lg = log
+    h = help
+[mergetool]
+    keepBackup = false
