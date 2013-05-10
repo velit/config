@@ -5,17 +5,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-if [[ "$TERM" = "xterm" && "$COLORTERM" = "gnome-terminal" ]]; then
-    export TERM=gnome-256color
-fi
-
-if [[ "$TERM" = "xterm" && "$COLORTERM" = "Terminal" ]]; then
-    export TERM=gnome-256color
-fi
-
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -77,14 +69,17 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias l='ls -CF'
+# custom config
+
+if [[ "$TERM" = "xterm" && "$COLORTERM" = "gnome-terminal" ]]; then
+    export TERM=gnome-256color
+fi
+
+if [[ "$TERM" = "xterm" && "$COLORTERM" = "Terminal" ]]; then
+    export TERM=gnome-256color
+fi
 
 stty stop ''
 stty start ''
