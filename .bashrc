@@ -85,6 +85,8 @@ stty stop ''
 stty start ''
 
 export ESCDELAY=25
+PATH=$PATH:~/links/
+export PATH
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
