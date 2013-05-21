@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Makes an absolute symbolic link of target into LINK_FOLDER
+
+EXPECTED_ARGS=1
+OPTIONAL_ARGS=2
+E_BADARGS=65
+LINK_FOLDER=~/links/
+if [ $# -lt $EXPECTED_ARGS ]
+then
+  echo "Usage: `basename $0` target [override-default-name]"
+  exit $E_BADARGS
+fi
+
+if [ $# -ge $OPTIONAL_ARGS ]
+then
+	ln --symbolic `readlink -f $1` $LINK_FOLDER$2
+else
+	ln --symbolic `readlink -f $1` $LINK_FOLDER
+fi
