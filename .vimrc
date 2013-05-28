@@ -11,11 +11,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'dahu/LearnVim'
 Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
 Bundle 'godlygeek/tabular'
 Bundle 'msanders/snipmate.vim'
+Bundle 'dahu/LearnVim'
 
 " Settings
 set autoindent
@@ -24,7 +24,7 @@ set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
 set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
-set expandtab shiftwidth=4 softtabstop=4
+set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
 set history=100
 set incsearch
@@ -82,6 +82,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 let g:python_highlight_all=1
 let g:NERDCreateDefaultMappings = 0
+let g:syntastic_mode_map = {'passive_filetypes': ['java']}
 
 " Mappings
 let mapleader = ","
