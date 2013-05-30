@@ -23,6 +23,7 @@ set background=dark
 set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
+set directory=~/.vim/temp/swap//,.,~/tmp,/var/tmp,/tmp
 set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
