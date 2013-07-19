@@ -29,7 +29,8 @@ set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
 set history=100
 set incsearch
-set listchars=tab:►\ ,eol:$
+set nolist
+set listchars=tab:►\ ,trail:·,eol:$
 set mouse=a ttymouse=xterm2
 set numberwidth=2
 set pastetoggle=<F12>
@@ -38,11 +39,12 @@ set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
 set scrolljump=-10
 set sessionoptions-=options
 set showcmd
+set smartcase
 set splitbelow splitright
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set synmaxcol=1000
 set tabpagemax=99
-set textwidth=110
+set textwidth=80
 set timeoutlen=600
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc
 set wildmenu
@@ -112,7 +114,7 @@ nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent><Leader>l :set list!<CR>
 nnoremap <silent><Leader>n :set number!<CR>
 nnoremap <silent><Leader>b :set scrollbind!<CR>
-nnoremap <silent><Leader>t :tabnew<CR> 
+nnoremap <silent><Leader>t :tabnew<CR>
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
@@ -170,7 +172,7 @@ nnoremap <silent><Esc>w :close<CR>
 nnoremap <silent><Esc>x :close<CR>
 nnoremap <silent><S-Tab> <<
 nnoremap <silent><Tab> >>
-nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>
+nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 nnoremap <silent>Y y$
 nnoremap <silent>j gj
 nnoremap <silent>k gk
@@ -196,6 +198,7 @@ aug vimrc
     au!
     "au FileType python setlocal makeprg=python\ %
     au VimResized * call OptimizeSizeSettings()
+    au BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 aug end
 
 " Custom commands and functions

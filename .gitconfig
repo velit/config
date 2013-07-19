@@ -9,6 +9,7 @@
     tool = vimdiff
 [core]
     editor = vim
+    pager = less -FXRS -x4
 [color]
     ui = auto
 [alias]
@@ -19,5 +20,8 @@
     df = diff
     lg = log
     h = help
+    lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [mergetool]
     keepBackup = false
+[push]
+    default = upstream
