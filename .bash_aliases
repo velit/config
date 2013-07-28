@@ -16,11 +16,13 @@ if [ -d "$HOME/links" ] ; then
 fi
 
 export ESCDELAY=25
-alias la='"ls" --color=auto --group-directories-first -lAhX'
-alias ls='ls --color=auto --group-directories-first --time-style=iso -BhgG'
-alias ll='ls -alF'
-alias l='ls -CF'
-alias dir='ls --color=auto --format=vertical'
+
+alias ls='ls -hv --color=auto --group-directories-first --time-style=locale --si'
+
+alias l='ls -1'
+alias la='ls -1As'
+alias ll='ls  -lA'
+
 alias tree='tree -L 2'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
