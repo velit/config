@@ -1,0 +1,36 @@
+# Keymap file for ADOM Sage
+# This file has the same format as adom.kbd or .adom.kbd - please
+# see that file for details.
+
+# Macros 0-9: these keys tell how to activate the macro.
+# sage.cfg says what each macro does
+MC0: \M0
+MC1: \M1
+MC2: \M2
+MC3: \M3
+MC4: \M4
+MC5: \M5
+MC6: \Mj
+MC7: \Mh
+MC8: \Mk
+MC9: \Mu
+# You can also define MCA through MCZ if you need more macros
+
+# Repeat last command
+RPT: 0
+
+# Set dynamic display to show character's speed
+DDS: \Ms
+
+# Set dynamic display to show energy cost of last action
+DDE: \Me
+
+# Set dynamic display to show gold
+DDG: \Mg
+
+# Set dynamic display to show ammo
+DDA: \Ma
+
+# Set dynamic display to show game turns/moves passed
+DDT: \Mm
+

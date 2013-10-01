@@ -1,0 +1,733 @@
+#
+#  ----------------------------------------------
+#    Keymap file for Ancient Domains Of Mystery
+#  ----------------------------------------------
+#
+#  Lines starting with a '#' are ignored.  Empty lines are also ignored.
+#
+#  If you want to use more than one keycode for a specific command, you can
+#  define multiple key-bindings by separating them with a SPACE character
+#  (see the 'Wait' command for an example).
+#
+#  The following special characters are used:
+#
+#      \Mx  -- press the control key and some key x (for letters use the
+#               the lowercase letter)
+#      \Cx  -- press the control key and some key x
+#      \S   -- SPACE
+#      \\   -- the backslash '\' itself
+#      \L, \R, \U, \D -- the cursor keys left, right, up and down
+#      \1   -- F1
+#      \2   -- F2
+#      \3   -- F3
+#      \4   -- F4
+#      \5   -- F5
+#      \6   -- F6
+#      \7   -- F7
+#      \8   -- F8
+#      \9   -- F9
+#
+#  Attention: not all combinations of meta keys and normal keys might be
+#  possible. Make sure to check this if you redefine the keyboard.
+#  Note that the ENTER key is equal to (and thus represented by) \Cm.
+#
+#  IMPORTANT NOTE:
+#  While in theory you can redefine the keys in any way you like in
+#  practice this is not necessarily recommened, because some functions
+#  in ADOM expect certain commands *not* to be bound to certain letters.
+#
+#  The following commands (the abbreviations from the definitions are
+#  used)
+#
+#    MON MNW MOW MSW MOS MSE MOE MNE WAT
+#
+#  should *NOT* be bound to one of the following keys (separated by white-
+#  space):
+#
+#    t T z Z \S + -
+#
+#  You *can* set them to one of the keys mentioned but this breaks all
+#  functions for targetting and determining directions.  You have been
+#  warned.
+#
+#  Current version of ADOM: Version 1.1.1
+#
+
+#
+#  Activate trap
+#
+
+ACT:\Ct
+
+#
+#  Apply skill
+#
+
+ASK:a
+
+#
+#  Ascend stairway/Leave location
+#
+
+ASC:<
+
+#
+#  Cast spell
+#
+
+CST:Z
+
+#
+#  Chat with monsters
+#
+
+TLK:C
+
+#
+#  Change highlight mode
+#
+
+HIL:H
+
+#
+#  Change tactic
+#
+
+TAC:T
+
+#
+#  Check literacy
+#
+
+LIT:L
+
+#
+#  Clean ears
+#
+
+CLE:E
+
+#
+#  Close door
+#
+
+CLO:c
+
+#
+#  Continuous search
+#
+
+CSE:ws
+
+#
+#  Create short character logfile
+#
+
+CSL:(
+
+#
+#  Create verbose character logfile
+#
+
+CVL:)
+
+#
+#  Create screenshot
+#
+
+CSS:[
+
+#
+#  Descend stairway/Enter location
+#
+
+DSC:>
+
+#
+#  Describe weather
+#
+
+DEW::W
+
+#
+#  Dip (something) into (potion)
+#
+
+DIP:!
+
+#
+#  Display available talents
+#
+
+DAT::T
+
+#
+#  Display and quick-mark skills
+#
+
+DSK:A
+
+#
+#  Display background
+#
+
+BKG:B
+
+#
+#  Display bill
+#
+
+BIL:P
+
+#
+#  Display burden levels
+#
+
+DBL::b
+
+#
+#  Display configuration variables
+#
+
+CFG:=
+
+#
+#  Display chaos powers
+#
+
+CHP:\\
+
+#
+#  Display character information
+#
+
+DCI:@
+
+#
+#  Display companions
+#
+
+DCO::c
+
+#
+#  Display current wealth
+#
+
+MNY:$
+
+#
+#  Display name of your deity
+#
+
+DID::g
+
+#
+#  Display elapsed game time
+#
+
+DET:\Ce
+
+#
+#  Display identified items
+#
+
+IDI:/
+
+#
+#  Display kick statistics
+#
+
+KST:K
+
+#
+#  Display killed monsters
+#
+
+DKM::k
+
+#
+#  Display level map
+#
+
+DLM:\Ml
+
+#
+#  Display message buffer
+#
+
+MSG::m
+
+#
+#  Display missile statistics
+#
+
+DMS:M
+
+#
+#  Display monster wound status
+#
+
+MWS::w
+
+#
+#  Display quest status
+#
+
+QST:q
+
+#
+#  Display recipes
+#
+
+RCP:R
+
+#
+#  Display required experience
+#
+
+EXP:x
+
+#
+#  Display talents
+#
+
+DTL:\Mt
+
+#
+#  Display version
+#
+
+VER:V
+
+#
+#  Display weapon skills
+#
+
+DWS:\Cw
+
+#
+#  Display weapon statistics
+#
+
+WST:W
+
+#
+#  Drink
+#
+
+DRK:D
+
+#
+#  Drop item(s)
+#
+
+DRO:d
+
+#
+#  Drop items in a comfortable way
+#
+
+DRC:\Cd
+
+#
+#  Eat
+#
+
+EAT:e
+
+#
+#  Examine environment
+#
+
+EXE:l
+
+#
+#  Extended drop
+#
+
+EDR::d
+
+#
+#  Extended pay
+#
+
+EPA::p
+
+#
+#  Extended use
+#
+
+EUS::u
+
+#
+#  Give item to monster
+#
+
+GIV:g
+
+#
+#  Handle something
+#
+
+HDL:h
+
+#
+#  Inventory
+#
+
+INV:i
+
+#
+#  Invoke mindcraft
+#
+
+INM:\Ci
+
+#
+#  Issue order to companion
+#
+
+ISO:\Co
+
+#
+#  Kick
+#
+
+KCK:k
+
+#
+#  Look
+#
+
+LOK:\Cl
+
+#
+#  Mark spells
+#
+
+MSP::Z
+
+#
+#  Miscellaneous equipment
+#
+
+STF:I
+
+#
+#  Move to the southwest
+#
+
+MSW:1
+
+#
+#  Move to the south
+#
+
+MOS:2 \D
+
+#
+#  Move to the southeast
+#
+
+MSE:3
+
+#
+#  Move to the west
+#
+
+MOW:4 \L
+
+#
+#  Move to the east
+#
+
+MOE:6 \R
+
+#
+#  Move to the northwest
+#
+
+MNW:7
+
+#
+#  Move to the north
+#
+
+MON:8 \U
+
+#
+#  Move to the northeast
+#
+
+MNE:9
+
+#
+#  Name monster/yourself
+#
+
+BAP:n
+
+#
+#  Online help
+#
+
+HLP:?
+
+#
+#  Open door
+#
+
+OPN:o
+
+#
+#  Pay
+#
+
+PAY:p
+
+#
+#  Pick up items primitively (fast)
+#
+
+PPK:;
+
+#
+#  Pick up items
+#
+
+PCK:,
+
+#
+#  Pick up items comfortably
+#
+
+CPC:\Cp
+
+#
+#  Pray
+#
+
+PRA:_
+
+#
+#  Quit game
+#
+
+QIT:Q
+
+#
+#  Read
+#
+
+REA:r
+
+#
+#  Recall monster memory
+#
+
+RMM:&
+
+#
+#  Redraw screen
+#
+
+RED:\Cr
+
+#
+#  Sacrifice
+#
+
+SAC:O
+
+#
+#  Save and quit game
+#
+
+SAV:S
+
+#
+#  Search
+#
+
+SEA:s
+
+#
+#  Set tactics to 'berserker'
+#
+
+ST0:\1
+
+#
+#  Set tactics to 'very aggressive'
+#
+
+ST1:\2
+
+#
+#  Set tactics to 'aggressive'
+#
+
+ST2:\3
+
+#
+#  Set tactics to 'normal'
+#
+
+ST3:\4
+
+#
+#  Set tactics to 'defensive'
+#
+
+ST4:\5
+
+#
+#  Set tactics to 'very defensive'
+#
+
+ST5:\6
+
+#
+#  Set tactics to 'coward'
+#
+
+ST6:\7
+
+#
+#  Set variable
+#
+
+SEV::=
+
+#
+#  Shoot/Throw missile
+#
+
+SHT:t
+
+#
+#  Swap position with monster
+#
+
+SWA::s
+
+#
+#  Switch auto-pickup on/off
+#
+
+CAP:\Ca
+
+#
+#  Switch the dynamic display
+#
+
+STS::t
+
+#
+#  Switch the required (more) key
+#
+
+CMK:\Ck
+
+#
+#  Unlock door
+#
+
+ULD:\Cu
+
+#
+#  Use item
+#
+
+USE:U
+
+#
+#  Use class power
+#
+
+UMP:\Cx
+
+#
+#  Use special ability
+#
+
+SPA:m
+
+#
+#  Use tool
+#
+
+UTO:u
+
+#
+#  Wait
+#
+
+WAT:. 5
+
+#
+#  Walk to the southwest
+#
+
+WM1:w1
+
+#
+#  Walk to the south
+#
+
+WM2:w2
+
+#
+#  Walk to the southeast
+#
+
+WM3:w3
+
+#
+#  Walk to the west
+#
+
+WM4:w4
+
+#
+#  Walk on the spot
+#
+
+WM5:w5
+
+#
+#  Walk to the east
+#
+
+WM6:w6
+
+#
+#  Walk to the northwest
+#
+
+WM7:w7
+
+#
+#  Walk to the north
+#
+
+WM8:w8
+
+#
+#  Walk to the northeast
+#
+
+WM9:w9
+
+#
+#  Wipe face
+#
+
+WIF:F
+
+#
+#  Zap wand
+#
+
+ZAP:z
+
