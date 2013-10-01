@@ -3,7 +3,7 @@
 #    Keymap file for Ancient Domains Of Mystery
 #  ----------------------------------------------
 #
-#  Lines starting with a '#' are ignored.  Empty lines are also ignored.
+#  Lines starting with a '#' are ignored. Empty lines are also ignored.
 #
 #  If you want to use more than one keycode for a specific command, you can
 #  define multiple key-bindings by separating them with a SPACE character
@@ -47,10 +47,10 @@
 #    t T z Z \S + -
 #
 #  You *can* set them to one of the keys mentioned but this breaks all
-#  functions for targetting and determining directions.  You have been
+#  functions for targetting and determining directions. You have been
 #  warned.
 #
-#  Current version of ADOM: Version 1.1.1
+#  Current version of ADOM: Version 1.2.0
 #
 
 #
@@ -69,13 +69,13 @@ ASK:a
 #  Ascend stairway/Leave location
 #
 
-ASC:<
+ASC:x
 
 #
 #  Cast spell
 #
 
-CST:Z
+CST:z
 
 #
 #  Chat with monsters
@@ -105,7 +105,7 @@ LIT:L
 #  Clean ears
 #
 
-CLE:E
+CLE:\Ce
 
 #
 #  Close door
@@ -141,7 +141,7 @@ CSS:[
 #  Descend stairway/Enter location
 #
 
-DSC:>
+DSC:X
 
 #
 #  Describe weather
@@ -177,7 +177,7 @@ BKG:B
 #  Display bill
 #
 
-BIL:P
+BIL:\Cb
 
 #
 #  Display burden levels
@@ -225,7 +225,7 @@ DID::g
 #  Display elapsed game time
 #
 
-DET:\Ce
+#DET:\Ce
 
 #
 #  Display identified items
@@ -255,7 +255,7 @@ DLM:\Ml
 #  Display message buffer
 #
 
-MSG::m
+MSG:-
 
 #
 #  Display missile statistics
@@ -273,7 +273,7 @@ MWS::w
 #  Display quest status
 #
 
-QST:q
+QST:Q
 
 #
 #  Display recipes
@@ -285,7 +285,7 @@ RCP:R
 #  Display required experience
 #
 
-EXP:x
+EXP:\Mx
 
 #
 #  Display talents
@@ -333,7 +333,7 @@ DRC:\Cd
 #  Eat
 #
 
-EAT:e
+EAT:E
 
 #
 #  Examine environment
@@ -351,13 +351,13 @@ EDR::d
 #  Extended pay
 #
 
-EPA::p
+EPA:p
 
 #
 #  Extended use
 #
 
-EUS::u
+EUS:U
 
 #
 #  Give item to monster
@@ -375,7 +375,7 @@ HDL:h
 #  Inventory
 #
 
-INV:i
+INV:e
 
 #
 #  Invoke mindcraft
@@ -411,7 +411,7 @@ MSP::Z
 #  Miscellaneous equipment
 #
 
-STF:I
+STF:i
 
 #
 #  Move to the southwest
@@ -483,7 +483,7 @@ OPN:o
 #  Pay
 #
 
-PAY:p
+PAY:P
 
 #
 #  Pick up items primitively (fast)
@@ -495,25 +495,25 @@ PPK:;
 #  Pick up items
 #
 
-PCK:,
+PCK:, +
 
 #
 #  Pick up items comfortably
 #
 
-CPC:\Cp
+CPC:\Cp \M+ \M,
 
 #
 #  Pray
 #
 
-PRA:_
+PRA:\Mp
 
 #
 #  Quit game
 #
 
-QIT:Q
+QIT:\Cq
 
 #
 #  Read
@@ -561,37 +561,37 @@ ST0:\1
 #  Set tactics to 'very aggressive'
 #
 
-ST1:\2
+ST1:\4
 
 #
 #  Set tactics to 'aggressive'
 #
 
-ST2:\3
+ST2:\5
 
 #
 #  Set tactics to 'normal'
 #
 
-ST3:\4
+ST3:\2
 
 #
 #  Set tactics to 'defensive'
 #
 
-ST4:\5
+ST4:\6
 
 #
 #  Set tactics to 'very defensive'
 #
 
-ST5:\6
+ST5:\7
 
 #
 #  Set tactics to 'coward'
 #
 
-ST6:\7
+ST6:\3
 
 #
 #  Set variable
@@ -630,7 +630,7 @@ STS::t
 CMK:\Ck
 
 #
-#  Unlock door
+#  Lock/Unlock door
 #
 
 ULD:\Cu
@@ -639,7 +639,7 @@ ULD:\Cu
 #  Use item
 #
 
-USE:U
+USE:\Mu
 
 #
 #  Use class power
@@ -693,7 +693,7 @@ WM4:w4
 #  Walk on the spot
 #
 
-WM5:w5
+WM5:w5 w.
 
 #
 #  Walk to the east
@@ -729,5 +729,5 @@ WIF:F
 #  Zap wand
 #
 
-ZAP:z
+ZAP:Z
 

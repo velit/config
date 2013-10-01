@@ -4,33 +4,42 @@
 
 # Macros 0-9: these keys tell how to activate the macro.
 # sage.cfg says what each macro does
-MC0: \M0
+MC0: +
 MC1: \M1
 MC2: \M2
 MC3: \M3
 MC4: \M4
 MC5: \M5
-MC6: \Mj
-MC7: \Mh
-MC8: \Mk
-MC9: \Mu
+MC6: \M6
+MC7: \M7
+MC8: \M8
+MC9: \M9
+
+MCQ: \Mq
+MCW: \Mw
+MCE: \Me
+MCR: \Mr
+MCA: \Ma
+MCS: \Ms
+MCD: \Md
+MCF: f
+
 # You can also define MCA through MCZ if you need more macros
 
 # Repeat last command
-RPT: 0
+RPT: q
 
 # Set dynamic display to show character's speed
-DDS: \Ms
+#DDS: \Ms
 
 # Set dynamic display to show energy cost of last action
-DDE: \Me
+#DDE: \Me
 
 # Set dynamic display to show gold
-DDG: \Mg
+#DDG: \Mg
 
 # Set dynamic display to show ammo
-DDA: \Ma
+#DDA: \Ma
 
 # Set dynamic display to show game turns/moves passed
-DDT: \Mm
-
+#DDT: \Mm

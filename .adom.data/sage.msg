@@ -1,4 +1,4 @@
-:allow_skip
+# COMBAT
 
 # Hitting someone
 :light red
@@ -6,33 +6,71 @@ and %s %s %s.
 
 # Getting hit
 :red
-punches through your armor and
 %shits you.
 are %s%s.
+Touching %s paralyzes you!
+
+:light cyan
+can move again!
+
+:replace
+:red
+punches through your armor and|pierces and
+
+:replace
+%s seems to be confused.|%s is confused.
+
+# Suppressed combat messages
+:suppress
+%s misses you.
+%s is struggling against a large web holding %s!
+%s %s %s.
+
+:replace
+#block %s.|block.
+deflect the attack of %s.|deflect %s.
+
+:allow_skip
 
 # Killing someone
-#:light cyan
-#and %s %s.
-#and %s %s right away!
-#and transform %s into a %s heap!
+:yellow
+and %s %s.
+and %s %s right away!
+and transform %s into a %s heap!
 
 # Experience
-#:light green
-#[+%ldxp]
+:light green
+[+%lldxp]
 
 # Pick pocketing
-#:light cyan
-#%s does not seem to own anything of value.
-#already have cleaned out %s.
+:light cyan
+%s does not seem to own anything of value.
+already have cleaned out %s.
+
+# Mindcraft
+:light cyan
+%s resists your mental incursion!
+grasp at the mind of %s but %s resists!
+
+:light red
+grasp at the mind of %s, wounding %s!
+
+:yellow
+grasp at the mind of %s.
+grasp at the mind of %s, killing %s!
+
 :light green
 steal %s%s!
-[+%ldxp]
 
 # Herb messages
-:light green
-Some herb bushes full of blossoms are growing here.
 :light cyan
 Some strong herb bushes are growing here.
+
+:light green
+Some herb bushes full of blossoms are growing here.
+A new herb bush blossoms.
+One herb bush suddenly looks more vigorous.
+
 :red
 Some withered herb bushes are growing here.
 
@@ -40,11 +78,7 @@ Some withered herb bushes are growing here.
 :light cyan
 The bleeding stops.
 You really hurt your foot kicking the wall!
-%s does not seem to own anything of value.
-already have cleaned out %s.
-and %s %s.
-and %s %s right away!
-and transform %s into a %s heap!
+hear an evil hissing and something large crawling about the ground!
 
 # Corruption
 :magenta
@@ -55,6 +89,11 @@ feel corrupted!
 :yellow
 just have completed your current quest.
 Congratulations! You advance to level %d.
+
+# Benefical date effects
+You feel that starting your adventure on Creator's Day was a good idea.
+A lone star leads you to this remote valley.
+You feel well prepared for the coming year.
 
 # Stat gain
 :no_skip
@@ -83,6 +122,7 @@ feel very good about your %s level.
 # Stat loss
 :no_skip
 :red
+You feel as if this was not a good idea!
 You seem to get less perceptive.
 You are getting out of touch with everything.
 You are growing a wart.
@@ -130,6 +170,10 @@ The %s rust%s!
 They are annihilated!
 It is annihilated!
 
+# Detrimental date effects
+You feel unlucky.
+You feel slightly exhausted today.
+
 # Food rotting
 :no_skip
 :brown
@@ -161,8 +205,43 @@ Suddenly you can see yourself again!
 Select the companion you want to issue an order to.
 Select the slave to command.
 Extended drop command.
+%s mumbles:
+%s tries to disarm you but you foil %s plan due to your %s with your %s.
+%s spins a large web!
+
+#arena
+You talk to Dak, the arena master~.
+"%s, %s! %s?"
+"Ze'll fight'll run till one of ya two is dead. Good luck!"
+#hear the cries of the crowd: "%s! %s! %s!"
+You hear the ecstatic cries of a large crowd!
+
+#toef
+Your equipment is protected from the fire by a thin sheet of ice emanating from your hands.
+The air is extremely hot!
+searing flames.
+
+#casino
+#At the front of the machine pictures start to spin.
+#You %s
+#get %s,
+#%s
+#and %s.
+#The machine continues to glow in happy colors.
+#Dong!
+#You win %lld gold piece%s!
+#pull the lever on the right side of the machine.
 #(easily cutting through %s armor with the %s)
 #You lust for blood!
 #The %s returns!
 #You manage to catch it.
 #You fail to catch it.
+
+# Tell the world we're using Sage
+:replace
+:yellow
+Ancient Domains of Mystery__ Version 1.0.0|Ancient Domains of Mystery__ Version 1.0.0 running with ADOM Sage
+Ancient Domains of Mystery__ Version 1.2.0|Ancient Domains of Mystery__ Version 1.2.0 running with ADOM Sage
+Ancient Domains of Mystery__ Version 1.1.1|Ancient Domains of Mystery__ Version 1.1.1 running with ADOM Sage
+:white
+Ancient Domains Of Mystery|Ancient Domains Of Mystery with ADOM Sage
