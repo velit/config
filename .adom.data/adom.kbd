@@ -273,7 +273,7 @@ MWS::w
 #  Display quest status
 #
 
-QST:Q
+QST:\Cq
 
 #
 #  Display recipes
@@ -339,7 +339,7 @@ EAT:E
 #  Examine environment
 #
 
-EXE:l
+EXE:Q
 
 #
 #  Extended drop
@@ -513,7 +513,7 @@ PRA:\Mp
 #  Quit game
 #
 
-QIT:\Cq
+QIT:\Cg
 
 #
 #  Read
