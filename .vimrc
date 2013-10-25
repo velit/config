@@ -9,13 +9,15 @@ filetype off
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'Syntastic'
 Bundle 'python.vim--Vasiliev'
 Bundle 'godlygeek/tabular'
 Bundle 'msanders/snipmate.vim'
 Bundle 'dahu/LearnVim'
+Bundle 'klen/python-mode'
+"Bundle 'Syntastic'
 
 " Settings
 set autoindent
@@ -28,6 +30,7 @@ set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ 
 set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
 set history=100
+set ignorecase
 set incsearch
 set nolist
 set listchars=tab:►\ ,trail:·,eol:$
@@ -81,11 +84,15 @@ endfunction
 call OptimizeSizeSettings()
 
 " Plugins
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=0
-let g:python_highlight_all=1
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 0
+let g:python_highlight_all = 1
 let g:NERDCreateDefaultMappings = 0
 let g:syntastic_mode_map = {'passive_filetypes': ['java']}
+let g:pymode_lint_ignore = "E501"
+let g:pymode_folding = 0
+let g:pymode_options = 0
+let g:pymode_lint_cwindow = 0
 
 " Mappings
 let mapleader = ","
@@ -106,6 +113,8 @@ nnoremap <Leader>h :tab help
 nnoremap <Leader>m :Man 
 nnoremap <Leader>s :vs 
 nnoremap <Leader>j <C-]>
+nnoremap <Leader>k <C-w><C-]><C-w>L
+nnoremap <Leader>l <C-w><C-]><C-w>T
 nnoremap <Leader>o <C-i>
 nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
 nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>

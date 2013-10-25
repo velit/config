@@ -1,6 +1,6 @@
 [user]
     name = Tapani Kiiskinen
-    email = tapani.kiiskinen@arcusys.fi
+    email = tapani.kiiskinen@gmail.com
 [include]
     path = .gitconfig_local
 [merge]

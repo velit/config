@@ -17,11 +17,13 @@ fi
 
 export ESCDELAY=25
 
-alias ls='ls -hv --color=auto --group-directories-first --time-style=locale --si'
+alias ls_default='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
-alias l='ls -1'
-alias la='ls -1As'
-alias ll='ls  -lA'
+alias ls='ls_default --ignore="*.pyc"'
+alias l='ls_default -1 --ignore="*.pyc"'
+alias f='ls_default -1 --ignore="*.pyc"'
+alias la='ls_default -1As'
+alias ll='ls_default  -lA'
 
 alias tree='tree -L 2'
 alias grep='grep --color=auto'
