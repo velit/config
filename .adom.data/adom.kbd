@@ -11,8 +11,8 @@
 #
 #  The following special characters are used:
 #
-#      \Mx  -- press the control key and some key x (for letters use the
-#               the lowercase letter)
+#      \Mx  -- press the alt key and some key x (for letters use the
+#               lowercase letter)
 #      \Cx  -- press the control key and some key x
 #      \S   -- SPACE
 #      \\   -- the backslash '\' itself
@@ -78,7 +78,7 @@ ASC:x
 CST:z
 
 #
-#  Chat with monsters
+#  Chat with monster
 #
 
 TLK:C
@@ -534,13 +534,19 @@ RMM:&
 RED:\Cr
 
 #
+#  Repeat last command
+#
+
+RPT:q
+
+#
 #  Sacrifice
 #
 
 SAC:O
 
 #
-#  Save and quit game
+#  Save game
 #
 
 SAV:S
@@ -594,7 +600,7 @@ ST5:\7
 ST6:\3
 
 #
-#  Set variable
+#  Set configuration variable
 #
 
 SEV::=
