@@ -25,7 +25,6 @@ alias f='ls_default -1 --ignore="*.pyc"'
 alias la='ls_default -1As'
 alias ll='ls_default  -lA'
 
-alias tree='tree -L 2'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
