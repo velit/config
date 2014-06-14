@@ -297,7 +297,7 @@ DTL:\Mt
 #  Display version
 #
 
-VER:V
+VER:v
 
 #
 #  Display weapon skills
@@ -334,12 +334,6 @@ DRC:\Cd
 #
 
 EAT:E
-
-#
-#  Examine environment
-#
-
-EXE:Q
 
 #
 #  Extended drop
@@ -510,10 +504,16 @@ CPC:\Cp \M+ \M,
 PRA:\Mp
 
 #
+#  Examine environment
+#
+
+EXE:*
+
+#
 #  Quit game
 #
 
-QIT:\Cg
+QIT:Q
 
 #
 #  Read
@@ -543,7 +543,7 @@ RPT:q
 #  Sacrifice
 #
 
-SAC:O
+SAC:O V
 
 #
 #  Save game
