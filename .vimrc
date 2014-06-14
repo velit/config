@@ -13,10 +13,10 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'python.vim--Vasiliev'
-Bundle 'godlygeek/tabular'
 Bundle 'msanders/snipmate.vim'
 Bundle 'dahu/LearnVim'
 Bundle 'klen/python-mode'
+Bundle 'godlygeek/tabular'
 "Bundle 'Syntastic'
 
 " Settings
@@ -93,11 +93,11 @@ let g:pymode_lint_ignore = "E501"
 let g:pymode_folding = 0
 let g:pymode_options = 0
 let g:pymode_lint_cwindow = 0
-
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_rope_local_prefix = "<Leader>r"
+let g:pymode_rope_global_prefix = "<Leader>p"
 " Mappings
 let mapleader = ","
-noremap <C-c> <Esc>
-noremap <Esc> <C-c>
 lnoremap <C-c> <Esc>
 lnoremap <Esc> <C-c>
 
@@ -136,7 +136,6 @@ vnoremap <Leader>w y/\V\<<C-r>"\><CR>
 " Insert mode mappings
 imap <C-s> <Esc><C-s>
 inoremap <expr><C-h> BackspaceIgnoreIndent()
-inoremap <C-@> <C-x><C-o>
 inoremap <S-Tab> <BS>
 
 " Maps
@@ -213,6 +212,7 @@ aug end
 " Custom commands and functions
 runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+command! RemoveTrailingWhitespace %s/\s\+$//
 
 function! BackspaceIgnoreIndent()
   if search('^\s\+\%#', 'bn') != 0
