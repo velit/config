@@ -12,11 +12,12 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'python.vim--Vasiliev'
-Bundle 'msanders/snipmate.vim'
-Bundle 'dahu/LearnVim'
 Bundle 'klen/python-mode'
-Bundle 'godlygeek/tabular'
+
+"Bundle 'msanders/snipmate.vim'
+"Bundle 'python.vim--Vasiliev'
+"Bundle 'dahu/LearnVim'
+"Bundle 'godlygeek/tabular'
 "Bundle 'Syntastic'
 
 " Settings
@@ -96,39 +97,47 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_rope_local_prefix = "<Leader>r"
 let g:pymode_rope_global_prefix = "<Leader>p"
+let g:pymode_rope_short_prefix = "<Leader>m"
+let g:pymode_run_key = "<Leader><Leader>e"
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_hold = 1
+let g:pymode_lint_minheight = 5
+let g:pymode_lint_maxheight = 8
 " Mappings
 let mapleader = ","
 lnoremap <C-c> <Esc>
 lnoremap <Esc> <C-c>
 
 " Leader maps
+
 noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
 
-nmap <silent><Leader>C <Leader>V:only <Bar> e ~/.vim/colors/tappi.vim 
-            \<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+nnoremap <Leader>h :vertical help 
 nnoremap <Leader>H :if &ft == 'help' <Bar> vs <Bar> endif <Bar> vertical help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
-nnoremap <Leader>e :tab drop 
-nnoremap <Leader>h :tab help 
-nnoremap <Leader>m :Man 
+nnoremap <Leader>e :e 
+nnoremap <Leader>t :tab drop 
 nnoremap <Leader>s :vs 
 nnoremap <Leader>j <C-]>
-nnoremap <Leader>k <C-w><C-]><C-w>L
-nnoremap <Leader>l <C-w><C-]><C-w>T
 nnoremap <Leader>o <C-i>
-nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
-nnoremap <silent><Leader>V :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
-nnoremap <silent><Leader><C-v> :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent><Leader>l :set list!<CR>
 nnoremap <silent><Leader>n :set number!<CR>
-nnoremap <silent><Leader>b :set scrollbind!<CR>
-nnoremap <silent><Leader>t :tabnew<CR>
+nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
+nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
+nnoremap <silent><Leader>V :vs $MYVIMRC<CR>
 
+" Double leaders
+
+nnoremap <Leader><Leader>b :set scrollbind!<CR>
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
 nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>f :PyLint<CR>
+nnoremap <silent><Leader><Leader>r :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
+nnoremap <silent><Leader><Leader>h :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
+nmap <silent><Leader><Leader>C <Leader><Leader>r:only <Bar> e ~/.vim/colors/tappi.vim
+            \<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 
 vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Leader>w y/\V\<<C-r>"\><CR>
@@ -202,12 +211,13 @@ noremap! <Esc><C-j> <S-Left>
 noremap! <Esc><C-k> <S-Right>
 
 " Autocmds
-aug vimrc
-    au!
-    "au FileType python setlocal makeprg=python\ %
-    au VimResized * call OptimizeSizeSettings()
-    au BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
-aug end
+augroup vimrc
+    autocmd!
+    "autocmd FileType python setlocal makeprg=python\ %
+    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8 complete+=t commentstring=#%s textwidth=80
+    autocmd VimResized * call OptimizeSizeSettings()
+    autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
+augroup end
 
 " Custom commands and functions
 runtime ftplugin/man.vim
