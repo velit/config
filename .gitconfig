@@ -7,7 +7,7 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
-    renames = copies
+    renames = true
 [core]
     editor = vim
     pager = less -FXRS -x4

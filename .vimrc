@@ -148,14 +148,6 @@ inoremap <expr><C-h> BackspaceIgnoreIndent()
 inoremap <S-Tab> <BS>
 
 " Maps
-"noremap <Esc>h gT
-"noremap <Esc>l gt
-"noremap <Esc>j <C-W>w
-"noremap <Esc>k <C-W>W
-"noremap <C-h> ^
-"noremap <C-l> $
-"noremap <C-k> {
-"noremap <C-j> }
 noremap <C-h> gT
 noremap <C-l> gt
 noremap <C-k> <C-w>w
@@ -179,6 +171,8 @@ noremap <Esc>8 8gt
 noremap <Esc>9 9gt
 noremap <Esc>0 10g
 noremap <C-w>m :vnew<CR>
+noremap / /\v
+noremap ? ?\v
 map <C-w><C-m> <C-w>m
 
 " Normal mode mappings
