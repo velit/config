@@ -1,24 +1,30 @@
 set nocompatible
 
+"Vundle bootstrap
+if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
+    exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/vundle/'
+endif
+
 "Vundle
 set rtp+=~/.vim/bundle/vundle
-if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-    exec '!git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle/'
-endif
 filetype off
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
+call vundle#begin()
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'klen/python-mode'
+Plugin 'gmarik/vundle'
 
-"Bundle 'msanders/snipmate.vim'
-"Bundle 'python.vim--Vasiliev'
-"Bundle 'dahu/LearnVim'
-"Bundle 'godlygeek/tabular'
-"Bundle 'Syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'klen/python-mode'
+Plugin 'Command-T'
+Plugin 'godlygeek/tabular'
+
+"Plugin 'msanders/snipmate.vim'
+"Plugin 'python.vim--Vasiliev'
+"Plugin 'dahu/LearnVim'
+"Plugin 'Syntastic'
+
+call vundle#end()
 
 " Settings
 set autoindent
@@ -30,17 +36,19 @@ set directory=~/.vim/temp/swap//,.,~/tmp,/var/tmp,/tmp
 set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
+set hidden
 set history=100
 set ignorecase
 set incsearch
-set nolist
 set listchars=tab:►\ ,trail:·,eol:$
 set mouse=a ttymouse=xterm2
+set nolist
 set numberwidth=2
 set pastetoggle=<F12>
 set ruler
 set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
 set scrolljump=-10
+set scrolloff=5
 set sessionoptions-=options
 set showcmd
 set smartcase
@@ -66,88 +74,90 @@ colorscheme tappi
 silent! set undodir=~/.vim/temp/undo//,.
 silent! set undofile
 
-" Small screen optimization
-function! OptimizeSizeSettings()
-    if &lines < 45
-        set cmdheight=1
-        set laststatus=1
-        set scrolloff=3
-        nnoremap <silent><C-e> <C-e>2<C-e>
-        nnoremap <silent><C-y> <C-y>2<C-y>
-    else
-        set cmdheight=2
-        set laststatus=2
-        set scrolloff=5
-        nnoremap <silent><C-e> <C-e>4<C-e>
-        nnoremap <silent><C-y> <C-y>4<C-y>
-    endif
-endfunction
-call OptimizeSizeSettings()
-
-" Plugins
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 0
-let g:python_highlight_all = 1
+" NERDTree
 let g:NERDCreateDefaultMappings = 0
-let g:syntastic_mode_map = {'passive_filetypes': ['java']}
-let g:pymode_lint_ignore = "E501"
+
+" CommandT
+let g:CommandTMatchWindowReverse = 1
+let g:CommandTMaxHeight = 15
+let g:CommandTAcceptSelectionTabMap = ['<C-t>', '<C-k>']
+let g:CommandTAcceptSelectionVSplitMap = ['<C-v>', '<C-j>']
+let g:CommandTSelectNextMap = ['<C-n>', '<Down>']
+let g:CommandTSelectPrevMap = ['<C-p>', '<Up>']
+
+" PyMode
 let g:pymode_folding = 0
 let g:pymode_options = 0
-let g:pymode_lint_cwindow = 0
+let g:pymode_quickfix_maxheight = 8
+let g:pymode_quickfix_minheight = 5
 let g:pymode_syntax_print_as_function = 1
-let g:pymode_rope_local_prefix = "<Leader>r"
-let g:pymode_rope_global_prefix = "<Leader>p"
-let g:pymode_rope_short_prefix = "<Leader>m"
-let g:pymode_run_key = "<Leader><Leader>e"
-let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_lint_hold = 1
-let g:pymode_lint_minheight = 5
-let g:pymode_lint_maxheight = 8
-" Mappings
-let mapleader = ","
-lnoremap <C-c> <Esc>
-lnoremap <Esc> <C-c>
+let g:pymode_warnings = 0
+
+let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'pep257']
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265"
+
+let g:pymode_rope_autoimport_modules     = ['os', 'shutil', 'datetime', 'pytest']
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_goto_definition_cmd = 'e'
+
+let g:pymode_breakpoint_bind             = "<Leader>rb"
+let g:pymode_rope_autoimport_bind        = '<Leader>ra'
+let g:pymode_rope_change_signature_bind  = '<Leader>rs'
+let g:pymode_rope_completion_bind        = '<C-Space>'
+let g:pymode_rope_extract_method_bind    = '<Leader>rem'
+let g:pymode_rope_extract_variable_bind  = '<Leader>rel'
+let g:pymode_rope_goto_definition_bind   = '<Leader>rg'
+let g:pymode_rope_module_to_package_bind = '<Leader>rmp'
+let g:pymode_rope_module_to_package_bind = '<Leader>rmp'
+let g:pymode_rope_move_bind              = '<Leader>rv'
+let g:pymode_rope_organize_imports_bind  = '<Leader>ro'
+let g:pymode_rope_rename_bind            = '<Leader>rr'
+let g:pymode_rope_rename_module_bind     = '<Leader>rmr'
+let g:pymode_rope_show_doc_bind          = '<Leader>rd'
+let g:pymode_rope_use_function_bind      = '<Leader>ru'
+let g:pymode_run_bind                    = "<Leader>re"
 
 " Leader maps
 
-noremap <silent><Leader>f :call NERDComment("n", "Toggle")<CR>
+let mapleader = ","
+
+noremap <Leader>j <C-]>
+noremap <Leader>k <C-[>
+noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 nnoremap <Leader>h :vertical help 
-nnoremap <Leader>H :if &ft == 'help' <Bar> vs <Bar> endif <Bar> vertical help 
+nnoremap <Leader>H :tab help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
-nnoremap <Leader>e :e 
-nnoremap <Leader>t :tab drop 
-nnoremap <Leader>s :vs 
-nnoremap <Leader>j <C-]>
-nnoremap <Leader>o <C-i>
-nnoremap <silent><Leader>l :set list!<CR>
-nnoremap <silent><Leader>n :set number!<CR>
-nnoremap <silent><Leader>d :tab sp <Bar> tabm99<CR>
-nnoremap <silent><Leader>v :tab drop $MYVIMRC<CR>
-nnoremap <silent><Leader>V :vs $MYVIMRC<CR>
 
-" Double leaders
-
-nnoremap <Leader><Leader>b :set scrollbind!<CR>
-nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
-nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
-nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>f :PyLint<CR>
-nnoremap <silent><Leader><Leader>r :source $MYVIMRC <Bar> filetype detect <CR>:echo 'vimrc reloaded'<CR>
-nnoremap <silent><Leader><Leader>h :helptags $HOME/.vim/doc/<CR>:echo 'helptags reloaded'<CR>
-nmap <silent><Leader><Leader>C <Leader><Leader>r:only <Bar> e ~/.vim/colors/tappi.vim
-            \<Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+nnoremap <silent> <Leader>a :PymodeLint<CR>
+nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader>n :set number!<CR>
+nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
+nnoremap <silent> <Leader>V :tab drop $MYVIMRC<CR>
+nnoremap <silent> <Leader>v :vs $MYVIMRC<CR>
+nnoremap <silent> <Leader>s :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Leader>w y/\V\<<C-r>"\><CR>
 
-" Insert mode mappings
-imap <C-s> <Esc><C-s>
-inoremap <expr><C-h> BackspaceIgnoreIndent()
+nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
+nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
+nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+nnoremap <silent> <Leader><Leader>r :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
+nmap <silent> <Leader><Leader>C ,,r:only <Bar> e ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+
+" Insert maps
 inoremap <S-Tab> <BS>
+inoremap <C-c> <Esc>
+inoremap <Esc> <C-c>
+inoremap <C-s> <Esc>:update<CR>
+inoremap <expr><C-h> BackspaceIgnoreIndent()
 
 " Maps
+noremap <C-p> <C-i>
 noremap <C-h> gT
 noremap <C-l> gt
 noremap <C-k> <C-w>w
@@ -170,26 +180,24 @@ noremap <Esc>7 7gt
 noremap <Esc>8 8gt
 noremap <Esc>9 9gt
 noremap <Esc>0 10g
-noremap <C-w>m :vnew<CR>
-noremap / /\v
-noremap ? ?\v
-map <C-w><C-m> <C-w>m
+noremap <C-w>m :vnew<CR> <Bar> nmap <C-w><C-m> <C-w>m
 
 " Normal mode mappings
 nnoremap <C-s> :update<CR>
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
 nnoremap <silent><CR> o<C-c>
 nnoremap <silent><Esc>q :qa<CR>
-nnoremap <silent><Esc>w :close<CR>
 nnoremap <silent><Esc>x :close<CR>
-nnoremap <silent><S-Tab> <<
-nnoremap <silent><Tab> >>
 nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 nnoremap <silent>Y y$
 nnoremap <silent>j gj
 nnoremap <silent>k gk
+nnoremap <silent><C-e> <C-e>4<C-e>
+nnoremap <silent><C-y> <C-y>4<C-y>
 
 " Visual mode mappings
-vmap <C-s> <Esc><C-s>gv
+vnoremap <C-s> <Esc>:update<CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 vnoremap <Leader>c :s#<C-r>/##<Left>
@@ -207,8 +215,8 @@ noremap! <Esc><C-k> <S-Right>
 " Autocmds
 augroup vimrc
     autocmd!
-    "autocmd FileType python setlocal makeprg=python\ %
     autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8 complete+=t commentstring=#%s textwidth=80
+            \ define=^\s*\\(def\\\\|class\\)
     autocmd VimResized * call OptimizeSizeSettings()
     autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 augroup end
@@ -217,6 +225,18 @@ augroup end
 runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! RemoveTrailingWhitespace %s/\s\+$//
+
+" Small screen optimization
+function! OptimizeSizeSettings()
+    if &lines < 45
+        set cmdheight=1
+        set laststatus=0
+    else
+        set cmdheight=2
+        set laststatus=2
+    endif
+endfunction
+call OptimizeSizeSettings()
 
 function! BackspaceIgnoreIndent()
   if search('^\s\+\%#', 'bn') != 0
@@ -228,7 +248,7 @@ endfunction
 
 nmap <silent><F5>
 \ :if executable("./debug_vim") <Bar>
-    \ execute("!./debug_vim pyrl.py 0") <Bar>
+    \ execute("!./debug_vim ./pyrl.py") <Bar>
     \ if filereadable("errors.err") <Bar>
         \ cf <Bar>
         \ clast <Bar>
@@ -239,7 +259,7 @@ nmap <silent><F5>
 
 nmap <silent><F6>
 \ :if executable("./debug_vim") <Bar>
-    \ execute("!./debug_vim sdlpyrl.py 0") <Bar>
+    \ execute("!./debug_vim ./sdlpyrl.py") <Bar>
     \ if filereadable("errors.err") <Bar>
         \ cf <Bar>
         \ clast <Bar>

@@ -19,6 +19,7 @@
     co = checkout
     st = status
     df = diff
+    dfc = diff --cached
     lg = log
     h = help
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
