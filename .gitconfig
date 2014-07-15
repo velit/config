@@ -10,7 +10,7 @@
     renames = true
 [core]
     editor = vim
-    pager = less -FXRS -x4
+    pager = less -FRX -x4
 [color]
     ui = auto
 [alias]
@@ -23,7 +23,8 @@
     lg = log
     h = help
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    find = "!f() { git ls-files \"*$@*\"; }; f"
 [mergetool]
     keepBackup = false
 [push]
-    default = upstream
+    default = simple

@@ -215,8 +215,12 @@ noremap! <Esc><C-k> <S-Right>
 " Autocmds
 augroup vimrc
     autocmd!
-    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8 complete+=t commentstring=#%s textwidth=80
-            \ define=^\s*\\(def\\\\|class\\)
+    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
+                \ complete+=t commentstring=#%s textwidth=80 define=^\s*\\(def\\\\|class\\)
+    autocmd FileType java setlocal noexpandtab
+    autocmd FileType jsp setlocal noexpandtab
+    autocmd FileType javascript setlocal noexpandtab
+
     autocmd VimResized * call OptimizeSizeSettings()
     autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 augroup end
