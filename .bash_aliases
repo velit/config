@@ -16,18 +16,21 @@ if [ -d "$HOME/links" ] ; then
 fi
 
 export ESCDELAY=25
+export FIGNORE=$FIGNORE:.pyc
+export LESS=' -FRX -x4'
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
-alias ls_default='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
+LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
-alias ls='ls_default --ignore="*.pyc"'
-alias l='ls_default -1 --ignore="*.pyc"'
-alias f='ls_default -1 --ignore="*.pyc"'
-alias la='ls_default -1As'
-alias ll='ls_default  -lA'
+alias ls=$LS_DEFAULT' --ignore="*.pyc"'
+alias l=$LS_DEFAULT' -1 --ignore="*.pyc"'
+alias f=$LS_DEFAULT' -1 --ignore="*.pyc"'
+alias la=$LS_DEFAULT' -1As'
+alias ll=$LS_DEFAULT'  -lA'
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias untar='tar -xvf'
-alias mv='mv -i'
-alias cp='cp -i'
+alias grep='"grep" --color=auto'
+alias fgrep='"fgrep" --color=auto'
+alias egrep='"egrep" --color=auto'
+alias untar='"tar" -xvf'
+alias mv='"mv" -i'
+alias cp='"cp" -i'

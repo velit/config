@@ -19,11 +19,12 @@
     co = checkout
     st = status
     df = diff
-    dfc = diff --cached
+    dc = diff --cached
     lg = log
     h = help
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
     find = "!f() { git ls-files \"*$@*\"; }; f"
+    whoami = !echo \"$(git config --get user.name) <$(git config --get user.email)>\"
 [mergetool]
     keepBackup = false
 [push]

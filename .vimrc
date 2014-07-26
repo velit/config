@@ -93,7 +93,7 @@ let g:pymode_quickfix_minheight = 5
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_warnings = 0
 
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'pep257']
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257']
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265"
 
@@ -101,14 +101,13 @@ let g:pymode_rope_autoimport_modules     = ['os', 'shutil', 'datetime', 'pytest'
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
 
+let g:pymode_rope_completion_bind        = '<C-Space>'
 let g:pymode_breakpoint_bind             = "<Leader>rb"
 let g:pymode_rope_autoimport_bind        = '<Leader>ra'
 let g:pymode_rope_change_signature_bind  = '<Leader>rs'
-let g:pymode_rope_completion_bind        = '<C-Space>'
 let g:pymode_rope_extract_method_bind    = '<Leader>rem'
 let g:pymode_rope_extract_variable_bind  = '<Leader>rel'
 let g:pymode_rope_goto_definition_bind   = '<Leader>rg'
-let g:pymode_rope_module_to_package_bind = '<Leader>rmp'
 let g:pymode_rope_module_to_package_bind = '<Leader>rmp'
 let g:pymode_rope_move_bind              = '<Leader>rv'
 let g:pymode_rope_organize_imports_bind  = '<Leader>ro'

@@ -1,1 +1,11 @@
-git curl devtodo vim-gtk screen build-essential python3 ncurses-term tree kompare
+git
+curl
+devtodo
+vim-gtk
+screen
+build-essential
+python3
+ncurses-term
+tree
+kompare
+source-highlight
