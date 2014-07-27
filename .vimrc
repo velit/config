@@ -16,13 +16,10 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'klen/python-mode'
-Plugin 'Command-T'
 Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
 
 "Plugin 'msanders/snipmate.vim'
-"Plugin 'python.vim--Vasiliev'
-"Plugin 'dahu/LearnVim'
-"Plugin 'Syntastic'
 
 call vundle#end()
 
@@ -74,16 +71,14 @@ colorscheme tappi
 silent! set undodir=~/.vim/temp/undo//,.
 silent! set undofile
 
-" NERDTree
-let g:NERDCreateDefaultMappings = 0
-
-" CommandT
-let g:CommandTMatchWindowReverse = 1
-let g:CommandTMaxHeight = 15
-let g:CommandTAcceptSelectionTabMap = ['<C-t>', '<C-k>']
-let g:CommandTAcceptSelectionVSplitMap = ['<C-v>', '<C-j>']
-let g:CommandTSelectNextMap = ['<C-n>', '<Down>']
-let g:CommandTSelectPrevMap = ['<C-p>', '<Up>']
+" CtrlP
+let g:ctrlp_map = ''
+let g:ctrlp_switch_buffer = ''
+let g:ctrlp_clear_cache_on_exit = 0
+nnoremap <silent> <Leader>e :CtrlP<CR>
+nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
+nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 " PyMode
 let g:pymode_folding = 0
@@ -95,7 +90,7 @@ let g:pymode_warnings = 0
 
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257']
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265"
+let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265,E116,E127"
 
 let g:pymode_rope_autoimport_modules     = ['os', 'shutil', 'datetime', 'pytest']
 let g:pymode_rope_complete_on_dot = 0
@@ -116,6 +111,10 @@ let g:pymode_rope_rename_module_bind     = '<Leader>rmr'
 let g:pymode_rope_show_doc_bind          = '<Leader>rd'
 let g:pymode_rope_use_function_bind      = '<Leader>ru'
 let g:pymode_run_bind                    = "<Leader>re"
+nnoremap <silent> <Leader>a :PymodeLint<CR>
+
+" NERDComment
+noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 " Leader maps
 
@@ -123,20 +122,16 @@ let mapleader = ","
 
 noremap <Leader>j <C-]>
 noremap <Leader>k <C-[>
-noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 nnoremap <Leader>h :vertical help 
 nnoremap <Leader>H :tab help 
 nnoremap <Leader>c :%s#<C-r>/##<Left>
 
-nnoremap <silent> <Leader>a :PymodeLint<CR>
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent> <Leader>V :tab drop $MYVIMRC<CR>
 nnoremap <silent> <Leader>v :vs $MYVIMRC<CR>
-nnoremap <silent> <Leader>s :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
 vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Leader>w y/\V\<<C-r>"\><CR>
