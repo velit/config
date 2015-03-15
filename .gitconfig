@@ -25,6 +25,8 @@
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
     find = "!f() { git ls-files \"*$@*\"; }; f"
     whoami = !echo \"$(git config --get user.name) <$(git config --get user.email)>\"
+    ignored = ls-files --others -i --exclude-standard
+    yolo = "!git add --all; git commit"
 [mergetool]
     keepBackup = false
 [push]

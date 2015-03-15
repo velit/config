@@ -33,7 +33,7 @@ set directory=~/.vim/temp/swap//,.,~/tmp,/var/tmp,/tmp
 set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
 set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 set gdefault
-set hidden
+set nohidden
 set history=100
 set ignorecase
 set incsearch
@@ -70,6 +70,8 @@ colorscheme tappi
 
 silent! set undodir=~/.vim/temp/undo//,.
 silent! set undofile
+
+let mapleader = ","
 
 " CtrlP
 let g:ctrlp_map = ''
@@ -114,12 +116,10 @@ let g:pymode_run_bind                    = "<Leader>re"
 nnoremap <silent> <Leader>a :PymodeLint<CR>
 
 " NERDComment
+let g:NERDCreateDefaultMappings = 0
 noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 " Leader maps
-
-let mapleader = ","
-
 noremap <Leader>j <C-]>
 noremap <Leader>k <C-[>
 
@@ -187,8 +187,8 @@ nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 nnoremap <silent>Y y$
 nnoremap <silent>j gj
 nnoremap <silent>k gk
-nnoremap <silent><C-e> <C-e>4<C-e>
-nnoremap <silent><C-y> <C-y>4<C-y>
+nnoremap <silent><C-e> 5<C-e>
+nnoremap <silent><C-y> 5<C-y>
 
 " Visual mode mappings
 vnoremap <C-s> <Esc>:update<CR>
