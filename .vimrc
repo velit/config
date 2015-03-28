@@ -30,15 +30,15 @@ set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
 set directory=~/.vim/temp/swap//,.,~/tmp,/var/tmp,/tmp
-set efm+=%-GTraceback\ (most\ recent\ call\ last):,%E\ \ File\ \"%f\"\\,\ line\ %l%.%#,%C\ \ \ \ %.%#,%Z%m
-set expandtab shiftwidth=4 softtabstop=4 tabstop=4
+set expandtab shiftwidth=4 softtabstop=4 tabstop=8
+set formatoptions+=l
 set gdefault
-set nohidden
 set history=100
 set ignorecase
 set incsearch
 set listchars=tab:►\ ,trail:·,eol:$
 set mouse=a ttymouse=xterm2
+set nohidden
 set nolist
 set numberwidth=2
 set pastetoggle=<F12>
@@ -92,7 +92,7 @@ let g:pymode_warnings = 0
 
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257']
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265,E116,E127"
+let g:pymode_lint_ignore = "E501,D10,C0111,C0301,W0621,R0914,E128,E265,E116,E127,E731"
 
 let g:pymode_rope_autoimport_modules     = ['os', 'shutil', 'datetime', 'pytest']
 let g:pymode_rope_complete_on_dot = 0
@@ -150,7 +150,9 @@ inoremap <Esc> <C-c>
 inoremap <C-s> <Esc>:update<CR>
 inoremap <expr><C-h> BackspaceIgnoreIndent()
 
-" Maps
+" Normal / Visual / Operator pending maps
+noremap j gj
+noremap k gk
 noremap <C-p> <C-i>
 noremap <C-h> gT
 noremap <C-l> gt
@@ -160,10 +162,6 @@ noremap <Esc>h ^
 noremap <Esc>l $
 noremap <Esc>k {
 noremap <Esc>j }
-noremap <F1> :cp<CR>
-noremap <F2> :cn<CR>
-noremap <F3> :cl<CR>
-noremap <F4> :clast<CR>
 noremap <Esc>1 1gt
 noremap <Esc>2 2gt
 noremap <Esc>3 3gt
@@ -174,24 +172,30 @@ noremap <Esc>7 7gt
 noremap <Esc>8 8gt
 noremap <Esc>9 9gt
 noremap <Esc>0 10g
-noremap <C-w>m :vnew<CR> <Bar> nmap <C-w><C-m> <C-w>m
+noremap <silent><C-e> 5<C-e>
+noremap <silent><C-y> 5<C-y>
+noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 
 " Normal mode mappings
+nnoremap <F1> :cp<CR>
+nnoremap <F2> :cn<CR>
+nnoremap <F3> :cl<CR>
+nnoremap <F4> :clast<CR>
+nnoremap <F5> :make<CR>
+nnoremap <F6> :call DebugVim("./pyrl.py")<CR>
+nnoremap <F7> :call DebugVim("./sdlpyrl.py")<CR>
+nnoremap <Esc>q :qa<CR>
+nnoremap <Esc>x :close<CR>
 nnoremap <C-s> :update<CR>
+nnoremap <C-w>m :vnew<CR>
+nnoremap <C-w><C-m> :vnew<CR>
+
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 nnoremap <silent><CR> o<C-c>
-nnoremap <silent><Esc>q :qa<CR>
-nnoremap <silent><Esc>x :close<CR>
-nnoremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 nnoremap <silent>Y y$
-nnoremap <silent>j gj
-nnoremap <silent>k gk
-nnoremap <silent><C-e> 5<C-e>
-nnoremap <silent><C-y> 5<C-y>
 
 " Visual mode mappings
-vnoremap <C-s> <Esc>:update<CR>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 vnoremap <Leader>c :s#<C-r>/##<Left>
@@ -209,8 +213,7 @@ noremap! <Esc><C-k> <S-Right>
 " Autocmds
 augroup vimrc
     autocmd!
-    autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=8
-                \ complete+=t commentstring=#%s textwidth=80 define=^\s*\\(def\\\\|class\\)
+    autocmd FileType python call PythonOptions()
     autocmd FileType java setlocal noexpandtab
     autocmd FileType jsp setlocal noexpandtab
     autocmd FileType javascript setlocal noexpandtab
@@ -223,6 +226,40 @@ augroup end
 runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! RemoveTrailingWhitespace %s/\s\+$//
+
+function! PythonOptions()
+    setlocal expandtab
+    setlocal shiftwidth=4
+    setlocal softtabstop=4
+    setlocal tabstop=8
+    setlocal complete+=t
+    setlocal commentstring=#%s
+    setlocal textwidth=79
+    setlocal define=^\s*\\(def\\\\|class\\)
+
+    " py.test efm
+    setlocal efm=%-G%f:%l:\ in\ %s
+    setlocal efm+=%EE%\\s%#%m
+    setlocal efm+=%-G%\\s%#
+    setlocal efm+=%Z%f:%l:\ %s
+    setlocal efm+=%f:%l:\ %m
+
+    " Python efm
+    setlocal efm+=%E\ \ File\ \"%f\"\\,\ line\ %l%.%#
+    setlocal efm+=%C\ \ \ \ %.%#
+    setlocal efm+=%Z%m
+
+    " Filter useless lines
+    setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):
+
+    " Filter success/neutral lines
+    setlocal efm+=%-Gpy.test%.%#
+    setlocal efm+=%-G=%\\+%.%#=%\\+
+    setlocal efm+=%-Gplatform%.%#
+    setlocal efm+=%-Gcollected%.%#
+    setlocal efm+=%-G%f\ .%\\+
+
+endfunction
 
 " Small screen optimization
 function! OptimizeSizeSettings()
@@ -237,32 +274,21 @@ endfunction
 call OptimizeSizeSettings()
 
 function! BackspaceIgnoreIndent()
-  if search('^\s\+\%#', 'bn') != 0
-    return "\<c-u>\<c-h>"
-  else
-    return "\<c-h>"
-  endif
+    if search('^\s\+\%#', 'bn') != 0
+        return "\<c-u>\<c-h>"
+    else
+        return "\<c-h>"
+    endif
 endfunction
 
-nmap <silent><F5>
-\ :if executable("./debug_vim") <Bar>
-    \ execute("!./debug_vim ./pyrl.py") <Bar>
-    \ if filereadable("errors.err") <Bar>
-        \ cf <Bar>
-        \ clast <Bar>
-    \ endif <Bar>
-\ else <Bar>
-    \ make <Bar>
-\ endif<CR>
-
-nmap <silent><F6>
-\ :if executable("./debug_vim") <Bar>
-    \ execute("!./debug_vim ./sdlpyrl.py") <Bar>
-    \ if filereadable("errors.err") <Bar>
-        \ cf <Bar>
-        \ clast <Bar>
-    \ endif <Bar>
-\ else <Bar>
-    \ make <Bar>
-\ endif<CR>
-finish
+function! DebugVim(target)
+    if executable("./debug_vim")
+        execute("!./debug_vim " . a:target)
+        if filereadable("data/errors.err")
+            cf data/errors.err
+            clast
+        endif
+    else
+        make
+    endif
+endfunction
