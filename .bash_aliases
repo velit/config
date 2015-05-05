@@ -31,6 +31,7 @@ alias ll=$LS_DEFAULT'  -lA'
 alias grep='"grep" --color=auto'
 alias fgrep='"fgrep" --color=auto'
 alias egrep='"egrep" --color=auto'
-alias untar='"tar" -xvf'
 alias mv='"mv" -i'
 alias cp='"cp" -i'
+alias extract='"dtrx" -v'
+alias untar=extract
