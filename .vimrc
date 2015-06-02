@@ -13,11 +13,14 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
-Plugin 'tpope/vim-fugitive'
+Plugin 'argtextobj.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'klen/python-mode'
-Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin '5long/pytest-vim-compiler'
+Plugin 'UltiSnips'
 
 call vundle#end()
 
@@ -69,12 +72,13 @@ colorscheme tappi
 silent! set undodir=~/.vim/temp/undo//,.
 silent! set undofile
 
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " CtrlP
 let g:ctrlp_map = ''
 let g:ctrlp_switch_buffer = ''
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_open_new_file = 'r'
 nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
@@ -90,9 +94,9 @@ let g:pymode_warnings = 0
 
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257']
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E501,D10,C0111,C0301,R0914,E128,E265,E116,E127,E731,W0212,W0621,E221,C0326,E272,E266"
+let g:pymode_lint_ignore = "E501,D10,C0111,C0301,R0914,E128,E265,E116,E127,E731,W0212,W0621,E221,C0326,E272,E266,E701,E202,E122"
 
-let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'pytest']
+let g:pymode_rope_autoimport_modules = ['os', 'sys', 'shutil', 'datetime', 'pytest']
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
 
@@ -124,7 +128,7 @@ noremap <Leader>k <C-[>
 
 nnoremap <Leader>h :vertical help 
 nnoremap <Leader>H :tab help 
-nnoremap <Leader>c :%s#<C-r>/##<Left>
+nnoremap <Leader>c :%s###<Left>
 
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
@@ -136,9 +140,9 @@ vnoremap <Leader>s y/\V<C-r>"<CR>
 vnoremap <Leader>w y/\V\<<C-r>"\><CR>
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
-nnoremap <Leader><Leader>l :lcd %:h <Bar> pwd<CR>
+nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>l :source ~/.vim/temp/session.vim<CR>
 nnoremap <silent> <Leader><Leader>r :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nmap <silent> <Leader><Leader>C ,,r:only <Bar> e ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 
@@ -152,6 +156,8 @@ inoremap <expr><C-h> BackspaceIgnoreIndent()
 " Normal / Visual / Operator pending maps
 noremap j gj
 noremap k gk
+noremap / /\v
+noremap ? ?\v
 noremap <C-p> <C-i>
 noremap <C-h> gT
 noremap <C-l> gt
@@ -180,8 +186,8 @@ nnoremap <F1> :cp<CR>
 nnoremap <F2> :cn<CR>
 nnoremap <F3> :cl<CR>
 nnoremap <F4> :clast<CR>
-nnoremap <F5> :make<CR>
-nnoremap <F6> :call DebugVim("./pyrl.py")<CR>
+nnoremap <F5> :call DebugVim("./pyrl.py")<CR>
+nnoremap <F6> :compiler pytest-3<CR> :make<CR>
 nnoremap <F7> :call DebugVim("./sdlpyrl.py")<CR>
 nnoremap <Esc>q :qa<CR>
 nnoremap <Esc>x :close<CR>
@@ -189,15 +195,14 @@ nnoremap <C-s> :update<CR>
 nnoremap <C-w>m :vnew<CR>
 nnoremap <C-w><C-m> :vnew<CR>
 
-nnoremap <Tab> >>
-nnoremap <S-Tab> <<
 nnoremap <silent><CR> o<C-c>
 nnoremap <silent>Y y$
+nnoremap <silent>yY 0y$
 
 " Visual mode mappings
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-vnoremap <Leader>c :s#<C-r>/##<Left>
+vnoremap <Leader>c :s###<Left>
 
 " Easier movement sometimes
 noremap! <Esc>h <Left>
@@ -236,27 +241,11 @@ function! PythonOptions()
     setlocal textwidth=90
     setlocal define=^\s*\\(def\\\\|class\\)
 
-    " py.test efm
-    setlocal efm=%-G%f:%l:\ in\ %s
-    setlocal efm+=%EE%\\s%#%m
-    setlocal efm+=%-G%\\s%#
-    setlocal efm+=%Z%f:%l:\ %s
-    setlocal efm+=%f:%l:\ %m
-
     " Python efm
     setlocal efm+=%E\ \ File\ \"%f\"\\,\ line\ %l%.%#
     setlocal efm+=%C\ \ \ \ %.%#
     setlocal efm+=%Z%m
-
-    " Filter useless lines
     setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):
-
-    " Filter success/neutral lines
-    setlocal efm+=%-Gpy.test%.%#
-    setlocal efm+=%-G=%\\+%.%#=%\\+
-    setlocal efm+=%-Gplatform%.%#
-    setlocal efm+=%-Gcollected%.%#
-    setlocal efm+=%-G%f\ .%\\+
 
 endfunction
 
@@ -283,8 +272,8 @@ endfunction
 function! DebugVim(target)
     if executable("./debug_vim")
         execute("!./debug_vim " . a:target)
-        if filereadable("save_data/errors.err")
-            cf save_data/errors.err
+        if filereadable("errors.err")
+            cf errors.err
             clast
         endif
     else
