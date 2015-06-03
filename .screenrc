@@ -2,3 +2,4 @@ startup_message off
 term "screen-256color"
 maptimeout 0
 bind V split -v
+escape ^Qq
