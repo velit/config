@@ -20,7 +20,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'klen/python-mode'
 Plugin 'tpope/vim-fugitive'
 Plugin '5long/pytest-vim-compiler'
-"Plugin 'UltiSnips'
+Plugin 'UltiSnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -84,6 +85,16 @@ nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
+" NERDComment
+let g:NERDCreateDefaultMappings = 0
+noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<Esc>i"
+
 " PyMode
 let g:pymode_folding = 0
 let g:pymode_options = 0
@@ -123,10 +134,6 @@ let g:pymode_run_bind                    = 'öe'
 
 nnoremap <silent> öa :PymodeLint<CR>
 nnoremap <silent> öt :compiler pytest-3<CR>:make %<CR>
-
-" NERDComment
-let g:NERDCreateDefaultMappings = 0
-noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 " Leader maps
 noremap <Leader>j <C-]>
@@ -171,8 +178,6 @@ noremap <C-k> <C-w>w
 noremap <C-j> <C-w>W
 noremap <Esc>h ^
 noremap <Esc>l $
-noremap <Esc>k {
-noremap <Esc>j }
 noremap <Esc>1 1gt
 noremap <Esc>2 2gt
 noremap <Esc>3 3gt
@@ -188,6 +193,8 @@ noremap <silent><C-y> 5<C-y>
 noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
 
 " Normal mode mappings
+noremap <Esc>k >>
+noremap <Esc>j <<
 nnoremap <F1> :cp<CR>
 nnoremap <F2> :cn<CR>
 nnoremap <F3> :cl<CR>
@@ -206,8 +213,8 @@ nnoremap <silent>Y y$
 nnoremap <silent>yY 0y$
 
 " Visual mode mappings
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
+vnoremap <Esc>k >gv
+vnoremap <Esc>j <gv
 vnoremap <Leader>c :s###<Left>
 
 " Easier movement sometimes
