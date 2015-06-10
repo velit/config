@@ -57,7 +57,7 @@ set synmaxcol=1000
 set tabpagemax=99
 set textwidth=80
 set timeoutlen=600
-set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc
+set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc,*.class
 set wildmenu
 set wildmode=longest:list
 set wrapscan
@@ -231,9 +231,9 @@ noremap! <Esc><C-k> <S-Right>
 augroup vimrc
     autocmd!
     autocmd FileType python call PythonOptions()
-    autocmd FileType java setlocal noexpandtab
-    autocmd FileType jsp setlocal noexpandtab
-    autocmd FileType javascript setlocal noexpandtab
+    autocmd FileType java call JavaOptions()
+    autocmd FileType jsp call JavaOptions()
+    autocmd FileType javascript call JavaOptions()
 
     autocmd VimResized * call OptimizeSizeSettings()
     autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -259,6 +259,15 @@ function! PythonOptions()
     setlocal efm+=%C\ \ \ \ %.%#
     setlocal efm+=%Z%m
     setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):
+
+endfunction
+
+function! JavaOptions()
+    setlocal noexpandtab
+    setlocal shiftwidth=4
+    setlocal softtabstop=4
+    setlocal tabstop=4
+    setlocal textwidth=120
 
 endfunction
 

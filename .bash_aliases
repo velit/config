@@ -19,6 +19,7 @@ export ESCDELAY=25
 export FIGNORE=$FIGNORE:.pyc
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
@@ -33,5 +34,5 @@ alias fgrep='"fgrep" --color=auto'
 alias egrep='"egrep" --color=auto'
 alias mv='"mv" -i'
 alias cp='"cp" -i'
-alias extract='"dtrx" -v'
+alias extract='"dtrx" -vn --one=here'
 alias untar=extract
