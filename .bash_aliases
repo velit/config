@@ -16,18 +16,16 @@ if [ -d "$HOME/links" ] ; then
 fi
 
 export ESCDELAY=25
-export FIGNORE=$FIGNORE:.pyc
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
-alias ls=$LS_DEFAULT' --ignore="*.pyc"'
-alias l=$LS_DEFAULT' -1 --ignore="*.pyc"'
-alias f=$LS_DEFAULT' -1 --ignore="*.pyc"'
-alias la=$LS_DEFAULT' -1As'
-alias ll=$LS_DEFAULT'  -lA'
+alias ls="$LS_DEFAULT -w 80"
+alias l="$LS_DEFAULT -1"
+alias la="$LS_DEFAULT -1As"
+alias ll="$LS_DEFAULT  -lA"
 
 alias grep='"grep" --color=auto'
 alias fgrep='"fgrep" --color=auto'
