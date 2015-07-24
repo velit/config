@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin '5long/pytest-vim-compiler'
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ludovicchabant/vim-gutentags'
 
 call vundle#end()
 
@@ -74,6 +75,9 @@ silent! set undodir=~/.vim/temp/undo//,.
 silent! set undofile
 
 let mapleader = "\<Space>"
+
+" Fugitive
+nnoremap <Leader>g :Ggrep ""<Left>
 
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
@@ -155,8 +159,8 @@ nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent> <Leader>V :tab drop $MYVIMRC<CR>
 nnoremap <silent> <Leader>v :vs $MYVIMRC<CR>
 
-vnoremap <Leader>s y/\V<C-r>"<CR>
-vnoremap <Leader>w y/\V\<<C-r>"\><CR>
+vnoremap <Leader>s y?\V<C-r>"<CR>
+vnoremap <Leader>w y?\V\<<C-r>"\><CR>
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>

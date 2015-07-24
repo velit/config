@@ -23,9 +23,10 @@
     dfc = diff --cached
     lg = log
     h = help
+    last = log -1
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    find = "!f() { git ls-files \"*$@*\"; }; f"
-    whoami = !echo \"$(git config --get user.name) <$(git config --get user.email)>\"
+    find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
+    whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
     ignored = ls-files --others -i --exclude-standard
     yolo = "!git add --all; git commit"
 [mergetool]
