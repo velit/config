@@ -22,7 +22,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin '5long/pytest-vim-compiler'
 Plugin 'UltiSnips'
 Plugin 'honza/vim-snippets'
-Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'qpkorr/vim-renamer'
 
 call vundle#end()
 
@@ -159,7 +160,7 @@ nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
 nnoremap <silent> <Leader>V :tab drop $MYVIMRC<CR>
 nnoremap <silent> <Leader>v :vs $MYVIMRC<CR>
 
-vnoremap <Leader>s y?\V<C-r>"<CR>
+vnoremap <Leader>s y$?\V<C-r>"<CR>
 vnoremap <Leader>w y?\V\<<C-r>"\><CR>
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
@@ -278,6 +279,8 @@ function! JavaOptions()
     setlocal softtabstop=4
     setlocal tabstop=4
     setlocal textwidth=120
+    inoremap <C-@> <C-x><C-u>
+    nnoremap öi :JavaImport<CR>
 
 endfunction
 

@@ -33,3 +33,5 @@
     keepBackup = false
 [push]
     default = simple
+[grep]
+    linenumber = true
