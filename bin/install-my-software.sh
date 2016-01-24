@@ -1,4 +1,6 @@
-build-essential
+#!/bin/sh
+
+INSTALL_LIST="build-essential
 curl
 devtodo
 exuberant-ctags
@@ -8,6 +10,8 @@ ipython
 kompare
 ncurses-doc
 ncurses-term
+open-vm-tools
+open-vm-tools-desktop
 pwgen
 python-pytest
 python3
@@ -19,13 +23,16 @@ tree
 vim-gtk
 virtualenvwrapper
 wajig
-
+ssh
 texinfo
 texlive
 texlive-font-utils
 texlive-lang-english
 texlive-lang-european
-texlive-lang-finnish
 texlive-latex-base
 texlive-latex-extra
-texlive-latex-recommended
+texlive-latex-recommended"
+
+sudo apt-get install $INSTALL_LIST
+
+#texlive-lang-finnish 

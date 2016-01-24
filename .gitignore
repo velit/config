@@ -1,7 +1,7 @@
 /*
 !.adom.data/
 !.vim/
-!.apt-install-list
+!.install-software.sh
 !.bash_aliases
 !.gitconfig
 !.gitignore

@@ -19,8 +19,9 @@
     co = checkout
     st = status
     df = diff
+    dfs = diff --stat
     dc = diff --cached
-    dfc = diff --cached
+    dcs = diff --cached --stat
     lg = log
     h = help
     last = log -1

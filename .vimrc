@@ -118,6 +118,7 @@ let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pep257']
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_ignore = "E501,D10,C0111,C0301,R0914,E128,E265,E116,E127,E731,W0212,W0621,E221,C0326,E272,E266,E701,E202,E122,E702"
 
+let g:pymode_rope_autoimport = 1
 "let g:pymode_rope_autoimport_modules = ['os', 'sys', 'shutil', 'datetime', 'pytest']
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
