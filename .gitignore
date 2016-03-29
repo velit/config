@@ -1,5 +1,5 @@
-*
-!.adom.data/
-!.vim/
+/*
 !bin/
 !links/
+!.vim/
+!.adom.data/

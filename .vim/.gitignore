@@ -1,5 +1,7 @@
 .netrwhist
-bundle
-temp
-eclim
-plugin
+viminfo
+autoload/
+bundle/
+eclim/
+plugged/
+temp/

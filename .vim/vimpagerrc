@@ -1,0 +1,13 @@
+source ~/.vim/settings.vim
+
+set cmdheight=1
+set laststatus=0
+set scrolljump=1
+
+hi Normal ctermfg=252 ctermbg=none cterm=none term=none
+
+let mapleader = ","
+let g:less = {}
+let g:less.scrolloff = 0
+
+" vim: ft=vim

@@ -45,6 +45,7 @@ setopt histignorealldups
 setopt histignorespace
 setopt incappendhistory
 setopt longlistjobs
+setopt sharehistory
 
 # Use emacs keybindings
 bindkey -e
