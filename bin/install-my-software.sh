@@ -1,8 +1,10 @@
 #!/bin/sh
 
-INSTALL_LIST="build-essential
+INSTALL_LIST="
+build-essential
 curl
 devtodo
+dtrx
 exuberant-ctags
 git
 htop
@@ -18,11 +20,9 @@ python3
 python3-pytest
 realpath
 screen
+sharutils
+silversearcher-ag
 source-highlight
-tree
-vim-gtk
-virtualenvwrapper
-wajig
 ssh
 texinfo
 texlive
@@ -31,8 +31,13 @@ texlive-lang-english
 texlive-lang-european
 texlive-latex-base
 texlive-latex-extra
-texlive-latex-recommended"
+texlive-latex-recommended
+tree
+vim-gtk
+virtualenvwrapper
+wajig
+"
 
 sudo apt-get install $INSTALL_LIST
 
-#texlive-lang-finnish 
+#texlive-lang-finnish

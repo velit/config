@@ -15,6 +15,7 @@ if [ -d "$HOME/links" ] ; then
     PATH="$HOME/links:$PATH"
 fi
 
+export EDITOR="vim"
 export ESCDELAY=25
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"

@@ -1,5 +1,7 @@
 set nocompatible
 
+python3 pass
+
 "Vundle bootstrap
 if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
     exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/vundle/'
@@ -82,7 +84,7 @@ nnoremap <Leader>g :Ggrep ""<Left>
 
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --skip-vcs-ignores -g ""'
     let g:ctrlp_use_caching = 0
 endif
 
@@ -119,7 +121,7 @@ let g:pymode_lint_cwindow = 0
 let g:pymode_lint_ignore = "E501,D10,C0111,C0301,R0914,E128,E265,E116,E127,E731,W0212,W0621,E221,C0326,E272,E266,E701,E202,E122,E702"
 
 let g:pymode_rope_autoimport = 1
-"let g:pymode_rope_autoimport_modules = ['os', 'sys', 'shutil', 'datetime', 'pytest']
+let g:pymode_rope_autoimport_modules = ['os', 'sys', 'shutil', 'datetime', 'pytest', 'array', 'collections', 'curses', 'enum', 'functools', 'gzip', 'io', 'inspect', 'itertools', 'json', 'locale', 'logging', 'math', 'operator', 'pickle', 'random']
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_goto_definition_cmd = 'e'
 
@@ -158,8 +160,10 @@ nnoremap <Leader>c :%s###<Left>
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
-nnoremap <silent> <Leader>V :tab drop $MYVIMRC<CR>
+nnoremap <silent> <Leader>V :tabedit $MYVIMRC<CR>
 nnoremap <silent> <Leader>v :vs $MYVIMRC<CR>
+nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
+nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>O
 
 vnoremap <Leader>s y$?\V<C-r>"<CR>
 vnoremap <Leader>w y?\V\<<C-r>"\><CR>
@@ -315,4 +319,22 @@ function! DebugVim(target)
     else
         make
     endif
+endfunction
+
+function! s:setup_one_action_paste() abort
+  let s:paste = &paste
+  let s:mouse = &mouse
+  set paste
+  set mouse=
+  augroup one_action_paste
+    autocmd!
+    autocmd InsertLeave *
+          \ if exists('s:paste') |
+          \   let &paste = s:paste |
+          \   let &mouse = s:mouse |
+          \   unlet s:paste |
+          \   unlet s:mouse |
+          \ endif |
+          \ autocmd! one_action_paste
+  augroup END
 endfunction

@@ -1,12 +1,5 @@
-/*
+*
 !.adom.data/
 !.vim/
-!.install-software.sh
-!.bash_aliases
-!.gitconfig
-!.gitignore
-!.inputrc
-!.screenrc
-!.vimrc
 !bin/
 !links/
