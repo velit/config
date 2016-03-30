@@ -10,6 +10,8 @@ export ESCDELAY=25
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
+export FZF_DEFAULT_COMMAND='ag --nocolor --hidden --ignore .git -g ""'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
@@ -28,12 +30,12 @@ alias untar=extract
 
 alias md='mkdir -p'
 alias rd=rmdir
-alias d='dirs -v | head -10'
 
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
+alias -g .......='../../../../../..'
 
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 

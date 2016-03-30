@@ -7,16 +7,17 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug '5long/pytest-vim-compiler'
-Plug 'UltiSnips'
 Plug 'argtextobj.vim'
 Plug 'godlygeek/tabular'
-Plug 'honza/vim-snippets'
 Plug 'kien/ctrlp.vim'
-Plug 'klen/python-mode'
-Plug 'qpkorr/vim-renamer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'qpkorr/vim-renamer'
+Plug 'UltiSnips' | Plug 'honza/vim-snippets'
+
+Plug '5long/pytest-vim-compiler', { 'for': 'python' }
+Plug 'klen/python-mode',          { 'for': 'python' }
+
 "Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
@@ -25,8 +26,8 @@ call plug#end()
 nnoremap <Leader>g :Ggrep ""<Left>
 
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden --skip-vcs-ignores -g ""'
+    set grepprg="ag --nogroup --nocolor --hidden --ignore .git"
+    let g:ctrlp_user_command = 'ag %s --nocolor --hidden --ignore .git -g ""'
     let g:ctrlp_use_caching = 0
 endif
 
@@ -39,6 +40,7 @@ nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <Leader>~ :CtrlP ~<CR>
 
 " PyMode
 let g:pymode_folding = 0

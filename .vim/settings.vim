@@ -56,10 +56,10 @@ nnoremap <Leader>c :%s###<Left>
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
-nnoremap <silent> <Leader>v :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plug.vim <Bar> sp ~/.vim/vimrc<CR>z3<CR><C-w>h
-nnoremap <silent> <Leader>V :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
+nnoremap <silent> <Leader>v :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plug.vim<CR><C-w>h
+nnoremap <silent> <Leader>r :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
-nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>O
+nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
 
 vnoremap <Leader>s y$?\V<C-r>"<CR>
 vnoremap <Leader>w y?\V\<<C-r>"\><CR>
@@ -68,7 +68,6 @@ nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
 nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
-
 nmap <silent> <Leader><Leader>C :source $MYVIMRC <BAR> only <Bar> e ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 
 " Insert maps
