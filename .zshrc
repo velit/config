@@ -10,8 +10,6 @@ export ESCDELAY=25
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
-export FZF_DEFAULT_COMMAND='ag --nocolor --hidden --ignore .git -g ""'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
@@ -67,5 +65,18 @@ HISTFILE=~/.zsh_history
 
 eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' special-dirs true
 autoload -Uz compinit
 compinit
+
+if [[ -x /usr/lib/command-not-found ]] ; then
+    if (( ! ${+functions[command_not_found_handler]} )) ; then
+        function command_not_found_handler {
+            [[ -x /usr/lib/command-not-found ]] || return 1
+            /usr/lib/command-not-found --no-failure-msg -- ${1+"$1"} && :
+        }
+    fi
+fi
+
+export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

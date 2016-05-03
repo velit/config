@@ -15,20 +15,21 @@ set mouse=a ttymouse=xterm2
 set modeline
 set nohidden
 set nolist
+set nowrap
 set numberwidth=2
 set pastetoggle=<F12>
 set ruler
 set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
 set scrolljump=-10
-set scrolloff=5
+set scrolloff=0
 set sessionoptions-=options
 set showcmd
 set smartcase
 set splitbelow splitright
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
-set synmaxcol=3000
+set synmaxcol=5000
 set tabpagemax=99
-set textwidth=80
+set textwidth=79
 set timeoutlen=600
 set undodir=~/.vim/temp/undo//,.
 set undofile
@@ -44,6 +45,7 @@ filetype plugin indent on
 colorscheme tappi
 
 " Leader maps
+nmap <Space> <Nop>
 let mapleader = "\<Space>"
 
 noremap <Leader>j <C-]>
@@ -52,12 +54,14 @@ noremap <Leader>k <C-[>
 nnoremap <Leader>h :vertical help 
 nnoremap <Leader>H :tab help 
 nnoremap <Leader>c :%s###<Left>
+nnoremap <Leader>r :!%:p 
 
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
+nnoremap <silent> <Leader>w :set wrap!<CR>
 nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
-nnoremap <silent> <Leader>v :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plug.vim<CR><C-w>h
-nnoremap <silent> <Leader>r :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
+nnoremap <silent> <Leader>z :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plug.vim<CR><C-w>h
+nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
 
@@ -80,8 +84,6 @@ inoremap <expr><C-h> BackspaceIgnoreIndent()
 " Normal / Visual / Operator pending maps
 noremap j gj
 noremap k gk
-noremap / /\v
-noremap ? ?\v
 noremap <C-p> <C-i>
 noremap <C-h> gT
 noremap <C-l> gt
@@ -102,6 +104,10 @@ noremap <Esc>0 10g
 noremap <silent><C-e> 5<C-e>
 noremap <silent><C-y> 5<C-y>
 noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
+noremap , ;
+noremap ; ,
+noremap / /\v
+noremap ? ?\v
 
 " Normal mode mappings
 noremap <Esc>k >>
@@ -119,6 +125,8 @@ nnoremap <Esc>x :close<CR>
 nnoremap <C-s> :update<CR>
 nnoremap <C-w>m :vnew<CR>
 nnoremap <C-w><C-m> :vnew<CR>
+nnoremap <C-w>t :tabnew<CR>
+nnoremap <C-w><C-m> :tabnew<CR>
 
 nnoremap <silent><CR> o<C-c>
 nnoremap <silent>Y y$
@@ -163,7 +171,7 @@ function! PythonOptions()
     setlocal tabstop=8
     setlocal complete+=t
     setlocal commentstring=#%s
-    setlocal textwidth=90
+    setlocal textwidth=100
     setlocal define=^\s*\\(def\\\\|class\\)
 
     " Python efm
