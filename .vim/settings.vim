@@ -1,16 +1,23 @@
+let $LANG = 'en_US'
 set autoindent
 set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
-set directory=~/.vim/temp/swap//,.,~/tmp,/var/tmp,/tmp
+set directory=$MYVIMFOLDER/temp/swap//,.,~/tmp,/var/tmp,/tmp
+set encoding=utf-8
 set expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set formatoptions+=l
 set gdefault
+set guioptions-=L
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
 set history=100
 set hlsearch
 set ignorecase
 set incsearch
-set listchars=tab:►\ ,trail:·,eol:$
+set langmenu=en_US
+set listchars=tab:►\ ,nbsp:·,trail:·,precedes:<,extends:>,eol:¬
 set mouse=a ttymouse=xterm2
 set modeline
 set nohidden
@@ -23,6 +30,7 @@ set rulerformat=%50(%=%f\ %m%r\ %-11.(%l,%c%V%)\ %Y\ %P%)
 set scrolljump=-10
 set scrolloff=0
 set sessionoptions-=options
+set showbreak=>\ 
 set showcmd
 set smartcase
 set splitbelow splitright
@@ -31,12 +39,13 @@ set synmaxcol=5000
 set tabpagemax=99
 set textwidth=79
 set timeoutlen=600
-set undodir=~/.vim/temp/undo//,.
+set undodir=$MYVIMFOLDER/temp/undo//,.
 set undofile
-set viminfo+=n~/.vim/viminfo
+set viminfo+=n$MYVIMFOLDER/viminfo
 set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc,*.class
 set wildmenu
 set wildmode=longest:list
+set wrap
 set wrapscan
 "silent! set new-option
 
@@ -51,8 +60,8 @@ let mapleader = "\<Space>"
 noremap <Leader>j <C-]>
 noremap <Leader>k <C-[>
 
-nnoremap <Leader>h :vertical help 
-nnoremap <Leader>H :tab help 
+nnoremap <Leader>h :vnew <Bar> H 
+nnoremap <Leader>H :tabnew <Bar> H 
 nnoremap <Leader>c :%s###<Left>
 nnoremap <Leader>r :!%:p 
 
@@ -60,7 +69,7 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>w :set wrap!<CR>
 nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
-nnoremap <silent> <Leader>z :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plug.vim<CR><C-w>h
+nnoremap <silent> <Leader>z :tabe $MYVIMFOLDER/settings.vim <Bar> vs $MYVIMFOLDER/plug.vim<CR><C-w>h
 nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
@@ -70,9 +79,9 @@ vnoremap <Leader>w y?\V\<<C-r>"\><CR>
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>
-nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
-nmap <silent> <Leader><Leader>C :source $MYVIMRC <BAR> only <Bar> e ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+nnoremap <Leader><Leader>s :mksession! $MYVIMFOLDER/temp/session.vim<CR>
+nnoremap <Leader><Leader>o :source $MYVIMFOLDER/temp/session.vim<CR>
+nmap <silent> <Leader><Leader>C :source $MYVIMFOLDER/colors/tappi.vim <BAR> only <Bar> e $MYVIMFOLDER/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 
 " Insert maps
 inoremap <S-Tab> <BS>
@@ -89,18 +98,18 @@ noremap <C-h> gT
 noremap <C-l> gt
 noremap <C-k> <C-w>w
 noremap <C-j> <C-w>W
-noremap <Esc>h ^
-noremap <Esc>l $
-noremap <Esc>1 1gt
-noremap <Esc>2 2gt
-noremap <Esc>3 3gt
-noremap <Esc>4 4gt
-noremap <Esc>5 5gt
-noremap <Esc>6 6gt
-noremap <Esc>7 7gt
-noremap <Esc>8 8gt
-noremap <Esc>9 9gt
-noremap <Esc>0 10g
+noremap <M-h> ^
+noremap <M-l> $
+noremap <M-1> 1gt
+noremap <M-2> 2gt
+noremap <M-3> 3gt
+noremap <M-4> 4gt
+noremap <M-5> 5gt
+noremap <M-6> 6gt
+noremap <M-7> 7gt
+noremap <M-8> 8gt
+noremap <M-9> 9gt
+noremap <M-0> 10g
 noremap <silent><C-e> 5<C-e>
 noremap <silent><C-y> 5<C-y>
 noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
@@ -110,8 +119,8 @@ noremap / /\v
 noremap ? ?\v
 
 " Normal mode mappings
-noremap <Esc>k >>
-noremap <Esc>j <<
+noremap <M-k> >>
+noremap <M-j> <<
 nnoremap <F1> :cp<CR>
 nnoremap <F2> :cn<CR>
 nnoremap <F3> :cl<CR>
@@ -119,9 +128,9 @@ nnoremap <F4> :clast<CR>
 nnoremap <F5> :call DebugVim("./pyrl.py")<CR>
 nnoremap <F6> :compiler pytest-3<CR>:make<CR>
 nnoremap <F7> :call DebugVim("./sdlpyrl.py")<CR>
-nnoremap <Esc>q :qa<CR>
-nnoremap <Esc>z :tabclose<CR>
-nnoremap <Esc>x :close<CR>
+nnoremap <M-q> :qa<CR>
+nnoremap <M-z> :tabclose<CR>
+nnoremap <M-x> :close<CR>
 nnoremap <C-s> :update<CR>
 nnoremap <C-w>m :vnew<CR>
 nnoremap <C-w><C-m> :vnew<CR>
@@ -133,19 +142,19 @@ nnoremap <silent>Y y$
 nnoremap <silent>yY 0y$
 
 " Visual mode mappings
-vnoremap <Esc>k >gv
-vnoremap <Esc>j <gv
+vnoremap <M-k> >gv
+vnoremap <M-j> <gv
 vnoremap <Leader>c :s###<Left>
 
 " Easier movement sometimes
-noremap! <Esc>h <Left>
-noremap! <Esc>l <Right>
-noremap! <Esc>j <Down>
-noremap! <Esc>k <Up>
-noremap! <Esc><C-h> <Home>
-noremap! <Esc><C-l> <End>
-noremap! <Esc><C-j> <S-Left>
-noremap! <Esc><C-k> <S-Right>
+noremap! <M-h> <Left>
+noremap! <M-l> <Right>
+noremap! <M-j> <Down>
+noremap! <M-k> <Up>
+noremap! <M-C-h> <Home>
+noremap! <M-C-l> <End>
+noremap! <M-C-j> <S-Left>
+noremap! <M-C-k> <S-Right>
 
 " Autocmds
 augroup vimrc
@@ -156,13 +165,14 @@ augroup vimrc
     autocmd FileType javascript call JavaOptions()
 
     autocmd VimResized * call OptimizeSmallScreen()
-    autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
+    "autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 augroup end
 
 " Custom commands and functions
 runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! RemoveTrailingWhitespace %s/\s\+$//
+command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
 
 function! PythonOptions()
     setlocal expandtab

@@ -33,6 +33,6 @@
 [mergetool]
     keepBackup = false
 [push]
-    default = simple
+    default = current
 [grep]
     linenumber = true

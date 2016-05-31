@@ -3,6 +3,7 @@ stty start ''
 
 export PATH=~/links:~/bin:$PATH
 export PAGER=~/bin/vimpager
+export MYVIMFOLDER=~/.vim
 alias less=$PAGER
 alias zless=$PAGER
 export EDITOR=vim

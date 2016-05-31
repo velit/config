@@ -1,3 +1,4 @@
 set nocompatible
-source ~/.vim/settings.vim
-source ~/.vim/plug.vim
+source $MYVIMFOLDER/altbinds.vim
+source $MYVIMFOLDER/settings.vim
+source $MYVIMFOLDER/plug.vim
