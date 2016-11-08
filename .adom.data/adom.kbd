@@ -1,4 +1,4 @@
-#
+# DO NOT CHANGE: [Keymap file version 12]
 #  ----------------------------------------------
 #    Keymap file for Ancient Domains Of Mystery
 #  ----------------------------------------------
@@ -29,11 +29,11 @@
 #
 #  Attention: not all combinations of meta keys and normal keys might be
 #  possible. Make sure to check this if you redefine the keyboard.
-#  Note that the ENTER key is equal to (and thus represented by) \Cm.
+#  Note that the ENTER key is equal to (and thus represented by) \n.
 #
 #  IMPORTANT NOTE:
 #  While in theory you can redefine the keys in any way you like in
-#  practice this is not necessarily recommened, because some functions
+#  practice this is not necessarily recommended, because some functions
 #  in ADOM expect certain commands *not* to be bound to certain letters.
 #
 #  The following commands (the abbreviations from the definitions are
@@ -47,693 +47,396 @@
 #    t T z Z \S + -
 #
 #  You *can* set them to one of the keys mentioned but this breaks all
-#  functions for targetting and determining directions. You have been
+#  functions for targeting and determining directions. You have been
 #  warned.
 #
-#  Current version of ADOM: Version 1.2.0
+#  Current version of ADOM: (release 69)
 #
 
-#
 #  Activate trap
-#
-
 ACT:\Ct
 
-#
 #  Apply skill
-#
-
 ASK:a
 
-#
-#  Ascend stairway/Leave location
-#
-
+#  Ascend stair/Leave location
 ASC:x
 
-#
 #  Cast spell
-#
-
 CST:z
 
-#
 #  Chat with monster
-#
-
 TLK:C
 
-#
 #  Change highlight mode
-#
-
 HIL:H
 
-#
 #  Change tactic
-#
-
 TAC:T
 
-#
 #  Check literacy
-#
+LIT::l
 
-LIT:L
-
-#
 #  Clean ears
-#
-
 CLE:\Ce
 
-#
 #  Close door
-#
-
 CLO:c
 
-#
 #  Continuous search
-#
-
 CSE:ws
 
-#
 #  Create short character logfile
-#
-
 CSL:(
 
-#
 #  Create verbose character logfile
-#
-
 CVL:)
 
-#
 #  Create screenshot
-#
-
 CSS:[
 
-#
-#  Descend stairway/Enter location
-#
-
+#  Descend stair/Enter location
 DSC:X
 
-#
 #  Describe weather
-#
-
 DEW::W
 
-#
 #  Dip (something) into (potion)
-#
-
 DIP:!
 
-#
 #  Display available talents
-#
-
 DAT::T
 
-#
 #  Display and quick-mark skills
-#
-
 DSK:A
 
-#
 #  Display background
-#
-
 BKG:B
 
-#
 #  Display bill
-#
+BIL::p
 
-BIL:\Cb
-
-#
 #  Display burden levels
-#
-
 DBL::b
 
-#
 #  Display configuration variables
-#
-
 CFG:=
 
-#
 #  Display chaos powers
-#
-
 CHP:\\
 
-#
 #  Display character information
-#
+DCI:@ \Mq
 
-DCI:@
-
-#
 #  Display companions
-#
-
 DCO::c
 
-#
 #  Display current wealth
-#
-
 MNY:$
 
-#
 #  Display name of your deity
-#
-
 DID::g
 
-#
 #  Display elapsed game time
-#
+DET:\Me
 
-#DET:\Ce
-
-#
 #  Display identified items
-#
-
 IDI:/
 
-#
 #  Display kick statistics
-#
+KST:\Mk
 
-KST:K
-
-#
 #  Display killed monsters
-#
-
 DKM::k
 
-#
 #  Display level map
-#
-
 DLM:\Ml
 
-#
 #  Display message buffer
-#
+MSG:M
 
-MSG:-
-
-#
 #  Display missile statistics
-#
+DMS::m
 
-DMS:M
-
-#
 #  Display monster wound status
-#
-
 MWS::w
 
-#
+#  Display previous hints
+DHM::h
+
 #  Display quest status
-#
+QST:Q
 
-QST:\Cq
-
-#
 #  Display recipes
-#
-
 RCP:R
 
-#
 #  Display required experience
-#
+EXP:\Cx
 
-EXP:\Mx
-
-#
 #  Display talents
-#
+DTL:\Mt ::
 
-DTL:\Mt
-
-#
 #  Display version
-#
+VER:V
 
-VER:v
-
-#
 #  Display weapon skills
-#
-
 DWS:\Cw
 
-#
 #  Display weapon statistics
-#
-
 WST:W
 
-#
 #  Drink
-#
-
 DRK:D
 
-#
 #  Drop item(s)
-#
-
 DRO:d
 
-#
-#  Drop items in a comfortable way
-#
-
+#  Drop items comfortably
 DRC:\Cd
 
-#
 #  Eat
-#
-
 EAT:E
 
-#
+#  Examine environment
+EXE:q
+
+#  Explore unknown areas
+WM?:ww
+
 #  Extended drop
-#
+EDR::d \Md
 
-EDR::d
-
-#
 #  Extended pay
-#
-
 EPA:p
 
-#
 #  Extended use
-#
+EUS:\Cu
 
-EUS:U
-
-#
 #  Give item to monster
-#
-
 GIV:g
 
-#
-#  Handle something
-#
+#  Go attack closest monster
+WMM:wa
 
+#  Go to closest item(s)
+WMI:we
+
+#  Go to closest altar
+WM_:w_
+
+#  Go to closest forge
+WM&:w&
+
+#  Go to position
+WM*:w*
+
+#  Go up or exit
+WM<:wx
+
+#  Go down or enter
+WM>:wX
+
+#  Handle something
 HDL:h
 
-#
 #  Inventory
-#
-
 INV:e
 
-#
 #  Invoke mindcraft
-#
+INM:\t
 
-INM:\Ci
-
-#
 #  Issue order to companion
-#
+ISO:G
 
-ISO:\Co
-
-#
 #  Kick
-#
+KCK:K
 
-KCK:k
-
-#
 #  Look
-#
+LOK:L
 
-LOK:\Cl
-
-#
 #  Mark spells
-#
+MSP::z
 
-MSP::Z
-
-#
 #  Miscellaneous equipment
-#
+STF:I
 
-STF:i
-
-#
 #  Move to the southwest
-#
+MSW:m
 
-MSW:1
-
-#
 #  Move to the south
-#
+MOS:, \D
 
-MOS:2 \D
-
-#
 #  Move to the southeast
-#
+MSE:.
 
-MSE:3
-
-#
 #  Move to the west
-#
+MOW:j \L
 
-MOW:4 \L
-
-#
 #  Move to the east
-#
+MOE:l \R
 
-MOE:6 \R
-
-#
 #  Move to the northwest
-#
+MNW:u
 
-MNW:7
-
-#
 #  Move to the north
-#
+MON:i \U
 
-MON:8 \U
-
-#
 #  Move to the northeast
-#
+MNE:o
 
-MNE:9
-
-#
 #  Name monster/yourself
-#
-
 BAP:n
 
-#
-#  Online help
-#
+#  Act reasonably
+OUC:\9
 
+#  Online help
 HLP:?
 
-#
 #  Open door
-#
+OPN:\Co
 
-OPN:o
-
-#
 #  Pay
-#
-
 PAY:P
 
-#
 #  Pick up items primitively (fast)
-#
+PPK:; F
 
-PPK:;
-
-#
 #  Pick up items
-#
+PCK:f
 
-PCK:, +
-
-#
 #  Pick up items comfortably
-#
+CPC:\Cf
 
-CPC:\Cp \M+ \M,
-
-#
 #  Pray
-#
-
 PRA:\Mp
 
-#
-#  Examine environment
-#
-
-EXE:*
-
-#
 #  Quit game
-#
+QIT:\Cq
 
-QIT:Q
-
-#
 #  Read
-#
-
 REA:r
 
-#
 #  Recall monster memory
-#
-
 RMM:&
 
-#
 #  Redraw screen
-#
-
 RED:\Cr
 
-#
 #  Repeat last command
-#
+RPT:-
 
-RPT:q
-
-#
 #  Sacrifice
-#
+SAC:O
 
-SAC:O V
-
-#
 #  Save game
-#
-
 SAV:S
 
-#
 #  Search
-#
-
 SEA:s
 
-#
 #  Set tactics to 'berserker'
-#
+ST0:1
 
-ST0:\1
-
-#
 #  Set tactics to 'very aggressive'
-#
+ST1:4
 
-ST1:\4
-
-#
 #  Set tactics to 'aggressive'
-#
+ST2:5
 
-ST2:\5
-
-#
 #  Set tactics to 'normal'
-#
+ST3:2
 
-ST3:\2
-
-#
 #  Set tactics to 'defensive'
-#
+ST4:6
 
-ST4:\6
-
-#
 #  Set tactics to 'very defensive'
-#
+ST5:7
 
-ST5:\7
-
-#
 #  Set tactics to 'coward'
-#
+ST6:3
 
-ST6:\3
-
-#
 #  Set configuration variable
-#
-
 SEV::=
 
-#
-#  Shoot/Throw missile
-#
+#  Set the auto-save interval
+SAS::S
 
+#  Shoot/Throw missile
 SHT:t
 
-#
 #  Swap position with monster
-#
+SWA::s \Cs
 
-SWA::s
-
-#
 #  Switch auto-pickup on/off
-#
-
 CAP:\Ca
 
-#
-#  Switch the dynamic display
-#
+#  Switch message buffer location.
+NMB:\Cnm
 
+#  Switch the dynamic display
 STS::t
 
-#
 #  Switch the required (more) key
-#
-
 CMK:\Ck
 
-#
+#  Switch the left-double-click command
+SPC:\Mc :x
+
 #  Lock/Unlock door
-#
+ULD:\Cl
 
-ULD:\Cu
-
-#
 #  Use item
-#
+USE::u
 
-USE:\Mu
-
-#
 #  Use class power
-#
+UMP:\Mx
 
-UMP:\Cx
-
-#
 #  Use special ability
-#
+SPA:b
 
-SPA:m
-
-#
 #  Use tool
-#
+UTO:U
 
-UTO:u
+#  View all important PC data
+VPD:v
 
-#
+#  View challenge mode setup
+VCM:\Cc
+
 #  Wait
-#
+WAT:k
 
-WAT:. 5
-
-#
 #  Walk to the southwest
-#
+WM1:wm
 
-WM1:w1
-
-#
 #  Walk to the south
-#
+WM2:w, w\D
 
-WM2:w2
-
-#
 #  Walk to the southeast
-#
+WM3:w.
 
-WM3:w3
-
-#
 #  Walk to the west
-#
+WM4:wj w\L
 
-WM4:w4
+#  Extended wait
+WM5:wk
 
-#
-#  Walk on the spot
-#
-
-WM5:w5 w.
-
-#
 #  Walk to the east
-#
+WM6:wl w\R
 
-WM6:w6
-
-#
 #  Walk to the northwest
-#
+WM7:wu
 
-WM7:w7
-
-#
 #  Walk to the north
-#
+WM8:wi w\U
 
-WM8:w8
-
-#
 #  Walk to the northeast
-#
+WM9:wo
 
-WM9:w9
-
-#
 #  Wipe face
-#
+WIF::f
 
-WIF:F
-
-#
 #  Zap wand
-#
-
 ZAP:Z
 
