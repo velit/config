@@ -2,7 +2,6 @@
 .netrwhist
 viminfo
 autoload/
-bundle/
 eclim/
-plugged/
+plugins/
 temp/

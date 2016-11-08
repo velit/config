@@ -26,6 +26,7 @@ alias mv='"mv" -i'
 alias cp='"cp" -i'
 alias extract='"dtrx" -vn --one=here'
 alias untar=extract
+alias folder_sizes='du -sh * .?* | sort -h'
 
 alias md='mkdir -p'
 alias rd=rmdir
@@ -35,6 +36,8 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 alias -g .......='../../../../../..'
+
+alias help=run-help
 
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 
@@ -48,6 +51,8 @@ setopt incappendhistory
 setopt longlistjobs
 setopt sharehistory
 
+unsetopt nomatch
+
 # Use emacs keybindings
 bindkey -e
 
@@ -57,6 +62,9 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+no-operation () {}
+zle -N no-operation
+bindkey "[25~" no-operation
 #bindkey "^[OC" forward-word
 #bindkey "^[OD" backward-word
 

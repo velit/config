@@ -5,11 +5,11 @@ if empty(glob("$MYVIMFOLDER/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y
     execute '!curl -fLo $MYVIMFOLDER/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin('$MYVIMFOLDER/plugged')
+call plug#begin('$MYVIMFOLDER/plugins')
 
 Plug 'argtextobj.vim'
-Plug 'godlygeek/tabular'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'qpkorr/vim-renamer'
@@ -23,27 +23,29 @@ Plug 'klen/python-mode',          { 'for': 'python' }
 call plug#end()
 
 " Fugitive
-nnoremap <Leader>g :Ggrep ""<Left>
+command! -nargs=? -complete=tag GgrepProper let @/="<args>" | Ggrep <q-args>
+nnoremap <Leader>g :tab sp <Bar> GgrepProper 
 
 if executable('ag')
     set grepprg="ag --nogroup --nocolor"
     let g:ctrlp_user_command = 'ag %s --nocolor -g ""'
-    let g:ctrlp_use_caching = 0
 endif
 
 " CtrlP
 let g:ctrlp_map = ''
-let g:ctrlp_switch_buffer = ''
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20'
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_reuse_window = 'netrw\|help'
+let g:ctrlp_switch_buffer = ''
+let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <Leader>e :CtrlP<CR>
+nnoremap <silent> <Leader>E :call OpenCtrlPFromRoot()<CR>
 nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>~ :call OpenFromRoot()<CR>
 
-function! OpenFromRoot()
+function! OpenCtrlPFromRoot()
     let s:user_command = g:ctrlp_user_command
     let g:ctrlp_user_command = 'ag %s --nocolor -u -g ""'
     CtrlP ~

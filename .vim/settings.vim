@@ -42,10 +42,8 @@ set timeoutlen=600
 set undodir=$MYVIMFOLDER/temp/undo//,.
 set undofile
 set viminfo+=n$MYVIMFOLDER/viminfo
-set wildignore+=*.o,*.obj,*.bak,*.exe,*.pyc,*.class
 set wildmenu
 set wildmode=longest:list
-set wrap
 set wrapscan
 "silent! set new-option
 
@@ -55,27 +53,32 @@ colorscheme tappi
 
 " Leader maps
 nmap <Space> <Nop>
+nmap <Esc>[25~ <Nop>
+nmap å <Nop>
 let mapleader = "\<Space>"
 
 noremap <Leader>j <C-]>
 noremap <Leader>k <C-[>
 
-nnoremap <Leader>h :vnew <Bar> H 
+nnoremap <Leader>h :H 
+nnoremap <Leader><C-h> :vnew <Bar> H 
 nnoremap <Leader>H :tabnew <Bar> H 
 nnoremap <Leader>c :%s###<Left>
+nnoremap <Leader>C *Ncgn
 nnoremap <Leader>r :!%:p 
 
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>w :set wrap!<CR>
-nnoremap <silent> <Leader>d :tab sp <Bar> tabm99<CR>
+nnoremap <silent> <Leader>d :tab sp<CR>
 nnoremap <silent> <Leader>z :tabe $MYVIMFOLDER/settings.vim <Bar> vs $MYVIMFOLDER/plug.vim<CR><C-w>h
 nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
 
-vnoremap <Leader>s y$?\V<C-r>"<CR>
-vnoremap <Leader>w y?\V\<<C-r>"\><CR>
+vnoremap <Leader>s y:let @/=@"<CR>
+vnoremap <Leader>c :s###<Left>
+vnoremap <Leader>C y:let @/=@"<CR>cgn
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>
@@ -91,8 +94,8 @@ inoremap <C-s> <Esc>:update<CR>
 inoremap <expr><C-h> BackspaceIgnoreIndent()
 
 " Normal / Visual / Operator pending maps
-noremap j gj
-noremap k gk
+"noremap j gj
+"noremap k gk
 noremap <C-p> <C-i>
 noremap <C-h> gT
 noremap <C-l> gt
@@ -144,7 +147,6 @@ nnoremap <silent>yY 0y$
 " Visual mode mappings
 vnoremap <M-k> >gv
 vnoremap <M-j> <gv
-vnoremap <Leader>c :s###<Left>
 
 " Easier movement sometimes
 noremap! <M-h> <Left>
@@ -164,7 +166,9 @@ augroup vimrc
     autocmd FileType jsp call JavaOptions()
     autocmd FileType javascript call JavaOptions()
 
+    autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
     autocmd VimResized * call OptimizeSmallScreen()
+    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
     "autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 augroup end
 
@@ -181,7 +185,7 @@ function! PythonOptions()
     setlocal tabstop=8
     setlocal complete+=t
     setlocal commentstring=#%s
-    setlocal textwidth=100
+    setlocal textwidth=105
     setlocal define=^\s*\\(def\\\\|class\\)
 
     " Python efm

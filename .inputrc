@@ -4,3 +4,4 @@
 "\e[D": backward-char
 "\eOC": forward-word
 "\eOD": backward-word
+"\e[25~":
