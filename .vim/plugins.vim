@@ -24,7 +24,7 @@ call plug#end()
 
 " Fugitive
 command! -nargs=? -complete=tag GgrepProper let @/="<args>" | Ggrep <q-args>
-nnoremap <Leader>g :tab sp <Bar> GgrepProper 
+nnoremap <Leader>g yiw:tab sp <Bar> GgrepProper <C-r>"
 
 if executable('ag')
     set grepprg="ag --nogroup --nocolor"

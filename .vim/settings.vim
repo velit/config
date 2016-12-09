@@ -1,4 +1,3 @@
-let $LANG = 'en_US'
 set autoindent
 set backspace=indent,eol,start
 set completeopt=longest,menu
@@ -8,15 +7,10 @@ set encoding=utf-8
 set expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set formatoptions+=l
 set gdefault
-set guioptions-=L
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
 set history=100
 set hlsearch
 set ignorecase
 set incsearch
-set langmenu=en_US
 set listchars=tab:►\ ,nbsp:·,trail:·,precedes:<,extends:>,eol:¬
 set mouse=a ttymouse=xterm2
 set modeline
@@ -71,7 +65,7 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>w :set wrap!<CR>
 nnoremap <silent> <Leader>d :tab sp<CR>
-nnoremap <silent> <Leader>z :tabe $MYVIMFOLDER/settings.vim <Bar> vs $MYVIMFOLDER/plug.vim<CR><C-w>h
+nnoremap <silent> <Leader>z :tabe $MYVIMFOLDER/settings.vim <Bar> vs $MYVIMFOLDER/plugins.vim<CR><C-w>h
 nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i

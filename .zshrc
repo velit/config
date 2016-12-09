@@ -52,6 +52,8 @@ setopt longlistjobs
 setopt sharehistory
 
 unsetopt nomatch
+unsetopt prompt_cr
+unsetopt prompt_sp
 
 # Use emacs keybindings
 bindkey -e
