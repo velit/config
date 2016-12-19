@@ -1,0 +1,6 @@
+set langmenu=en_US.UTF-8
+let $LANG = 'en_US'
+set guioptions-=L
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
