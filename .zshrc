@@ -4,13 +4,15 @@ stty start ''
 export PATH=~/links:~/bin:$PATH
 export PAGER=~/bin/vimpager
 export MYVIMFOLDER=~/.vim
+export NEOVIMCONFIG=~/.config/nvim/
+export NEOVIMWORK=~/.local/share/nvim/
 alias less=$PAGER
 alias zless=$PAGER
 export EDITOR=vim
 export ESCDELAY=25
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
+export CLICOLOR=YES
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
@@ -91,3 +93,4 @@ fi
 
 export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh_platform_specific ] && source ~/.zsh_platform_specific

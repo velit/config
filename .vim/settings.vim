@@ -30,6 +30,7 @@ set smartcase
 set splitbelow splitright
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set synmaxcol=5000
+set t_Co=256
 set tabpagemax=99
 set textwidth=79
 set timeoutlen=600
