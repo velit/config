@@ -1,0 +1,34 @@
+set nocompatible
+source ~/.vim/settings.vim
+
+set cmdheight=2
+set laststatus=2
+set scrolljump=1
+set scrolloff=0
+set nomodifiable
+
+hi Normal ctermfg=252 ctermbg=none cterm=none term=none
+
+noremap u <C-u>
+noremap d <C-d>
+noremap q :qa<CR>
+noremap v :call RestoreNormalVimMode()<CR>
+noremap j <C-e>
+noremap k <C-y>
+
+function! RestoreNormalVimMode()
+    unmap u
+    unmap d
+    unmap q
+    unmap v
+    unmap j
+    unmap k
+    set modifiable
+    source ~/.vim/vimrc
+    echo "Normal vim mode engaged"
+endfunction
+
+let g:less = {}
+let g:less.enabled = 0
+
+" vim: ft=vim
