@@ -2,7 +2,6 @@ set autoindent
 set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
-set directory=$NEOVIMWORK/temp/swap//,.,~/tmp,/var/tmp,/tmp
 set encoding=utf-8
 set expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set formatoptions+=l
@@ -33,7 +32,6 @@ set t_Co=256
 set tabpagemax=99
 set textwidth=79
 set timeoutlen=600
-set undodir=$NEOVIMWORK/temp/undo//,.
 set undofile
 set wildmenu
 set wildmode=longest:list

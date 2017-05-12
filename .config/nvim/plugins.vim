@@ -1,11 +1,11 @@
 python3 pass
 
 " Plug
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
-    execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob("$NEOVIMWORK/site/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
+    execute '!curl -fLo $NEOVIMWORK/site/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin('~/.local/share/nvim/plugins')
+call plug#begin('$NEOVIMWORK/plugins')
 
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
@@ -13,6 +13,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'qpkorr/vim-renamer'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
@@ -21,6 +22,9 @@ Plug 'klen/python-mode',          { 'for': 'python' }
 "Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Fugitive
 command! -nargs=? -complete=tag GgrepProper let @/="<args>" | Ggrep <q-args>
