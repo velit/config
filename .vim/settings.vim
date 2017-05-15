@@ -2,7 +2,7 @@ set autoindent
 set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
-set directory=$MYVIMFOLDER/temp/swap//,.,~/tmp,/var/tmp,/tmp
+set directory=$MYVIMFOLDER/temp/swap//,~/tmp,/var/tmp,/tmp
 set encoding=utf-8
 set expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set formatoptions+=l
@@ -34,7 +34,7 @@ set t_Co=256
 set tabpagemax=99
 set textwidth=79
 set timeoutlen=600
-set undodir=$MYVIMFOLDER/temp/undo//,.
+set undodir=$MYVIMFOLDER/temp/undo//,~/tmp,/var/tmp,/tmp
 set undofile
 set viminfo+=n$MYVIMFOLDER/viminfo
 set wildmenu
