@@ -1,3 +1,5 @@
+[ -f ~/.zsh_local ] && source ~/.zsh_local
+
 stty stop ''
 stty start ''
 
@@ -93,4 +95,3 @@ fi
 
 export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zsh_platform_specific ] && source ~/.zsh_platform_specific

@@ -160,6 +160,7 @@ augroup vimrc
     autocmd FileType java call JavaOptions()
     autocmd FileType jsp call JavaOptions()
     autocmd FileType javascript call JavaOptions()
+    autocmd FileType xml call JavaOptions()
 
     autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
     autocmd VimResized * call OptimizeSmallScreen()
@@ -174,10 +175,7 @@ command! RemoveTrailingWhitespace %s/\s\+$//
 command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
 
 function! PythonOptions()
-    setlocal expandtab
-    setlocal shiftwidth=4
-    setlocal softtabstop=4
-    setlocal tabstop=8
+    call ExpandTab()
     setlocal complete+=t
     setlocal commentstring=#%s
     setlocal textwidth=105
@@ -192,13 +190,22 @@ function! PythonOptions()
 endfunction
 
 function! JavaOptions()
-    setlocal noexpandtab
-    setlocal shiftwidth=4
-    setlocal softtabstop=4
-    setlocal tabstop=4
+    call NoExpandTab()
     setlocal textwidth=120
     inoremap <C-@> <C-x><C-u>
     nnoremap öi :JavaImport<CR>
+
+endfunction
+
+function! ExpandTab()
+    setlocal expandtab
+    setlocal tabstop=8
+
+endfunction
+
+function! NoExpandTab()
+    setlocal noexpandtab
+    setlocal tabstop=4
 
 endfunction
 
