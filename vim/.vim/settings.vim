@@ -103,11 +103,6 @@ noremap <M-2> 2gt
 noremap <M-3> 3gt
 noremap <M-4> 4gt
 noremap <M-5> 5gt
-noremap <M-6> 6gt
-noremap <M-7> 7gt
-noremap <M-8> 8gt
-noremap <M-9> 9gt
-noremap <M-0> 10g
 noremap <silent><C-e> 5<C-e>
 noremap <silent><C-y> 5<C-y>
 noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>

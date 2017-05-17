@@ -7,13 +7,13 @@ endif
 
 call plug#begin('$MYVIMFOLDER/plugins')
 
-Plug 'argtextobj.vim'
+Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'qpkorr/vim-renamer'
-Plug 'UltiSnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 Plug 'klen/python-mode',          { 'for': 'python' }
@@ -42,6 +42,7 @@ let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <silent> <Leader>E :call OpenCtrlPFromRoot()<CR>
 nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
+nnoremap <silent> <Leader>n :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
