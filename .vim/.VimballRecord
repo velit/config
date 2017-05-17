@@ -1,1 +1,0 @@
-download_script.php?src_id=15029: call delete('/home/tappi/.vim/doc/supertab.txt')|call delete('/home/tappi/.vim/plugin/supertab.vim')
