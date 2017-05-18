@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+r"""
+A script for finding interesting events from stdin.
+
+All input (unless specified for filtering) is output as is. If interesting events are found a popup is
+displayed, with an optional sound.
+
+Both the pattern and message can be regular expressions:
+https://docs.python.org/2/library/re.html#regular-expression-syntax
+
+The Message can use backreferences from the Trigger pattern. Meaning you can use groups in the trigger
+and re-use them in the message directly (&, \1, \2, and the like).
+
+IMPORTANT: Use raw literal notation: r"\n" for both Trigger and Message. Otherwise the
+backslashed combinations will be interpreted directly into singular characters which
+won't work with regular expression matching.
+"""
+
+import sys
+import subprocess
+import re
+from argparse import ArgumentParser
+
+
+class Trigger:
+    def __init__(self, trigger, title="log_notify.py", message="Notification", sound=None):
+        self.trigger = trigger
+        self.title = title
+        self.message = message
+        self.sound = sound
+
+
+title = "Liferay logs"
+triggers = (
+    Trigger(r"ERROR",                                                        title, r"Error in logs",            sound="Funk"),
+    Trigger(r"Server startup in",                                            title, r"Liferay operational",      sound="Glass"),
+    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title, r"\1 hotdeploy in process.", sound="Bottle"),
+    Trigger(r"A valid shutdown command was received via the shutdown port.", title, r"Liferay shutting down",    sound=None),
+)
+
+# List of plaintext or regular expression string patterns which will be filtered out if found.
+filters = [
+    #r"Spamline",
+    #r"notherone",
+]
+
+
+def determine_notify_command():
+    kde = subprocess.call(("which kdialog > /dev/null"), shell=True)
+    notify = subprocess.call(("which notify-send > /dev/null"), shell=True)
+    mac = subprocess.call(("which osascript > /dev/null"), shell=True)
+
+    if kde == 0:
+        return "kde"
+    elif mac == 0:
+        return "mac"
+    elif notify == 0:
+        return "notify"
+    else:
+        print("No notify command found. Tried kdialog, notify-send and mac osascript -e display notification.\n"
+              "notify-send command can be installed separately with libnotify package.", file=sys.stderr)
+        exit(1)
+
+
+def notify(notify_cmd, title, message, sound, duration=5):
+
+    if notify_cmd == "mac":
+        base_part = 'display notification "{}"'.format(message)
+        title_part = ' with title "{}"'.format(title) if title else ""
+        sound_part = ' sound name "{}"'.format(sound) if sound else ""
+        notify_args = ("osascript", "-e", base_part + title_part + sound_part)
+    elif notify_cmd == "notify":
+        notify_args = ("notify-send", "-t", "{}000".format(duration), title, message)
+    elif notify_cmd == "kde":
+        notify_args = ("kdialog", "--title", title, "--passivepopup", message, str(duration))
+    subprocess.run(notify_args, stderr=sys.stderr)
+
+
+def log_notify():
+    notify_cmd = determine_notify_command()
+    try:
+        while True:
+            line = sys.stdin.readline()
+
+            for trigger in triggers:
+                match = re.search(trigger.trigger, line)
+                if match is not None:
+                    notify(notify_cmd, match.expand(trigger.title), match.expand(trigger.message), trigger.sound)
+
+            if all(re.search(filter, line) is None for filter in filters):
+                print(line, end='')
+
+            if line == '':
+                break
+    except KeyboardInterrupt:
+        pass
+
+
+if __name__ == "__main__":
+
+    parser = ArgumentParser(
+        description="Print lines from stdin to stdout. On trigger lines invoke a"
+                    " notification. Triggers are defined in the script and can"
+                    " easily be modified."
+                    " Normal usage: tail -f logfile | this_script.py"
+    )
+    parser.parse_args()
+    log_notify()
