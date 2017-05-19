@@ -4,16 +4,19 @@ stty stop ''
 stty start ''
 
 export PATH=~/links:~/bin:$PATH
-export PAGER=~/bin/vimpager
+
 export MYVIMFOLDER=~/.vim
 export NEOVIMCONFIG=~/.config/nvim/
 export NEOVIMWORK=~/.local/share/nvim/
-alias less=$PAGER
-alias zless=$PAGER
 export EDITOR=vim
 export ESCDELAY=25
+
+export PAGER=~/bin/vimpager
+alias less=$PAGER
+alias zless=$PAGER
 export LESS=' -FRX -x4'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+
 export CLICOLOR=YES
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
