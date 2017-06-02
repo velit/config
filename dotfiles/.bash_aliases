@@ -6,6 +6,7 @@ stty start ''
 export EDITOR="vim"
 export ESCDELAY=25
 export LESS=' -FRX -x4'
+export MYVIMFOLDER=~/.vim/
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 

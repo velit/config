@@ -10,8 +10,9 @@ call plug#begin('$MYVIMFOLDER/plugins')
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'qpkorr/vim-renamer'
 Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 
@@ -93,10 +94,6 @@ let g:pymode_run_bind                    = 'öe'
 
 nnoremap <silent> öa :PymodeLint<CR>
 nnoremap <silent> öt :compiler pytest-3<CR>:make %<CR>
-
-" NERDComment
-let g:NERDCreateDefaultMappings = 0
-noremap <silent> <Leader>f :call NERDComment("n", "Toggle")<CR>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"

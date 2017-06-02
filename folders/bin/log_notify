@@ -32,10 +32,13 @@ class Trigger:
 
 title = "Liferay logs"
 triggers = (
-    Trigger(r"ERROR",                                                        title, r"Error in logs",            sound="Funk"),
-    Trigger(r"Server startup in",                                            title, r"Liferay operational",      sound="Glass"),
-    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title, r"\1 hotdeploy in process.", sound="Bottle"),
-    Trigger(r"A valid shutdown command was received via the shutdown port.", title, r"Liferay shutting down",    sound=None),
+
+    Trigger(r"ERROR",                                                        title, r"Error in logs",                  sound="Funk"),
+    Trigger(r"Server startup in",                                            title, r"Liferay operational",            sound="Glass"),
+    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title, r"\1 hotdeploy in process.",       sound="Bottle"),
+    Trigger(r"A valid shutdown command was received via the shutdown port.", title, r"Liferay starting to shut down",  sound=None),
+    Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          title, r"Liferay finished shutting down", sound=None),
+
 )
 
 # List of plaintext or regular expression string patterns which will be filtered out if found.
