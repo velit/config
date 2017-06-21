@@ -1,11 +1,27 @@
-#!/bin/sh
+#!/bin/bash
 
-# sh <(curl -s https://raw.githubusercontent.com/velit/config/master/install_bare.sh)
+# bash <(curl -s https://raw.githubusercontent.com/velit/config/master/install_bare.sh)
 
 # Install config files without setting up bin/links folders, without symlinks
 # or leaving a modifiable git repository behind
 wget -q -O master.zip https://github.com/velit/config/archive/master.zip
 unzip -qo master.zip
-cp -i config-master/dotfiles/.[!.]* ~
-cp -ri config-master/vim/.vim/ ~
+
+echo "Overwrite existing files?"
+select yn in "Yes" "No" "Ask"; do
+    case $yn in
+        Yes)
+            cp -f config-master/dotfiles/.[!.]* ~
+            cp -rf config-master/vim/.vim/ ~
+            break;;
+        No)
+            cp -n config-master/dotfiles/.[!.]* ~
+            cp -rn config-master/vim/.vim/ ~
+            break;;
+        Ask)
+            cp -i config-master/dotfiles/.[!.]* ~
+            cp -ri config-master/vim/.vim/ ~
+            break;;
+    esac
+done
 rm -rf config-master master.zip
