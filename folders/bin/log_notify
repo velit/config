@@ -23,21 +23,23 @@ from argparse import ArgumentParser
 
 
 class Trigger:
-    def __init__(self, trigger, title="log_notify.py", message="Notification", sound=None):
+    def __init__(self, trigger, title="", message="", sound=None):
         self.trigger = trigger
         self.title = title
         self.message = message
         self.sound = sound
 
 
-title = "Liferay logs"
 triggers = (
 
-    Trigger(r"ERROR",                                                        title, r"Error in logs",                  sound="Funk"),
-    Trigger(r"Server startup in",                                            title, r"Liferay operational",            sound="Glass"),
-    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title, r"\1 hotdeploy in process.",       sound="Bottle"),
-    Trigger(r"A valid shutdown command was received via the shutdown port.", title, r"Liferay starting to shut down",  sound=None),
-    Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          title, r"Liferay finished shutting down", sound=None),
+    Trigger(r"ERROR",                                                        title=r"Error in logs",                  sound="Funk"),
+    Trigger(r"Server startup in",                                            title=r"Liferay operational",            sound="Glass"),
+    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title=r"\1 hotdeploying",                sound="Bottle"),
+    Trigger(r"Undeploying context \[/(.+)\]",                                title=r"\1 undeployed",                  sound="Bottle"),
+    Trigger(r"\d+ portlets? for (.+) (is|are) available for use",            title=r"Module \1 available",            sound=None),
+    Trigger(r"\d+ themes? for (.+) (is|are) available for use",              title=r"Theme \1 available",             sound=None),
+    Trigger(r"A valid shutdown command was received via the shutdown port.", title=r"Liferay starting to shut down",  sound=None),
+    Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          title=r"Liferay finished shutting down", sound=None),
 
 )
 
@@ -68,9 +70,10 @@ def determine_notify_command():
 def notify(notify_cmd, title, message, sound, duration=5):
 
     if notify_cmd == "mac":
-        base_part = 'display notification "{}"'.format(message)
-        title_part = ' with title "{}"'.format(title) if title else ""
-        sound_part = ' sound name "{}"'.format(sound) if sound else ""
+        base_part = 'display notification'
+        message_part = f' "{message}"' if message else ""
+        title_part = f' with title "{title}"' if title else ""
+        sound_part = f' sound name "{sound}"' if sound else ""
         notify_args = ("osascript", "-e", base_part + title_part + sound_part)
     elif notify_cmd == "notify":
         notify_args = ("notify-send", "-t", "{}000".format(duration), title, message)

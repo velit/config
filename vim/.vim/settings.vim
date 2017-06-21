@@ -160,6 +160,8 @@ augroup vimrc
     autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
     autocmd VimResized * call OptimizeSmallScreen()
     autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+    autocmd BufReadPost *.jspf set filetype=jsp
+
     "autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
 augroup end
 
@@ -185,7 +187,8 @@ function! PythonOptions()
 endfunction
 
 function! JavaOptions()
-    call NoExpandTab()
+    setlocal expandtab
+    setlocal tabstop=4
     setlocal textwidth=120
     inoremap <C-@> <C-x><C-u>
     nnoremap öi :JavaImport<CR>
@@ -205,6 +208,7 @@ function! NoExpandTab()
 endfunction
 
 function! OptimizeSmallScreen()
+    wincmd =
     if &lines < 45
         set cmdheight=1
         set laststatus=0
