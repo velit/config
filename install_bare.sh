@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# bash <(curl -s https://raw.githubusercontent.com/velit/config/master/install_bare.sh)
+# bash <(curl -s https://raw.githubusercontent.com/velit/config/master/install_bare.sh) && source ~/.bashrc
 
 # Install config files without setting up bin/links folders, without symlinks
 # or leaving a modifiable git repository behind
+
 wget -q -O master.zip https://github.com/velit/config/archive/master.zip
 unzip -qo master.zip
 
@@ -24,4 +25,15 @@ select yn in "Yes" "No" "Ask"; do
             break;;
     esac
 done
+
+# Install .bash_alias support if it doesn't already exist
+if [ ! -e ~/.bashrc ] || ! grep -q ".bash_aliases" ~/.bashrc ; then
+    echo '
+[ -z "$PS1" ] && return
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+' >> ~/.bashrc
+fi
+
 rm -rf config-master master.zip
