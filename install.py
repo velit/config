@@ -29,7 +29,7 @@ def write_local_settings():
     local_zsh_config = Path.home() / Path(".zsh_local")
     if not local_zsh_config.exists():
         with local_zsh_config.open('w') as f:
-            f.write()
+            f.write("")
 
 
 def stow(packages):
