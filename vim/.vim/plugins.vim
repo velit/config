@@ -10,11 +10,11 @@ silent! call plug#begin('$MYVIMFOLDER/plugins')
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'qpkorr/vim-renamer'
 Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
+Plug 'andreshazard/vim-freemarker'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 Plug 'klen/python-mode',          { 'for': 'python' }

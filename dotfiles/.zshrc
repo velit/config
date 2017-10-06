@@ -33,7 +33,7 @@ alias mv='"mv" -i'
 alias cp='"cp" -i'
 alias extract='"dtrx" -vn --one=here'
 alias untar=extract
-alias folder_sizes='du -sh * .?* | sort -h'
+alias du_h='du -sh * .?* | sort -h'
 
 alias md='mkdir -p'
 alias rd=rmdir
@@ -49,7 +49,6 @@ alias help=run-help
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 
 setopt alwaystoend
-setopt autocd
 setopt noautomenu
 setopt nobeep
 setopt histignorealldups
@@ -57,6 +56,7 @@ setopt histignorespace
 setopt incappendhistory
 setopt longlistjobs
 setopt sharehistory
+setopt extended_glob
 
 unsetopt nomatch
 unsetopt prompt_cr
@@ -98,3 +98,7 @@ fi
 
 export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+precmd () {
+    print -Pn "\e]1;${PWD##*/}\a"
+}

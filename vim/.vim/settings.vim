@@ -129,6 +129,8 @@ nnoremap <C-w>m :vnew<CR>
 nnoremap <C-w><C-m> :vnew<CR>
 nnoremap <C-w>t :tabnew<CR>
 nnoremap <C-w><C-m> :tabnew<CR>
+nnoremap c* *Ncgn
+nnoremap c# #NcgN
 
 nnoremap <silent><CR> o<C-c>
 nnoremap <silent>Y y$
