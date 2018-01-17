@@ -1,0 +1,1 @@
+folders/bin/install-my-software.sh

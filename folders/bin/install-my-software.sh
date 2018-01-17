@@ -9,35 +9,40 @@ exuberant-ctags
 git
 htop
 ipython
-kompare
 ncurses-doc
 ncurses-term
-open-vm-tools
-open-vm-tools-desktop
 pwgen
-python-pytest
+python
+python-pip
 python3
-python3-pytest
+python3-pip
 realpath
 screen
 sharutils
 silversearcher-ag
 source-highlight
-ssh
-texinfo
-texlive
-texlive-font-utils
-texlive-lang-english
-texlive-lang-european
-texlive-latex-base
-texlive-latex-extra
-texlive-latex-recommended
 tree
 vim-gtk
-virtualenvwrapper
-wajig
+zsh
 "
 
-sudo apt-get install $INSTALL_LIST
+sudo apt install $INSTALL_LIST
+
+#open-vm-tools
+#open-vm-tools-desktop
+
+#python-pytest
+#python3
+#python3-pytest
+#kompare
+#virtualenvwrapper
 
 #texlive-lang-finnish
+#texinfo
+#texlive
+#texlive-font-utils
+#texlive-lang-english
+#texlive-lang-european
+#texlive-latex-base
+#texlive-latex-extra
+#texlive-latex-recommended

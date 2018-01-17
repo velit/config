@@ -3,6 +3,7 @@
 PYBINARY = "python3.6"
 
 import os
+import sys
 import subprocess
 from pathlib import Path
 
@@ -33,6 +34,12 @@ def write_local_settings():
         with local_zsh_config.open('w') as f:
             f.write("")
 
+def check_stow_existence():
+    if subprocess.run(["which", "stow"]).returncode != 0:
+        print("This script needs stow program to be installed", file=sys.stderr)
+        sys.exit(1)
+
+
 
 def stow(packages):
     if not packages:
@@ -53,6 +60,7 @@ if __name__ == "__main__":
                                      " and stow given packages, stow all packages if none are given.")
     parser.add_argument('packages', nargs='*')
     args = parser.parse_args()
+    check_stow_existence()
     make_folders()
     write_local_settings()
     stow(args.packages)
