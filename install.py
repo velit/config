@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+PYBINARY = "python3.6"
+
 import os
 import subprocess
 from pathlib import Path
@@ -40,6 +42,11 @@ def stow(packages):
     subprocess.run(["stow", f"--target={home_path}"] + packages, stdout=subprocess.PIPE)
 
 
+def install_python_packages():
+    """Packages are documented in the python_packages.txt file."""
+    subprocess.run([PYBINARY, "-m", "pip", "install", "--user", "-r", "python_packages.txt"], stdout=subprocess.PIPE)
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Make folders in userdir, write local settings"
@@ -49,3 +56,4 @@ if __name__ == "__main__":
     make_folders()
     write_local_settings()
     stow(args.packages)
+    install_python_packages()
