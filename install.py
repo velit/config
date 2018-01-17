@@ -35,7 +35,7 @@ def write_local_settings():
             f.write("")
 
 def check_stow_existence():
-    if subprocess.run(["which", "stow"], stdout=subprocess.DEVNULL).returncode != 0:
+    if subprocess.run(["which", "stow"], stdout=subprocess.PIPE).returncode != 0:
         print("This script needs stow program to be installed", file=sys.stderr)
         sys.exit(1)
 

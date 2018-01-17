@@ -2,7 +2,7 @@ set autoindent
 set backspace=indent,eol,start
 set completeopt=longest,menu
 set confirm
-set directory=$MYVIMFOLDER/temp/swap//,~/tmp,/var/tmp,/tmp
+set directory=~/.vim/temp/swap//,~/tmp,/var/tmp,/tmp
 set encoding=utf-8
 set expandtab shiftwidth=4 softtabstop=4 tabstop=8
 set formatoptions+=l
@@ -34,9 +34,9 @@ set t_Co=256
 set tabpagemax=99
 set textwidth=79
 set timeoutlen=600
-set undodir=$MYVIMFOLDER/temp/undo//,~/tmp,/var/tmp,/tmp
+set undodir=~/.vim/temp/undo//,~/tmp,/var/tmp,/tmp
 set undofile
-set viminfo+=n$MYVIMFOLDER/viminfo
+set viminfo+=n~/.vim/viminfo
 set wildmenu
 set wildmode=longest:list
 set wrapscan
@@ -66,7 +66,7 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>
 nnoremap <silent> <Leader>w :set wrap!<CR>
 nnoremap <silent> <Leader>d :tab sp<CR>
-nnoremap <silent> <Leader>z :tabe $MYVIMFOLDER/settings.vim <Bar> vs $MYVIMFOLDER/plugins.vim<CR><C-w>h
+nnoremap <silent> <Leader>z :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plugins.vim<CR><C-w>h
 nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
@@ -77,9 +77,9 @@ vnoremap <Leader>C y:let @/=@"<CR>cgn
 
 nnoremap <Leader><Leader>c :cd %:h <Bar> pwd<CR>
 nnoremap <Leader><Leader>v :lcd %:h <Bar> pwd<CR>
-nnoremap <Leader><Leader>s :mksession! $MYVIMFOLDER/temp/session.vim<CR>
-nnoremap <Leader><Leader>o :source $MYVIMFOLDER/temp/session.vim<CR>
-nmap <silent> <Leader><Leader>C :source $MYVIMFOLDER/colors/tappi.vim <BAR> only <Bar> e $MYVIMFOLDER/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
+nnoremap <Leader><Leader>s :mksession! ~/.vim/temp/session.vim<CR>
+nnoremap <Leader><Leader>o :source ~/.vim/temp/session.vim<CR>
+nmap <silent> <Leader><Leader>C :source ~/.vim/colors/tappi.vim <BAR> only <Bar> e ~/.vim/colors/tappi.vim <Bar> so $VIMRUNTIME/syntax/hitest.vim<CR><C-w>L<C-w>h
 
 " Insert maps
 inoremap <S-Tab> <BS>

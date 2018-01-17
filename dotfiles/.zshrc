@@ -5,7 +5,6 @@ stty start ''
 
 export PATH=~/links:~/bin:$PATH
 
-export MYVIMFOLDER=~/.vim
 export NEOVIMCONFIG=~/.config/nvim/
 export NEOVIMWORK=~/.local/share/nvim/
 export EDITOR=vim

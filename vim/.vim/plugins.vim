@@ -1,11 +1,11 @@
 silent! python3 pass
 
 " Plug
-if empty(glob("$MYVIMFOLDER/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
-    execute '!curl -fLo $MYVIMFOLDER/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob("~/.vim/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-silent! call plug#begin('$MYVIMFOLDER/plugins')
+silent! call plug#begin('~/.vim/plugins')
 
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
