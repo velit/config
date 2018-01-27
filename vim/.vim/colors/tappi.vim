@@ -20,7 +20,7 @@ hi Folded          ctermfg=103   ctermbg=237   cterm=none      guifg=#8787af gui
 hi LineNr          ctermfg=245   ctermbg=235   cterm=none      guifg=#8a8a8a guibg=#262626 gui=NONE
 hi MatchParen      ctermfg=none  ctermbg=242   cterm=none      guifg=NONE    guibg=#6c6c6c gui=NONE
 hi NonText         ctermfg=white ctermbg=none  cterm=none      guifg=#ffffff guibg=NONE    gui=NONE
-hi Normal          ctermfg=252   ctermbg=235   cterm=none      guifg=#d0d0d0 guibg=#262626 gui=NONE
+hi Normal          ctermfg=252   ctermbg=234   cterm=none      guifg=#d0d0d0 guibg=#262626 gui=NONE
 hi Pmenu           ctermfg=40    ctermbg=238   cterm=none      guifg=#00d700 guibg=#444444 gui=NONE
 hi PmenuSel        ctermfg=28    ctermbg=248   cterm=none      guifg=#008700 guibg=#a8a8a8 gui=NONE
 hi Search          ctermfg=black ctermbg=63    cterm=none      guifg=#000000 guibg=#5f5fff gui=NONE

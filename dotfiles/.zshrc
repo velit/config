@@ -1,7 +1,6 @@
 [ -f ~/.zsh_local ] && source ~/.zsh_local
 
-stty stop ''
-stty start ''
+stty -ixon
 
 export PATH=~/links:~/bin:$PATH
 
