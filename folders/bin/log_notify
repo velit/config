@@ -34,6 +34,7 @@ triggers = (
 
     Trigger(r"ERROR",                                                        title=r"Error in logs",                  sound="Funk"),
     Trigger(r"Server startup in",                                            title=r"Liferay operational",            sound="Glass"),
+    Trigger(r"Started Application in ([^ ]+ [^ ]+)",                         title=r"Application started in \1",      sound="Glass"),
     Trigger(r"Expanding: .*?([^/]+)\.war into",                              title=r"\1 hotdeploying",                sound="Bottle"),
     Trigger(r"Undeploying context \[/(.+)\]",                                title=r"\1 undeployed",                  sound="Bottle"),
     Trigger(r"\d+ portlets? for (.+) (is|are) available for use",            title=r"Module \1 available",            sound=None),

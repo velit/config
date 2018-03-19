@@ -15,6 +15,7 @@ Plug 'tpope/vim-commentary'
 Plug 'qpkorr/vim-renamer'
 Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 Plug 'andreshazard/vim-freemarker'
+Plug 'leafgarland/typescript-vim'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 Plug 'klen/python-mode',          { 'for': 'python' }
@@ -28,8 +29,15 @@ command! -nargs=? -complete=tag GgrepProper let @/="<args>" | Ggrep <q-args>
 nnoremap <Leader>g yiw:tab sp <Bar> GgrepProper <C-r>"
 
 if executable('ag')
-    set grepprg="ag --nogroup --nocolor"
-    let g:ctrlp_user_command = 'ag %s --nocolor -g ""'
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching = 0
+endif
+
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
 endif
 
 " CtrlP
@@ -43,7 +51,7 @@ let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <silent> <Leader>E :call OpenCtrlPFromRoot()<CR>
 nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
-nnoremap <silent> <Leader>n :new <Bar> CtrlP<CR>
+" nnoremap <silent> <Leader>n :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 

@@ -5,7 +5,7 @@
 # Install config files without setting up bin/links folders, without symlinks
 # or leaving a modifiable git repository behind
 
-wget -q -O master.zip https://github.com/velit/config/archive/master.zip
+curl -L -o master.zip https://github.com/velit/config/archive/master.zip
 unzip -qo master.zip
 
 echo "Overwrite existing files?"
