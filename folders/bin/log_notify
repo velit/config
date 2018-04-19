@@ -32,15 +32,15 @@ class Trigger:
 
 triggers = (
 
-    Trigger(r"ERROR",                                                        title=r"Error in logs",                  sound="Funk"),
-    Trigger(r"Server startup in",                                            title=r"Liferay operational",            sound="Glass"),
-    Trigger(r"Started Application in ([^ ]+ [^ ]+)",                         title=r"Application started in \1",      sound="Glass"),
-    Trigger(r"Expanding: .*?([^/]+)\.war into",                              title=r"\1 hotdeploying",                sound="Bottle"),
-    Trigger(r"Undeploying context \[/(.+)\]",                                title=r"\1 undeployed",                  sound="Bottle"),
-    Trigger(r"\d+ portlets? for (.+) (is|are) available for use",            title=r"Module \1 available",            sound=None),
-    Trigger(r"\d+ themes? for (.+) (is|are) available for use",              title=r"Theme \1 available",             sound=None),
-    Trigger(r"A valid shutdown command was received via the shutdown port.", title=r"Liferay starting to shut down",  sound=None),
-    Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          title=r"Liferay finished shutting down", sound=None),
+    Trigger(r"ERROR",                                                        message=r"Error in logs",                  sound="Funk"),
+    Trigger(r"Server startup in",                                            message=r"Liferay operational",            sound="Glass"),
+    Trigger(r"Started Application in ([^ ]+ [^ ]+)",                         message=r"Application started in \1",      sound="Glass"),
+    Trigger(r"Expanding: .*?([^/]+)\.war into",                              message=r"\1 hotdeploying",                sound="Bottle"),
+    Trigger(r"Undeploying context \[/(.+)\]",                                message=r"\1 undeployed",                  sound="Bottle"),
+    Trigger(r"\d+ portlets? for (.+) (is|are) available for use",            message=r"Module \1 available",            sound=None),
+    Trigger(r"\d+ themes? for (.+) (is|are) available for use",              message=r"Theme \1 available",             sound=None),
+    Trigger(r"A valid shutdown command was received via the shutdown port.", message=r"Liferay starting to shut down",  sound=None),
+    Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          message=r"Liferay finished shutting down", sound=None),
 
 )
 
@@ -68,14 +68,17 @@ def determine_notify_command():
         exit(1)
 
 
-def notify(notify_cmd, title, message, sound, duration=5):
+def notify(notify_cmd, global_title, title, message, sound, duration=5):
+
+    if not title:
+        title = global_title
 
     if notify_cmd == "mac":
         base_part = 'display notification'
         message_part = f' "{message}"' if message else ""
         title_part = f' with title "{title}"' if title else ""
         sound_part = f' sound name "{sound}"' if sound else ""
-        notify_args = ("osascript", "-e", base_part + title_part + sound_part)
+        notify_args = ("osascript", "-e", base_part +message_part + title_part + sound_part)
     elif notify_cmd == "notify":
         notify_args = ("notify-send", "-t", "{}000".format(duration), title, message)
     elif notify_cmd == "kde":
@@ -83,7 +86,7 @@ def notify(notify_cmd, title, message, sound, duration=5):
     subprocess.run(notify_args, stderr=sys.stderr)
 
 
-def log_notify():
+def log_notify(title):
     notify_cmd = determine_notify_command()
     try:
         while True:
@@ -92,7 +95,7 @@ def log_notify():
             for trigger in triggers:
                 match = re.search(trigger.trigger, line)
                 if match is not None:
-                    notify(notify_cmd, match.expand(trigger.title), match.expand(trigger.message), trigger.sound)
+                    notify(notify_cmd, title, match.expand(trigger.title), match.expand(trigger.message), trigger.sound)
 
             if all(re.search(filter, line) is None for filter in filters):
                 print(line, end='')
@@ -111,5 +114,6 @@ if __name__ == "__main__":
                     " easily be modified."
                     " Normal usage: tail -f logfile | this_script.py"
     )
-    parser.parse_args()
-    log_notify()
+    parser.add_argument("title", nargs="?", default="log_notify", help="Title for notifications coming from this instance of the script.")
+    args = parser.parse_args()
+    log_notify(args.title)

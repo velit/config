@@ -65,6 +65,7 @@ unsetopt prompt_sp
 
 # Use emacs keybindings
 bindkey -e
+bindkey \^U backward-kill-line
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -103,3 +104,21 @@ export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
 precmd () {
     print -Pn "\e]1;${PWD##*/}\a"
 }
+
+function my_success() {
+    osascript -e "display notification with title \"$* success\" sound name \"Glass\""
+}
+
+function my_error() {
+    osascript -e "display notification with title \"$* error\" sound name \"Funk\""
+}
+
+function check() {
+    if [ $? == 0 ]; then
+        my_success "$@";
+    else
+        my_error "$@";
+    fi
+}
+
+alias ding="osascript -e 'display notification with title \"Ding\" sound name \"Glass\"'"

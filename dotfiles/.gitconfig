@@ -29,6 +29,7 @@
     whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
     ignored = ls-files --others -i --exclude-standard
     yolo = "!git add --all; git commit"
+    dfnw = diff --word-diff-regex=[^[:space:]]
 [mergetool]
     keepBackup = false
 [push]
