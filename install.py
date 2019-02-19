@@ -1,6 +1,6 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 
-PYBINARY = "python3.6"
+PYBINARY = "python3"
 
 import os
 import sys

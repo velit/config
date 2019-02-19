@@ -1,4 +1,4 @@
-silent! python3 pass
+silent! python3 1
 
 " Plug
 if empty(glob("~/.vim/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1

@@ -150,76 +150,11 @@ noremap! <M-C-l> <End>
 noremap! <M-C-j> <S-Left>
 noremap! <M-C-k> <S-Right>
 
-" Autocmds
-augroup vimrc
-    autocmd!
-    autocmd FileType python call PythonOptions()
-    autocmd FileType java call JavaOptions()
-    autocmd FileType jsp call JavaOptions()
-    autocmd FileType javascript call JavaOptions()
-    autocmd FileType xml call JavaOptions()
-
-    autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
-    autocmd VimResized * call OptimizeSmallScreen()
-    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-    autocmd BufReadPost *.jspf set filetype=jsp
-
-    "autocmd BufWritePost * match ExtraWhitespace /\s\+\%#\@<!$/
-augroup end
-
 " Custom commands and functions
 runtime ftplugin/man.vim
 command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 command! RemoveTrailingWhitespace %s/\s\+$//
 command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
-
-function! PythonOptions()
-    call ExpandTab()
-    setlocal complete+=t
-    setlocal commentstring=#%s
-    setlocal textwidth=105
-    setlocal define=^\s*\\(def\\\\|class\\)
-
-    " Python efm
-    setlocal efm+=%E\ \ File\ \"%f\"\\,\ line\ %l%.%#
-    setlocal efm+=%C\ \ \ \ %.%#
-    setlocal efm+=%Z%m
-    setlocal efm+=%-GTraceback\ (most\ recent\ call\ last):
-
-endfunction
-
-function! JavaOptions()
-    setlocal expandtab
-    setlocal tabstop=4
-    setlocal textwidth=120
-    inoremap <C-@> <C-x><C-u>
-    nnoremap öi :JavaImport<CR>
-
-endfunction
-
-function! ExpandTab()
-    setlocal expandtab
-    setlocal tabstop=8
-
-endfunction
-
-function! NoExpandTab()
-    setlocal noexpandtab
-    setlocal tabstop=4
-
-endfunction
-
-function! OptimizeSmallScreen()
-    wincmd =
-    if &lines < 45
-        set cmdheight=1
-        set laststatus=0
-    else
-        set cmdheight=2
-        set laststatus=2
-    endif
-endfunction
-call OptimizeSmallScreen()
 
 function! BackspaceIgnoreIndent()
     if search('^\s\+\%#', 'bn') != 0

@@ -1,4 +1,5 @@
 set nocompatible
 source ~/.vim/altbinds.vim
 source ~/.vim/settings.vim
+source ~/.vim/autocmds.vim
 source ~/.vim/plugins.vim
