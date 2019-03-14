@@ -96,13 +96,8 @@ noremap <C-h> gT
 noremap <C-l> gt
 noremap <C-k> <C-w>w
 noremap <C-j> <C-w>W
-noremap <M-h> ^
-noremap <M-l> $
-noremap <M-1> 1gt
-noremap <M-2> 2gt
-noremap <M-3> 3gt
-noremap <M-4> 4gt
-noremap <M-5> 5gt
+noremap <A-h> ^
+noremap <A-l> $
 noremap <silent><C-e> 5<C-e>
 noremap <silent><C-y> 5<C-y>
 noremap <silent>Q <C-W>z<C-l>:nohl<CR>:match<CR>
@@ -112,8 +107,8 @@ noremap / /\v
 noremap ? ?\v
 
 " Normal mode mappings
-noremap <M-k> >>
-noremap <M-j> <<
+noremap <A-k> >>
+noremap <A-j> <<
 nnoremap <F1> :cp<CR>
 nnoremap <F2> :cn<CR>
 nnoremap <F3> :cl<CR>
@@ -121,9 +116,9 @@ nnoremap <F4> :clast<CR>
 nnoremap <F5> :call DebugVim("./pyrl.py")<CR>
 nnoremap <F6> :compiler pytest-3<CR>:make<CR>
 nnoremap <F7> :call DebugVim("./sdlpyrl.py")<CR>
-nnoremap <M-q> :qa<CR>
-nnoremap <M-z> :tabclose<CR>
-nnoremap <M-x> :close<CR>
+nnoremap <A-q> :qa<CR>
+nnoremap <A-z> :tabclose<CR>
+nnoremap <A-x> :close<CR>
 nnoremap <C-s> :update<CR>
 nnoremap <C-w>m :vnew<CR>
 nnoremap <C-w><C-m> :vnew<CR>
@@ -137,18 +132,18 @@ nnoremap <silent>Y y$
 nnoremap <silent>yY 0y$
 
 " Visual mode mappings
-vnoremap <M-k> >gv
-vnoremap <M-j> <gv
+vnoremap <A-k> >gv
+vnoremap <A-j> <gv
 
 " Easier movement sometimes
-noremap! <M-h> <Left>
-noremap! <M-l> <Right>
-noremap! <M-j> <Down>
-noremap! <M-k> <Up>
-noremap! <M-C-h> <Home>
-noremap! <M-C-l> <End>
-noremap! <M-C-j> <S-Left>
-noremap! <M-C-k> <S-Right>
+noremap! <A-h> <Left>
+noremap! <A-l> <Right>
+noremap! <A-j> <Down>
+noremap! <A-k> <Up>
+noremap! <A-C-h> <Home>
+noremap! <A-C-l> <End>
+noremap! <A-C-j> <S-Left>
+noremap! <A-C-k> <S-Right>
 
 " Custom commands and functions
 runtime ftplugin/man.vim
