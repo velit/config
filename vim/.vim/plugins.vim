@@ -3,6 +3,7 @@ silent! python3 1
 " Plug
 if empty(glob("~/.vim/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 silent! call plug#begin('~/.vim/plugins')
@@ -13,12 +14,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'qpkorr/vim-renamer'
-Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 
-Plug '5long/pytest-vim-compiler', { 'for': 'python' }
-Plug 'klen/python-mode',          { 'for': 'python' }
+Plug '5long/pytest-vim-compiler'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 "Plug 'ludovicchabant/vim-gutentags'
 
@@ -63,6 +64,7 @@ function! OpenCtrlPFromRoot()
 endfunction
 
 " PyMode
+let g:pymode_rope = 1
 let g:pymode_folding = 0
 let g:pymode_options = 0
 let g:pymode_quickfix_maxheight = 8

@@ -92,6 +92,7 @@ inoremap <expr><C-h> BackspaceIgnoreIndent()
 "noremap j gj
 "noremap k gk
 noremap <C-p> <C-i>
+noremap <S-Tab> <C-o>
 noremap <C-h> gT
 noremap <C-l> gt
 noremap <C-k> <C-w>w
