@@ -29,6 +29,7 @@ alias fgrep='"fgrep" --color=auto'
 alias egrep='"egrep" --color=auto'
 alias mv='"mv" -i'
 alias cp='"cp" -i'
+alias tar='"tar" -k'
 alias extract='"dtrx" -vn --one=here'
 alias untar=extract
 alias du_h='du -sh * .?* | sort -h'

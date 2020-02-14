@@ -18,8 +18,8 @@ Plug 'qpkorr/vim-renamer'
 Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 
-Plug '5long/pytest-vim-compiler'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug '5long/pytest-vim-compiler', { 'for': 'python' }
+Plug 'klen/python-mode',          { 'for': 'python', 'branch': 'develop' }
 
 "Plug 'ludovicchabant/vim-gutentags'
 
@@ -51,9 +51,10 @@ let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <silent> <Leader>E :call OpenCtrlPFromRoot()<CR>
-nnoremap <silent> <Leader>s :vnew <Bar> CtrlP<CR>
+nnoremap <silent> <Leader>v :vnew <Bar> CtrlP<CR>
 " nnoremap <silent> <Leader>n :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
+nnoremap <silent> <Leader>s :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 function! OpenCtrlPFromRoot()

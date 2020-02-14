@@ -5,6 +5,7 @@ augroup vimrc
     autocmd FileType jsp call JavaOptions()
     autocmd FileType javascript call JavaOptions()
     autocmd FileType xml call JavaOptions()
+    autocmd FileType yaml call Expand(2)
 
     autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
     autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
@@ -14,7 +15,7 @@ augroup vimrc
 augroup end
 
 function! PythonOptions()
-    call ExpandTab()
+    call Expand(4)
     setlocal complete+=t
     setlocal commentstring=#%s
     setlocal textwidth=105
@@ -28,19 +29,22 @@ function! PythonOptions()
 endfunction
 
 function! JavaOptions()
-    setlocal expandtab
-    setlocal tabstop=4
+    call NoExpand(4)
     setlocal textwidth=120
     inoremap <C-@> <C-x><C-u>
     nnoremap öi :JavaImport<CR>
 endfunction
 
-function! ExpandTab()
+function! Expand(n)
     setlocal expandtab
+    execute "setlocal shiftwidth=".a:n
+    execute "setlocal softtabstop=".a:n
     setlocal tabstop=8
 endfunction
 
-function! NoExpandTab()
+function! NoExpand(n)
     setlocal noexpandtab
-    setlocal tabstop=4
+    execute "setlocal shiftwidth=".a:n
+    execute "setlocal softtabstop=".a:n
+    execute "tabstop=".a:n
 endfunction

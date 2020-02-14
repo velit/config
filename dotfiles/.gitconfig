@@ -17,6 +17,7 @@
     br = branch
     co = checkout
     st = status
+    fe = fetch
     df = diff
     dfs = diff --stat
     dc = diff --cached
