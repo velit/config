@@ -45,7 +45,6 @@ alias -g .......='../../../../../..'
 
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 
-unalias run-help
 autoload run-help
 alias help=run-help
 autoload zmv

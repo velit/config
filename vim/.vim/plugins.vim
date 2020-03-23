@@ -19,7 +19,7 @@ Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
-Plug 'klen/python-mode',          { 'for': 'python', 'branch': 'develop' }
+Plug 'python-mode/python-mode',   { 'for': 'python', 'branch': 'develop' }
 
 "Plug 'ludovicchabant/vim-gutentags'
 
