@@ -71,7 +71,7 @@ nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vim
 nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
 nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
 
-vnoremap <Leader>s y:let @/=@"<CR>
+vnoremap <silent> <Leader>s y:let @/=@"<CR>Nn
 vnoremap <Leader>c :s###<Left>
 vnoremap <Leader>C y:let @/=@"<CR>cgn
 

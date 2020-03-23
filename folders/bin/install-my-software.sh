@@ -24,25 +24,7 @@ source-highlight
 tree
 vim-gtk
 zsh
+grip
 "
 
 sudo apt install $INSTALL_LIST
-
-#open-vm-tools
-#open-vm-tools-desktop
-
-#python-pytest
-#python3
-#python3-pytest
-#kompare
-#virtualenvwrapper
-
-#texlive-lang-finnish
-#texinfo
-#texlive
-#texlive-font-utils
-#texlive-lang-english
-#texlive-lang-european
-#texlive-latex-base
-#texlive-latex-extra
-#texlive-latex-recommended

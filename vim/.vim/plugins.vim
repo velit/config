@@ -50,9 +50,8 @@ let g:ctrlp_switch_buffer = ''
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
 nnoremap <silent> <Leader>e :CtrlP<CR>
-nnoremap <silent> <Leader>E :call OpenCtrlPFromRoot()<CR>
+nnoremap <Leader>E :CtrlP ~/
 nnoremap <silent> <Leader>v :vnew <Bar> CtrlP<CR>
-" nnoremap <silent> <Leader>n :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>s :new <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>

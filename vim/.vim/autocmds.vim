@@ -46,5 +46,5 @@ function! NoExpand(n)
     setlocal noexpandtab
     execute "setlocal shiftwidth=".a:n
     execute "setlocal softtabstop=".a:n
-    execute "tabstop=".a:n
+    execute "setlocal tabstop=".a:n
 endfunction
