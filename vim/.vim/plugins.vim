@@ -1,11 +1,5 @@
 silent! python3 1
 
-" Plug
-if empty(glob("~/.vim/autoload/plug.vim")) && confirm("Fetch Vim-Plug?","Y\nn") == 1
-    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 silent! call plug#begin('~/.vim/plugins')
 
 Plug 'vim-scripts/argtextobj.vim'
@@ -17,6 +11,7 @@ Plug 'qpkorr/vim-renamer'
 "Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
+Plug 'pprovost/vim-ps1'
 
 Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 Plug 'python-mode/python-mode',   { 'for': 'python', 'branch': 'develop' }

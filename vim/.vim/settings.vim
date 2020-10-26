@@ -84,7 +84,8 @@ nmap <silent> <Leader><Leader>C :source ~/.vim/colors/tappi.vim <BAR> only <Bar>
 " Insert maps
 inoremap <S-Tab> <BS>
 inoremap <C-c> <Esc>
-inoremap <Esc> <C-c>
+inoremap <C-q> <C-c>
+inoremap <A-c> <C-c>
 inoremap <C-s> <Esc>:update<CR>
 inoremap <expr><C-h> BackspaceIgnoreIndent()
 

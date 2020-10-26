@@ -1,5 +1,3 @@
-[ -f ~/.zsh_local ] && source ~/.zsh_local
-
 stty -ixon
 
 export PATH=~/links:~/bin:$PATH
@@ -122,3 +120,5 @@ function check() {
 }
 
 alias ding="osascript -e 'display notification with title \"Ding\" sound name \"Glass\"'"
+
+[ -f ~/.zsh_local ] && source ~/.zsh_local

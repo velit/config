@@ -29,7 +29,7 @@
     find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
     whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
     ignored = ls-files --others -i --exclude-standard
-    yolo = "!git add --all; git commit"
+    yolo = "!git add -u; git commit --amend --no-edit"
     dfnw = diff --word-diff-regex=[^[:space:]]
 [mergetool]
     keepBackup = false
