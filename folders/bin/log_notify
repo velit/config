@@ -6,7 +6,7 @@ All input (unless specified for filtering) is output as is. If interesting event
 displayed, with an optional sound.
 
 Both the pattern and message can be regular expressions:
-https://docs.python.org/2/library/re.html#regular-expression-syntax
+https://docs.python.org/3/library/re.html#regular-expression-syntax
 
 The Message can use backreferences from the Trigger pattern. Meaning you can use groups in the trigger
 and re-use them in the message directly (&, \1, \2, and the like).
@@ -41,6 +41,7 @@ triggers = (
     Trigger(r"\d+ themes? for (.+) (is|are) available for use",              message=r"Theme \1 available",             sound=None),
     Trigger(r"A valid shutdown command was received via the shutdown port.", message=r"Liferay starting to shut down",  sound=None),
     Trigger(r'INFO: Destroying ProtocolHandler \["ajp-bio-8009"\]',          message=r"Liferay finished shutting down", sound=None),
+    Trigger(r'STARTED (.+)',                                                 message=r"Module \1 available",            sound=None),
 
 )
 
@@ -89,13 +90,19 @@ def notify(notify_cmd, global_title, title, message, sound, duration=5):
 def log_notify(title):
     notify_cmd = determine_notify_command()
     try:
+        last_trigger = None
         while True:
             line = sys.stdin.readline()
-
             for trigger in triggers:
                 match = re.search(trigger.trigger, line)
                 if match is not None:
-                    notify(notify_cmd, title, match.expand(trigger.title), match.expand(trigger.message), trigger.sound)
+                    if trigger != last_trigger:
+                        notify(notify_cmd, title, match.expand(trigger.title), match.expand(trigger.message), trigger.sound)
+                    last_trigger = trigger
+                    break
+            else:
+                last_trigger = None
+
 
             if all(re.search(filter, line) is None for filter in filters):
                 print(line, end='')
