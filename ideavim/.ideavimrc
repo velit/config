@@ -1,3 +1,9 @@
 set nocompatible
 set ideajoin
+
 source ~/.vim/settings.vim
+
+nnoremap <silent> <Leader>e :action RecentFiles<CR>
+nnoremap <silent> <Leader>v :action SplitVertically<CR>:action RecentFiles<CR>
+nnoremap <silent> <Leader>s :action SplitHorizontally<CR>:action RecentFiles<CR>
+nnoremap <silent> <A-x> :action Unsplit<CR>
