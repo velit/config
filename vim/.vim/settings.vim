@@ -16,7 +16,6 @@ set mouse=a ttymouse=xterm2
 set modeline
 set nohidden
 set nolist
-set nowrap
 set numberwidth=2
 set pastetoggle=<F12>
 set ruler
@@ -40,6 +39,7 @@ set viminfo+=n~/.vim/viminfo
 set wildmenu
 set wildmode=longest:list
 set wrapscan
+set wrap
 "silent! set new-option
 
 syntax on

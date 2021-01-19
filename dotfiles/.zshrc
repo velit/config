@@ -17,6 +17,9 @@ export CLICOLOR=YES
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
+alias downloads='find ~/Downloads -type f -printf "%T@ %Tc %p\n" | sort -n | tail'
+alias dls=downloads
+
 alias ls="$LS_DEFAULT -w 80"
 alias l="$LS_DEFAULT -1"
 alias la="$LS_DEFAULT -1As"
@@ -81,7 +84,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
-eval "$(dircolors)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' special-dirs true
 autoload -Uz compinit

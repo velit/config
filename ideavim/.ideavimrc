@@ -1,9 +1,10 @@
 set nocompatible
-set ideajoin
-
 source ~/.vim/settings.vim
 
+set ideajoin
 nnoremap <silent> <Leader>e :action GotoFile<CR>
 nnoremap <silent> <Leader>v :action SplitVertically<CR>
 nnoremap <silent> <Leader>s :action SplitHorizontally<CR>
 nnoremap <silent> <A-x> :action Unsplit<CR>
+nnoremap <silent> <Leader>z :e ~/.ideavimrc<CR>
+noremap <silent> gc :action CommentByLineComment<CR>
