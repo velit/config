@@ -60,7 +60,6 @@ nnoremap <Leader><C-h> :vnew <Bar> H
 nnoremap <Leader>H :tabnew <Bar> H 
 nnoremap <Leader>c :%s###<Left>
 nnoremap <Leader>C *Ncgn
-nnoremap <Leader>r :!%:p 
 
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :set number!<CR>

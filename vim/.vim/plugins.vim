@@ -2,21 +2,25 @@ silent! python3 1
 
 silent! call plug#begin('~/.vim/plugins')
 
+" General editor plugins
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-commentary'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+"Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
+"Plug 'ludovicchabant/vim-gutentags'
+
+" External interfacing
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'qpkorr/vim-renamer'
-"Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
+
+" Language support
 Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 Plug 'pprovost/vim-ps1'
-
-Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 Plug 'python-mode/python-mode',   { 'for': 'python', 'branch': 'develop' }
-
-"Plug 'ludovicchabant/vim-gutentags'
+" Plug '5long/pytest-vim-compiler', { 'for': 'python' }
 
 call plug#end()
 
@@ -44,12 +48,12 @@ let g:ctrlp_reuse_window = 'netrw\|help'
 let g:ctrlp_switch_buffer = ''
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
-nnoremap <silent> <Leader>e :CtrlP<CR>
 nnoremap <Leader>E :CtrlP ~/
+nnoremap <silent> <Leader>e :CtrlP<CR>
+nnoremap <silent> <Leader>r :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>v :vnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>t :tabnew <Bar> CtrlP<CR>
 nnoremap <silent> <Leader>s :new <Bar> CtrlP<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 function! OpenCtrlPFromRoot()
     let s:user_command = g:ctrlp_user_command
@@ -59,7 +63,7 @@ function! OpenCtrlPFromRoot()
 endfunction
 
 " PyMode
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_folding = 0
 let g:pymode_options = 0
 let g:pymode_quickfix_maxheight = 8

@@ -4,33 +4,39 @@
     path = .gitconfig_local
 [merge]
     tool = vimdiff
+
 [diff]
     tool = vimdiff
     renames = true
+    colorMoved = dimmed-zebra
 [core]
     editor = vim
     pager = less -FRX -x4
 [color]
     ui = auto
 [alias]
-    ci = commit
     br = branch
+    ci = commit
     co = checkout
-    st = status
-    fe = fetch
-    df = diff
-    dfs = diff --stat
     dc = diff --cached
     dcs = diff --cached --stat
-    lg = log
-    h = help
-    last = log -1
-    lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
-    whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
-    ignored = ls-files --others -i --exclude-standard
-    yolo = "!git add -u; git commit --amend --no-edit"
+    df = diff
     dfnw = diff --word-diff-regex=[^[:space:]]
+    dfs = diff --stat
+    fe = fetch
+    ff = merge --ff-only
+    h = help
+    lg = log
+    rtr = restore
+    st = status
+    sw = switch
+
+    find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
+    ignored = ls-files --others -i --exclude-standard
+    lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    message = log --format=%B -n 1
+    whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
+    yolo = "!git add -u; git commit --amend --no-edit"
 [mergetool]
     keepBackup = false
 [push]
@@ -39,3 +45,5 @@
     linenumber = true
 [pull]
     rebase = true
+[fetch]
+    prune = true

@@ -105,6 +105,10 @@ precmd () {
     print -Pn "\e]1;${PWD##*/}\a"
 }
 
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
+
 function my_success() {
     osascript -e "display notification with title \"$* success\" sound name \"Glass\""
 }

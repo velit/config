@@ -2,9 +2,18 @@ set nocompatible
 source ~/.vim/settings.vim
 
 set ideajoin
-nnoremap <silent> <Leader>e :action GotoFile<CR>
-nnoremap <silent> <Leader>v :action SplitVertically<CR>
-nnoremap <silent> <Leader>s :action SplitHorizontally<CR>
-nnoremap <silent> <A-x> :action Unsplit<CR>
+set commentary
+set ReplaceWithRegister
+set argtextobj
+
+"nnoremap <silent> <Leader>e :action GotoFile<CR>
+"nnoremap <silent> <Leader>v :action SplitVertically<CR><C-W>l
+"nnoremap <silent> <Leader>s :action SplitHorizontally<CR><C-W>j
+nnoremap <silent> <A-x> :action CloseContent<CR>
 nnoremap <silent> <Leader>z :e ~/.ideavimrc<CR>
-noremap <silent> gc :action CommentByLineComment<CR>
+
+nnoremap <silent> <Leader>e :action GotoFile<CR>
+nnoremap <silent> <Leader>r :action RecentFiles<CR>
+nnoremap <silent> <Leader>v <C-W>v:action GotoFile<CR>
+nnoremap <silent> <Leader>s <C-W>s:action GotoFile<CR>
+nnoremap <silent> <C-s> :action SaveAll<CR>
