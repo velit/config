@@ -49,7 +49,6 @@ colorscheme tappi
 " Leader maps
 nmap <Space> <Nop>
 nmap <Esc>[25~ <Nop>
-nmap å <Nop>
 let mapleader = "\<Space>"
 
 noremap <Leader>j <C-]>
@@ -67,8 +66,6 @@ nnoremap <silent> <Leader>w :set wrap!<CR>
 nnoremap <silent> <Leader>d :tab sp<CR>
 nnoremap <silent> <Leader>z :tabe ~/.vim/settings.vim <Bar> vs ~/.vim/plugins.vim<CR><C-w>h
 nnoremap <silent> <Leader>Z :source $MYVIMRC <Bar> filetype detect<CR>:echo 'vimrc reloaded'<CR>
-nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
-nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
 
 vnoremap <silent> <Leader>s y:let @/=@"<CR>Nn
 vnoremap <Leader>c :s###<Left>
@@ -86,7 +83,6 @@ inoremap <C-c> <Esc>
 inoremap <C-q> <C-c>
 inoremap <A-c> <C-c>
 inoremap <C-s> <Esc>:update<CR>
-inoremap <expr><C-h> BackspaceIgnoreIndent()
 
 " Normal / Visual / Operator pending maps
 "noremap j gj
@@ -114,9 +110,6 @@ nnoremap <F1> :cp<CR>
 nnoremap <F2> :cn<CR>
 nnoremap <F3> :cl<CR>
 nnoremap <F4> :clast<CR>
-nnoremap <F5> :call DebugVim("./pyrl.py")<CR>
-nnoremap <F6> :compiler pytest-3<CR>:make<CR>
-nnoremap <F7> :call DebugVim("./sdlpyrl.py")<CR>
 nnoremap <A-q> :qa<CR>
 nnoremap <A-z> :tabclose<CR>
 nnoremap <A-x> :close<CR>
@@ -145,47 +138,3 @@ noremap! <A-C-h> <Home>
 noremap! <A-C-l> <End>
 noremap! <A-C-j> <S-Left>
 noremap! <A-C-k> <S-Right>
-
-" Custom commands and functions
-runtime ftplugin/man.vim
-command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-command! RemoveTrailingWhitespace %s/\s\+$//
-command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
-
-function! BackspaceIgnoreIndent()
-    if search('^\s\+\%#', 'bn') != 0
-        return "\<c-u>\<c-h>"
-    else
-        return "\<c-h>"
-    endif
-endfunction
-
-function! DebugVim(target)
-    if executable("./debug_vim")
-        execute("!./debug_vim " . a:target)
-        if filereadable("errors.err")
-            cf errors.err
-            clast
-        endif
-    else
-        make
-    endif
-endfunction
-
-function! s:setup_one_action_paste() abort
-  let s:paste = &paste
-  let s:mouse = &mouse
-  set paste
-  set mouse=
-  augroup one_action_paste
-    autocmd!
-    autocmd InsertLeave *
-          \ if exists('s:paste') |
-          \   let &paste = s:paste |
-          \   let &mouse = s:mouse |
-          \   unlet s:paste |
-          \   unlet s:mouse |
-          \ endif |
-          \ autocmd! one_action_paste
-  augroup END
-endfunction

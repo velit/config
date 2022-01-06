@@ -7,7 +7,7 @@ export NEOVIMWORK=~/.local/share/nvim/
 export EDITOR=vim
 export ESCDELAY=25
 
-export PAGER=~/bin/vimpager
+export PAGER=vimpager
 alias less=$PAGER
 alias zless=$PAGER
 export LESS=' -FRX -x4'

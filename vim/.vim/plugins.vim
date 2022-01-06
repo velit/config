@@ -109,3 +109,39 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<Esc>i"
+
+" One action paste
+function! s:setup_one_action_paste() abort
+  let s:paste = &paste
+  let s:mouse = &mouse
+  set paste
+  set mouse=
+  augroup one_action_paste
+    autocmd!
+    autocmd InsertLeave *
+          \ if exists('s:paste') |
+          \   let &paste = s:paste |
+          \   let &mouse = s:mouse |
+          \   unlet s:paste |
+          \   unlet s:mouse |
+          \ endif |
+          \ autocmd! one_action_paste
+  augroup END
+endfunction
+nnoremap <silent> <Leader>p :call <SID>setup_one_action_paste()<CR>o
+nnoremap <silent> <Leader>P :call <SID>setup_one_action_paste()<CR>i
+
+" Custom commands and functions
+runtime ftplugin/man.vim
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+command! RemoveTrailingWhitespace %s/\s\+$//
+command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
+
+function! BackspaceIgnoreIndent()
+    if search('^\s\+\%#', 'bn') != 0
+        return "\<c-u>\<c-h>"
+    else
+        return "\<c-h>"
+    endif
+endfunction
+inoremap <expr><C-h> BackspaceIgnoreIndent()
