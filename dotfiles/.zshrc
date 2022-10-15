@@ -7,11 +7,11 @@ export NEOVIMWORK=~/.local/share/nvim/
 export EDITOR=vim
 export ESCDELAY=25
 
-export PAGER=vimpager
-alias less=$PAGER
+export PAGER=less
+# alias less=$PAGER
 alias zless=$PAGER
 export LESS=' -FRX -x4'
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
 export CLICOLOR=YES
 
@@ -43,6 +43,8 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 alias -g .......='../../../../../..'
+
+alias doco="docker-compose"
 
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 
