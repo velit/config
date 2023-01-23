@@ -7,19 +7,16 @@ import sys
 import subprocess
 from pathlib import Path
 
-
 def make_folders():
     for path in Path(".").glob("folders/*"):
         if path.is_dir():
             os.makedirs(Path.home() / path.name, exist_ok=True)
-
 
 local_gitconfig_content = (
 """[user]
     name = Tapani Kiiskinen
     email = """
 )
-
 
 def write_local_settings():
 
@@ -40,7 +37,6 @@ def check_stow_existence():
         sys.exit(1)
 
 
-
 def stow(packages):
     if not packages:
         packages = [path.name for path in Path(".").glob("*/") if path.is_dir() and path.name[0] != '.']
@@ -48,11 +44,9 @@ def stow(packages):
     home_path = str(Path.home())
     subprocess.run(["stow", f"--target={home_path}"] + packages, stdout=subprocess.PIPE)
 
-
 def install_python_packages():
     """Packages are documented in the python_packages.txt file."""
     subprocess.run([PYBINARY, "-m", "pip", "install", "--user", "-r", "python_packages.txt"], stdout=subprocess.PIPE)
-
 
 if __name__ == "__main__":
     import argparse
