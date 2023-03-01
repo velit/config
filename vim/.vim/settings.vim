@@ -12,7 +12,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set listchars=tab:►\ ,nbsp:·,trail:·,precedes:<,extends:>,eol:¬
-set mouse=a ttymouse=xterm2
+set mouse=a
 set modeline
 set nohidden
 set nolist
@@ -26,6 +26,7 @@ set sessionoptions-=options
 set showbreak=>\ 
 set showcmd
 set smartcase
+set smoothscroll
 set splitbelow splitright
 set statusline=%<%f\ %m%r%=\ %-14.(%l,%c%V%)\ %Y\ %P
 set synmaxcol=5000
@@ -106,10 +107,6 @@ noremap ? ?\v
 " Normal mode mappings
 noremap <A-k> >>
 noremap <A-j> <<
-nnoremap <F1> :cp<CR>
-nnoremap <F2> :cn<CR>
-nnoremap <F3> :cl<CR>
-nnoremap <F4> :clast<CR>
 nnoremap <A-q> :qa<CR>
 nnoremap <A-z> :tabclose<CR>
 nnoremap <A-x> :close<CR>

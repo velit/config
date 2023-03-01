@@ -1,10 +1,8 @@
 [user]
     name = Tapani Kiiskinen
-[include]
-    path = .gitconfig_local
+    email = tapani.kiiskinen@gmail.com
 [merge]
     tool = vimdiff
-
 [diff]
     tool = vimdiff
     renames = true
@@ -30,7 +28,6 @@
     rtr = restore
     st = status
     sw = switch
-
     find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
     ignored = ls-files --others -i --exclude-standard
     lsd = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -49,4 +46,8 @@
 [fetch]
     prune = true
 [init]
-	defaultBranch = development
+    defaultBranch = development
+[include]
+    path = ~/.gitconfig_local
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig_work

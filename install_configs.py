@@ -12,24 +12,21 @@ def make_folders():
         if path.is_dir():
             os.makedirs(Path.home() / path.name, exist_ok=True)
 
-local_gitconfig_content = (
-"""[user]
-    name = Tapani Kiiskinen
-    email = """
-)
-
 def write_local_settings():
-
     local_gitconfig = Path.home() / Path(".gitconfig_local")
     if not local_gitconfig.exists():
-        email = input("Input email for git identity: ")
         with local_gitconfig.open('w') as f:
-            f.write(f"{local_gitconfig_content}{email}\n")
+            pass
+
+    local_gitconfig_work = Path.home() / Path(".gitconfig_work")
+    if not local_gitconfig_work.exists():
+        with local_gitconfig_work.open('w') as f:
+            pass
 
     local_zsh_config = Path.home() / Path(".zsh_local")
     if not local_zsh_config.exists():
         with local_zsh_config.open('w') as f:
-            f.write("")
+            pass
 
 def check_stow_existence():
     if subprocess.run(["which", "stow"], stdout=subprocess.PIPE).returncode != 0:
