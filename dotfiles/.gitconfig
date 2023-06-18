@@ -35,8 +35,13 @@
     message = log --format=%B -n 1
     whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
     yolo = "!git add -u; git commit --amend --no-edit"
+    yesterday = "!me=$(git config --get user.name); \
+        git log --pretty=format:'%an%x09%ad%x09%s' --date=short --author=\"$me\" --since='yesterday'"
+    droplast = reset --hard HEAD^
 [mergetool]
     keepBackup = false
+[branch]
+    autoSetupMerge = inherit
 [push]
     default = current
 [grep]

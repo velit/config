@@ -15,17 +15,17 @@ def make_folders():
 def write_local_settings():
     local_gitconfig = Path.home() / Path(".gitconfig_local")
     if not local_gitconfig.exists():
-        with local_gitconfig.open('w') as f:
+        with local_gitconfig.open('a') as f:
             pass
 
     local_gitconfig_work = Path.home() / Path(".gitconfig_work")
     if not local_gitconfig_work.exists():
-        with local_gitconfig_work.open('w') as f:
+        with local_gitconfig_work.open('a') as f:
             pass
 
     local_zsh_config = Path.home() / Path(".zsh_local")
     if not local_zsh_config.exists():
-        with local_zsh_config.open('w') as f:
+        with local_zsh_config.open('a') as f:
             pass
 
 def check_stow_existence():

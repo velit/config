@@ -1,0 +1,24 @@
+alias doco="docker-compose"
+
+unalias run-help
+autoload run-help
+HELPDIR=$(command brew --prefix)/share/zsh/help
+alias help=run-help
+
+function my_success() {
+    osascript -e "display notification with title \"$* success\" sound name \"Glass\""
+}
+
+function my_error() {
+    osascript -e "display notification with title \"$* error\" sound name \"Funk\""
+}
+
+function check() {
+    if [ $? == 0 ]; then
+        my_success "$@";
+    else
+        my_error "$@";
+    fi
+}
+
+alias ding="osascript -e 'display notification with title \"Ding\" sound name \"Glass\"'"

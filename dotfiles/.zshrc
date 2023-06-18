@@ -8,7 +8,6 @@ export EDITOR=vim
 export ESCDELAY=25
 
 export PAGER=less
-# alias less=$PAGER
 alias zless=$PAGER
 export LESS=' -FRX -x4'
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
@@ -44,8 +43,6 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 alias -g .......='../../../../../..'
 
-alias doco="docker-compose"
-
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
 
 autoload run-help
@@ -66,30 +63,42 @@ unsetopt nomatch
 unsetopt prompt_cr
 unsetopt prompt_sp
 
+autoload zkbd
+autoload up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # Use emacs keybindings
 bindkey -e
+
 bindkey \^U backward-kill-line
 
-autoload -U up-line-or-beginning-search
-zle -N up-line-or-beginning-search
-bindkey "$key[Up]" up-line-or-beginning-search
+if [ -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]; then
+    source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+else
+    zkbd
+    source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+fi
 
-autoload -U down-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "$key[Down]" down-line-or-beginning-search
+# autoload zkbd; zkbd
+[[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
 
-unalias run-help
-autoload run-help
-HELPDIR=$(command brew --prefix)/share/zsh/help
-alias help=run-help
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
 
-# bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-# bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
-no-operation () {}
-zle -N no-operation
-bindkey "[25~" no-operation
-#bindkey "^[OC" forward-word
-#bindkey "^[OD" backward-word
+[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
+[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
+
+[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+
+[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
+[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
+
+[[ -n ${key[AltLeft]} ]] && bindkey "${key[AltLeft]}" backward-word
+[[ -n ${key[AltRight]} ]] && bindkey "${key[AltRight]}" forward-word
 
 HISTSIZE=10000
 SAVEHIST=10000
@@ -109,9 +118,6 @@ if [[ -x /usr/lib/command-not-found ]] ; then
     fi
 fi
 
-export FZF_DEFAULT_COMMAND='ag --nocolor -u -g ""'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 precmd () {
     print -Pn "\e]1;${PWD##*/}\a"
 }
@@ -120,22 +126,10 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
-function my_success() {
-    osascript -e "display notification with title \"$* success\" sound name \"Glass\""
-}
-
-function my_error() {
-    osascript -e "display notification with title \"$* error\" sound name \"Funk\""
-}
-
-function check() {
-    if [ $? == 0 ]; then
-        my_success "$@";
-    else
-        my_error "$@";
-    fi
-}
-
-alias ding="osascript -e 'display notification with title \"Ding\" sound name \"Glass\"'"
+if [[ $(uname) == "Darwin" ]]; then
+    [ -f ~/.zsh_darwin ] && source ~/.zsh_darwin
+else
+    [ -f ~/.zsh_linux ] && source ~/.zsh_linux
+fi
 
 [ -f ~/.zsh_local ] && source ~/.zsh_local

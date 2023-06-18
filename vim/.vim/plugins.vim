@@ -20,7 +20,7 @@ Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 Plug 'pprovost/vim-ps1'
 Plug 'python-mode/python-mode',   { 'for': 'python', 'branch': 'develop' }
-" Plug '5long/pytest-vim-compiler', { 'for': 'python' }
+Plug 'darfink/vim-plist'
 
 call plug#end()
 
