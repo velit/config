@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-PYBINARY = "python3"
-
 import os
 import sys
 import subprocess
@@ -29,7 +27,7 @@ def write_local_settings():
             pass
 
 def check_stow_existence():
-    if subprocess.run(["which", "stow"], stdout=subprocess.PIPE).returncode != 0:
+    if subprocess.run(["stow", "-h"], stdout=subprocess.PIPE).returncode != 0:
         print("This script needs stow program to be installed", file=sys.stderr)
         sys.exit(1)
 
@@ -41,10 +39,6 @@ def stow(packages):
     home_path = str(Path.home())
     subprocess.run(["stow", f"--target={home_path}"] + packages, stdout=subprocess.PIPE)
 
-def install_python_packages():
-    """Packages are documented in the python_packages.txt file."""
-    subprocess.run([PYBINARY, "-m", "pip", "install", "--user", "-r", "python_packages.txt"], stdout=subprocess.PIPE)
-
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Make folders in userdir, write local settings"
@@ -53,6 +47,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     check_stow_existence()
     make_folders()
-    write_local_settings()
     stow(args.packages)
-    install_python_packages()
+    write_local_settings()
+    print("Done setting up config files.")
