@@ -126,6 +126,13 @@ function title {
     echo -ne "\033]0;"$*"\007"
 }
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init --path)"
+fi
+eval "$(pyenv virtualenv-init -)"
+
 if [[ $(uname) == "Darwin" ]]; then
     [ -f ~/.zsh_darwin ] && source ~/.zsh_darwin
 else

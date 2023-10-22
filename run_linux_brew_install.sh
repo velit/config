@@ -5,17 +5,9 @@
 
 INSTALL_LIST="
 devtodo
-ncurses
-screen
 source-highlight
 tree
 vim
-zsh
-grip
-curl
-coreutils
-findutils
-grep
 "
 
 brew install git python3 stow

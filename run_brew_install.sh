@@ -1,23 +1,23 @@
 #!/bin/bash
 
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/velit/config/master/run_apt_install.sh)"
+# To install (homebrew required)
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/velit/config/master/run_mac_install.sh)"
 
 INSTALL_LIST="
-build-essential
-curl
 devtodo
-ncurses-doc
-ncurses-term
+ncurses
 screen
-sharutils
 source-highlight
 tree
-vim-gtk
+vim
 zsh
+curl
+coreutils
+findutils
+grep
 "
 
-sudo apt install git python3 python3-pip stow openssh
-echo
+brew install git python3 stow
 
 if [ ! -d ~/config ]; then
     read -p "Enter email, enter to skip setting ssh-key: " email
@@ -34,10 +34,6 @@ if [ ! -d ~/config ]; then
     echo
 fi
 
-python3 ~/config/install_configs.py
-echo
-
+~/config/install_configs.py
 python3 -m pip install --user -r ~/config/python_packages.txt
-echo
-
-sudo apt install $INSTALL_LIST
+brew install $INSTALL_LIST

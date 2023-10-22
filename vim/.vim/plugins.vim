@@ -19,7 +19,6 @@ Plug 'qpkorr/vim-renamer'
 Plug 'andreshazard/vim-freemarker'
 Plug 'leafgarland/typescript-vim'
 Plug 'pprovost/vim-ps1'
-Plug 'python-mode/python-mode',   { 'for': 'python', 'branch': 'develop' }
 Plug 'darfink/vim-plist'
 
 call plug#end()
