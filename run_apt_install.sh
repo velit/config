@@ -5,12 +5,12 @@
 INSTALL_LIST="
 build-essential
 curl
-devtodo
 ncurses-doc
 ncurses-term
 screen
 sharutils
 source-highlight
+taskwarrior
 tree
 vim-gtk
 zsh

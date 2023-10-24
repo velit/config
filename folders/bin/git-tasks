@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Source https://github.com/ayosec/git-tasks
+
+set -euo pipefail
+
+: "${GIT_TASKS_DATADIR:=.git-tasks}"
+
+TASKDATA="$(git rev-parse --show-toplevel 2> /dev/null)/$GIT_TASKS_DATADIR"
+
+if [ ! -d "$TASKDATA" ]
+then
+  mkdir "$TASKDATA"
+fi
+
+export TASKDATA
+exec task "$@"

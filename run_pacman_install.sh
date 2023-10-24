@@ -7,6 +7,7 @@ screen
 sharutils
 source-highlight
 ncurses
+taskwarrior
 tree
 zsh
 base-devel

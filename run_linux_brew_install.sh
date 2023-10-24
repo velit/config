@@ -4,7 +4,7 @@
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/velit/config/master/run_mac_install.sh)"
 
 INSTALL_LIST="
-devtodo
+taskwarrior
 source-highlight
 tree
 vim

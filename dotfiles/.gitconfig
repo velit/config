@@ -39,6 +39,7 @@
     yesterday = "!me=$(git config --get user.name); \
         git log --pretty=format:'%an%x09%ad%x09%s' --date=short --author=\"$me\" --since='yesterday'"
     droplast = reset --hard HEAD^
+    task = "!git-tasks"
 [mergetool]
     keepBackup = false
 [branch]
