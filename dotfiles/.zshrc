@@ -1,28 +1,24 @@
 stty -ixon
 
 export PATH=~/links:~/bin:~/.local/bin/:$PATH
-
 export NEOVIMCONFIG=~/.config/nvim/
 export NEOVIMWORK=~/.local/share/nvim/
 export EDITOR=vim
 export ESCDELAY=25
-
 export PAGER=less
-alias zless=$PAGER
 export LESS=' -FRX -x4'
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
-
 export CLICOLOR=YES
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
-
-alias downloads='find ~/Downloads -type f -printf "%T@ %Tc %p\n" | sort -n | tail'
-alias dls=downloads
 
 alias ls="$LS_DEFAULT -w 80"
 alias l="$LS_DEFAULT -1"
 alias la="$LS_DEFAULT -1As"
 alias ll="$LS_DEFAULT  -lA"
+
+alias downloads='find ~/Downloads -type f -printf "%T@ %Tc %p\n" | sort -n | tail'
+alias dls=downloads
 
 alias grep='"grep" --color=auto'
 alias fgrep='"fgrep" --color=auto'
@@ -44,6 +40,9 @@ alias -g ......='../../../../..'
 alias -g .......='../../../../../..'
 
 PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%~%_%f%b$ "
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 
 autoload run-help
 alias help=run-help
@@ -63,21 +62,20 @@ unsetopt nomatch
 unsetopt prompt_cr
 unsetopt prompt_sp
 
+# Use emacs keybindings
+bindkey -e
+
 autoload zkbd
 autoload up-line-or-beginning-search
 zle -N up-line-or-beginning-search
 autoload down-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# Use emacs keybindings
-bindkey -e
-
 bindkey \^U backward-kill-line
 
-if [ -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]; then
-    source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
-else
-    zkbd
+if [ -t 1 ]
+then
+    [ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ] && zkbd
     source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 fi
 
@@ -99,10 +97,6 @@ fi
 
 [[ -n ${key[AltLeft]} ]] && bindkey "${key[AltLeft]}" backward-word
 [[ -n ${key[AltRight]} ]] && bindkey "${key[AltRight]}" forward-word
-
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.zsh_history
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' special-dirs true
