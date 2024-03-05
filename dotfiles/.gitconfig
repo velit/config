@@ -50,8 +50,12 @@
     linenumber = true
 [pull]
     rebase = true
+[rebase]
+    autostash = true
 [fetch]
     prune = true
+[commit]
+    verbose = true
 [init]
     defaultBranch = development
 [include]
