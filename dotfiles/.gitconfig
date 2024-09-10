@@ -13,6 +13,8 @@
     autocrlf = false
 [color]
     ui = auto
+[pretty]
+    tappi = format:%C(auto,yellow)%h%C(auto,magenta)%  %C(auto,bold green)%<(8,trunc)%aN%x08%x08 %C(auto,reset)%s%C(auto)% gD% D
 [alias]
     br = branch
     ci = commit
@@ -31,8 +33,8 @@
     sw = switch
     find = "!cd ${GIT_PREFIX:-.} && gitfind() { git ls-files | grep -i $@; } && gitfind"
     ignored = ls-files --others -i --exclude-standard
-    lsd = log --graph --decorate --pretty=oneline --abbrev-commit
-    lsda = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lsd = log --graph --decorate --pretty=tappi --no-merges --abbrev-commit
+    lsda = lsd --all
     message = log --format=%B
     whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
     yolo = "!git add -u; git commit --amend --no-edit"

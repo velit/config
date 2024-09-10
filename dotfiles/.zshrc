@@ -134,3 +134,6 @@ else
 fi
 
 [ -f ~/.zsh_local ] && source ~/.zsh_local
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
