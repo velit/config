@@ -7,6 +7,7 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'christoomey/vim-titlecase'
 "Plug 'SirVer/UltiSnips' | Plug 'honza/vim-snippets'
 "Plug 'ludovicchabant/vim-gutentags'
 

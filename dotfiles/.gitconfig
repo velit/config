@@ -37,7 +37,7 @@
     lsda = lsd --all
     message = log --format=%B
     whoami = "!echo $(git config --get user.name) \\<$(git config --get user.email)\\>"
-    yolo = "!git add -u; git commit --amend --no-edit"
+    yolo = "!git add -u && git commit --amend --no-edit && git status"
     yesterday = "!me=$(git config --get user.name); \
         git log --pretty=format:'%an%x09%ad%x09%s' --date=short --author=\"$me\" --since='yesterday'"
     droplast = reset --hard HEAD^
