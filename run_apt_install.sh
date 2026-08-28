@@ -16,7 +16,7 @@ vim-gtk
 zsh
 "
 
-sudo apt install git python3 python3-pip stow openssh
+sudo apt install git python3 python3-pip stow openssh-client
 echo
 
 if [ ! -d ~/config ]; then
