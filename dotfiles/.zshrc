@@ -5,13 +5,13 @@ export NEOVIMCONFIG=~/.config/nvim/
 export NEOVIMWORK=~/.local/share/nvim/
 export EDITOR=vim
 export ESCDELAY=25
-export PAGER=less
+export PAGER=~/.vim/plugins/vimpager/vimpager
 export LESS=' -FRX -x4'
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export CLICOLOR=YES
 
 LS_DEFAULT='"ls" -hv --color=auto --group-directories-first --time-style=locale --si'
 
+alias less=$PAGER
 alias ls="$LS_DEFAULT -w 80"
 alias l="$LS_DEFAULT -1"
 alias la="$LS_DEFAULT -1As"

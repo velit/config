@@ -15,6 +15,7 @@ Plug 'christoomey/vim-titlecase'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'qpkorr/vim-renamer'
+Plug 'rkitover/vimpager'
 
 " Language support
 Plug 'andreshazard/vim-freemarker'
