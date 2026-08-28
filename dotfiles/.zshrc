@@ -121,14 +121,13 @@ function title {
 }
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
- eval "$(pyenv init --path)"
-fi
-eval "$(pyenv virtualenv-init -)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 if [[ $(uname) == "Darwin" ]]; then
     [ -f ~/.zsh_darwin ] && source ~/.zsh_darwin
+elif (( $+commands[wslpath] )); then
+    [ -f ~/.zsh_wsl ] && source ~/.zsh_wsl
 else
     [ -f ~/.zsh_linux ] && source ~/.zsh_linux
 fi
@@ -136,4 +135,3 @@ fi
 [ -f ~/.zsh_local ] && source ~/.zsh_local
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
